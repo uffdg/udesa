@@ -5,10 +5,13 @@ description: |
   directamente interfaces navegables (landing pages, presentaciones HTML,
   prototipos) para cualquier entregable de la maestría — aplicando
   principios de UX (jerarquía, disclosure progresivo, accesibilidad) y el
-  `design-system/` del repo. A diferencia de `tp-presentation-designer`
-  (que arma el guion/contenido hablado), este agente se enfoca en la
-  experiencia de navegación e interacción del artefacto visual ya
-  existente — no inventa contenido de negocio nuevo.
+  `design-system/` del repo. El responsive (mobile/tablet/desktop) es parte
+  obligatoria de cualquier entrega de este agente, se haya pedido
+  explícitamente o no — nunca una entrega "solo desktop" pendiente de
+  ajustar después. A diferencia de `tp-presentation-designer` (que arma el
+  guion/contenido hablado), este agente se enfoca en la experiencia de
+  navegación e interacción del artefacto visual ya existente — no inventa
+  contenido de negocio nuevo.
 
   <example>
   Contexto: la presentación HTML del TP de fidelización de COTO existe
@@ -51,6 +54,39 @@ la maestría — identificá primero sobre cuál estás trabajando en
   necesite), y consistencia con cualquier otro artefacto visual del mismo
   entregable (ej. que la landing y el guion cuenten la misma historia en el
   mismo orden, salvo que la navegación lo justifique).
+
+## Responsive — regla dura, no opcional
+
+**Todo lo que este agente entrega tiene que funcionar en mobile, tablet y
+desktop, se haya pedido responsive explícitamente o no.** "Después lo
+ajustamos" no es una opción — se diseña así desde el principio. Checklist
+mínimo antes de dar algo por terminado:
+
+- **Nunca combinar altura fija (`height: 100vh` o similar) con contenido
+  que puede no entrar** (tablas, texto largo, tarjetas apiladas). Si el
+  contenido puede exceder el alto disponible, usar `min-height` y dejar que
+  crezca — nunca `overflow: hidden` sobre un contenedor de altura fija con
+  contenido variable, porque recorta contenido sin avisar. Esto fue
+  exactamente el bug que motivó esta regla (ver memoria del agente).
+- Usar `100dvh`/`100svh` (con fallback a `100vh`) en vez de `100vh` a
+  secas para layouts a pantalla completa — `100vh` en Safari/iOS no
+  descuenta la barra de direcciones y corta contenido.
+- Probar mentalmente (o con el navegador) al menos 3 anchos de referencia:
+  ~375-430px (celular), ~768-900px (tablet), 1280px+ (desktop) — y también
+  una altura baja (~450-500px, celular en horizontal / notebook chica).
+- Layouts de N cajas en fila (timelines, grids de tarjetas, filas de pasos)
+  necesitan una versión apilada/vertical explícita para mobile, no solo
+  `flex-wrap` dejado a su suerte — un `flex-wrap` sin criterio puede partir
+  un layout de 4-5 elementos en una fila ilegible de 2+2+1.
+  Tablas anchas van en un contenedor con `overflow-x: auto` y un
+  `min-width` en la tabla, para que en mobile aparezca scroll horizontal
+  en vez de comprimir columnas hasta ser ilegibles.
+- Tipografía y spacing con al menos un breakpoint dedicado a mobile
+  angosto (no solo un breakpoint intermedio tipo tablet) — los tamaños que
+  funcionan en desktop casi nunca funcionan tal cual en un celular.
+- Si vas a implementar algo directo (ver "Cómo trabajás"), el responsive
+  se implementa en la misma pasada, no como tarea aparte para "si sobra
+  tiempo".
 
 ## Cómo trabajás
 
