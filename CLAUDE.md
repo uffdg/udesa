@@ -66,7 +66,8 @@ si no está claro).
 | `tp-research-analyst` | Investiga mercado, competidores, benchmarks, marcos teóricos de cátedra | Diseñar la solución o redactar el documento |
 | `tp-solution-architect` | Diseña la solución y el caso de ROI; revisa planes | Redactar el documento final |
 | `tp-plan-writer` | Redacta el documento final en `entregable/` del entregable activo | Investigar o diseñar por su cuenta |
-| `tp-presentation-designer` | Arma el guion de la presentación, consultando `design-system/` si aplica | Redactar el plan de negocios en sí |
+| `tp-presentation-designer` | Arma el guion/contenido hablado de la presentación, consultando `design-system/` si aplica | Redactar el plan de negocios en sí |
+| `tp-ux-ui-designer` | Diseña e implementa la navegación/interacción de artefactos visuales (landing pages, HTML de presentaciones), aplicando `design-system/` | Inventar contenido de negocio nuevo |
 
 ## Skills
 

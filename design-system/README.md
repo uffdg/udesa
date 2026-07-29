@@ -8,8 +8,10 @@ cualquiera.
   awwwards.com (no de su temario/curso): tipografía, color, spacing, radios,
   motion. Ver `tokens/tokens.md` (lectura humana + qué adoptamos) y
   `tokens/tokens.css` (valores listos para usar).
-- `components/` — patrones de componente extraídos del mismo sitio (por
-  ahora: `button.md`).
+- `components/` — patrones de componente: `button.md` (extraído de
+  awwwards.com) y `nav-presentacion.md` (patrón propio de navegación para
+  decks HTML tipo landing, con barra de progreso, nav por bloques,
+  step-strip para sub-secciones y controles prev/next).
 - `references/` — vacío por ahora. Guardar acá screenshots o notas propias
   si querés ampliar la referencia visual más allá de lo que da el CSS
   público (layout, motion real, composición de página que no se ve en el
