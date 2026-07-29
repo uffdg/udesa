@@ -1,0 +1,87 @@
+/*
+  Design tokens extraídos del CSS real de awwwards.com (la home/página del
+  curso en Awwwards Academy), no de su temario. Fuente: HTML servido
+  públicamente por https://www.awwwards.com/academy/course/innovative-web-design-in-figma-a-step-by-step-process,
+  extraído el 2026-07-28 leyendo los bloques <style> embebidos en la
+  respuesta del servidor. Nombres de variables preservados donde tenían
+  sentido, reorganizados por categoría.
+
+  Ver design-system/tokens/tokens.md para la lectura humana + qué de esto
+  vale la pena adoptar tal cual para nuestras presentaciones.
+*/
+
+:root {
+  /* Tipografía */
+  --font-1: "Inter Tight", "Inter", sans-serif; /* variable font, self-hosted, weights 100-900 */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-bold: 600;      /* ojo: su "bold" es semibold */
+  --font-extrabold: 700;
+  --font-black: 800;
+
+  --text-size-small: 11px;
+  --text-size-primary: 14px;
+  --text-size-medium: 18px;
+  --text-size-large: 22px;
+
+  /* Color — neutros e ink */
+  --color-primary: #222;        /* texto principal, no negro puro */
+  --color-white: #fff;
+  --bg-primary: #F8F8F8;        /* fondo general, gris cálido, no blanco puro */
+  --bg-secondary: #222;         /* secciones oscuras */
+  --bg-3rd: #ededed;
+  --bg-4rd: #f8f8f8;
+  --border-gray: #ededed;
+
+  /* Color — modo oscuro (body.dark) */
+  --dark-color-primary: #eee;
+  --dark-bg-primary: #121212;
+
+  /* Color — acento / acción */
+  --color-orange: #FA5D29;      /* CTA primario + errores, unificado */
+  --color-errors: #FA5D29;
+  --color-red: #FA5D29;
+  --color-blue: #49B3FC;        /* acento secundario */
+
+  /* Color — semántico */
+  --alert-green: #e0f4d9;
+  --alert-yellow: #FFF083;
+
+  /* Color — taxonomía de contenido (3 tonos por familia: base/medio/claro).
+     Ellos la usan para categorizar tipo de contenido del sitio (Connect,
+     Inspire, Awards, Read, Learn, Jobs). No la copiamos 1:1, pero es un
+     patrón reusable si queremos color-codear tipos de entregable. */
+  --color-connect:  #FF602C; --color-connect-2:  #FFAE94; --color-connect-3:  #FFC5B1;
+  --color-inspire:  #AAEEC4; --color-inspire-2:  #C8E4D3; --color-inspire-3:  #E2F4E9;
+  --color-awards:   #502bd8; --color-awards-2:   #6749d1; --color-awards-3:   #917eda;
+  --color-read:     #c0ab3c; --color-read-2:     #CDC38B; --color-read-3:     #DBD6C0;
+  --color-learn:    #FFF083; --color-learn-2:    #FFF9D0; --color-learn-3:    #fffbe2;
+  --color-jobs:     #74bcff; --color-jobs-2:     #99ccfc; --color-jobs-3:     #b4d7f8;
+
+  /* Layout / grid */
+  --gutter: 20px;
+  --innerWidth: 1816px;   /* container max-width — sitio muy ancho, showcase visual */
+  --header-height: 71px;
+  --pad-inner: 52px;      /* baja a 40px / 24px / 16px en breakpoints menores */
+
+  /* Radios */
+  --rounded-small: 4px;
+  --rounded-normal: 8px;
+  --rounded-large: 1rem;  /* 16px desktop, baja a 8px en contextos chicos */
+
+  /* Botón */
+  --button-height: 48px;
+  --button-pad: 24px;
+  --button-rounded: 8px;
+  --button-rounded-full: 72px; /* variante pill */
+  --button-bg: var(--color-primary);
+  --button-color: var(--color-white);
+  --button-border-color: var(--color-primary);
+
+  /* Motion */
+  --transition-default: all .3s; /* su default casi universal para hover/estado */
+}
+
+/* Breakpoints de referencia (mobile-first, con clamp() para tipografía/espaciado fluido) */
+/* sm: 768px · md: 1270px · lg: 1600px */
