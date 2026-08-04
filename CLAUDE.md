@@ -39,6 +39,12 @@ design-system/         — estilo visual compartido para cualquier presentación
   references/           — fuentes de inspiración/aprendizaje, con notas
   tokens/                — paleta, tipografía, espaciado, grilla (una vez definidos)
   components/            — patrones de slide reutilizables (una vez definidos)
+prototipo-wallet-coto/ — única excepción a "no es un repo de código de
+                         aplicación": prototipo funcional (React/Vite,
+                         datos sideados, sin backend) compartido por
+                         fidelizacion-coto (MT10) y business-plan-coto
+                         (MT25) para la demo ante manager y member. Ver su
+                         propio README.md.
 ```
 
 Cómo sumar un TP nuevo: crear `consignas/<materia-slug>-<entregable-slug>.md`
@@ -53,6 +59,11 @@ explicando la convención — copiar el patrón de
 - **MT10 Innovación Tecnológica** → `materias/mt10-innovacion-tecnologica/`
   - `fidelizacion-coto/` — plan de negocios de fidelización para COTO. Ver
     `consignas/mt10-fidelizacion-coto.md`.
+- **MT25 Estrategias de Negocios en Internet** →
+  `materias/mt25-estrategias-negocios-internet/`
+  - `business-plan-coto/` — business plan y pitch de 15' de la billetera
+    virtual de COTO (mismo tema que `fidelizacion-coto`, entregable
+    independiente). Ver `consignas/mt25-business-plan-coto.md`.
 
 ## Cómo trabajar acá (agentes)
 

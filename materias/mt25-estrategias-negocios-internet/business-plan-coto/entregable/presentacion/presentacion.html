@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wallet COTO — Business Plan (pitch a inversores)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   Tokens — copiados literales de design-system/tokens/tokens.css, mismo
+   criterio documentado en el TP de mt10-innovacion-tecnologica: acento
+   sustituido de --color-orange (marcado "a discutir para CFO" en
+   tokens.md) por --color-awards, ya existente en la paleta real, para
+   mantener consistencia visual entre los dos TPs del repo que comparten la
+   misma idea de negocio (wallet COTO). --color-red se usa en su rol
+   semántico correcto (riesgo/amenaza), no como decoración.
+   ========================================================================== */
+:root {
+  --font-1: "Inter Tight", "Inter", sans-serif;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-bold: 600;
+  --font-extrabold: 700;
+  --font-black: 800;
+
+  --color-primary: #222;
+  --color-white: #fff;
+  --bg-primary: #F8F8F8;
+  --bg-secondary: #222;
+  --bg-3rd: #ededed;
+  --border-gray: #ededed;
+  --muted: #6e6e6e;              /* derivado: el sistema no define gris de texto secundario */
+  --dark-muted: #afafaf;         /* derivado */
+
+  --color-awards: #502bd8;       /* acento primario (reemplaza al naranja para este contexto) */
+  --color-awards-light: #ece7fa; /* derivado: tint claro de --color-awards */
+  --color-red: #FA5D29;          /* riesgo / error — uso semántico original del token */
+  --color-red-light: #fde6da;    /* derivado */
+
+  --rounded-small: 4px;
+  --rounded-normal: 8px;
+  --rounded-large: 16px;
+  --button-height: 48px;
+  --transition-default: all .3s;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-1);
+  background: var(--bg-primary);
+  color: var(--color-primary);
+  font-weight: var(--font-normal);
+}
+a { color: inherit; }
+button { font-family: var(--font-1); }
+
+/* ---------- barra de progreso (fija, arriba de todo) ---------- */
+.progress-track {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--bg-3rd); z-index: 60;
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: var(--color-awards);
+  transition: width .15s linear;
+}
+
+/* ---------- nav superior fija ---------- */
+.topnav {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 50;
+  display: flex; align-items: center; gap: 4px;
+  padding: 0 4vw;
+  height: 56px;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-gray);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.topnav::-webkit-scrollbar { display: none; }
+.topnav .brand {
+  font-weight: var(--font-bold);
+  font-size: 13px;
+  color: var(--color-primary);
+  white-space: nowrap;
+  padding: 8px 14px 8px 0;
+  margin-right: 6px;
+  border-right: 1px solid var(--border-gray);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.topnav a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: var(--font-medium);
+  color: var(--muted);
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: var(--rounded-large);
+  transition: var(--transition-default);
+  flex-shrink: 0;
+}
+.topnav a:hover { background: var(--bg-3rd); color: var(--color-primary); }
+.topnav a.active { background: var(--color-awards); color: var(--color-white); font-weight: var(--font-bold); }
+.topnav a:focus-visible, .brand:focus-visible, .navbtn:focus-visible, .step-chip:focus-visible {
+  outline: 2px solid var(--color-awards); outline-offset: 2px;
+}
+
+/* ---------- controles prev/next flotantes ---------- */
+.navbtn-group {
+  position: fixed; right: 4vw; bottom: 3vh; z-index: 50;
+  display: flex; gap: 10px;
+}
+.navbtn {
+  width: var(--button-height); height: var(--button-height);
+  border-radius: var(--rounded-normal);
+  border: 1px solid var(--border-gray);
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+  transition: var(--transition-default);
+}
+.navbtn:hover:not(:disabled) { background: var(--color-awards); color: var(--color-white); border-color: var(--color-awards); }
+.navbtn:disabled { opacity: .35; cursor: default; }
+
+/* ---------- estructura de slides (scroll-snap, 1 por viewport) ----------
+   min-height + overflow-y:auto (no height fija + overflow:hidden): en
+   desktop el contenido entra y no se nota diferencia; en mobile, si una
+   slide con mucho contenido no entra en el alto real de la pantalla, crece
+   y se puede scrollear DENTRO de la slide en vez de recortarse. Se usa dvh
+   con fallback a vh por el bug conocido de Safari iOS con 100vh y la barra
+   de direcciones. */
+.deck {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 56px;
+}
+.slide {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  scroll-snap-align: start;
+  padding: calc(56px + 2.6vh) 4vw 3.6vh 4vw;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.slide.dark { background: var(--bg-secondary); color: var(--color-white); }
+.slide.dark .muted { color: var(--dark-muted); }
+
+.kicker {
+  font-size: 13px;
+  font-weight: var(--font-bold);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-awards);
+  margin: 0 0 .6em 0;
+}
+.slide.dark .kicker { color: #b3a3ed; }
+.kicker.muted-kicker { color: var(--muted); }
+
+h1 {
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: var(--font-bold);
+  line-height: 1.25;
+  margin: 0 0 .5em 0;
+  max-width: 90%;
+}
+
+.muted { color: var(--muted); }
+
+.footer {
+  position: absolute;
+  left: 4vw; right: 4vw; bottom: 2vh;
+  display: flex; justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+}
+.slide.dark .footer { color: var(--dark-muted); }
+
+/* ---------- card genérica ---------- */
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--border-gray);
+  border-radius: var(--rounded-normal);
+  padding: 1.4em 1.6em;
+}
+.card-accent {
+  background: var(--color-awards);
+  color: var(--color-white);
+  border-radius: var(--rounded-normal);
+  padding: 1.2em 1.6em;
+}
+.card-accent-light {
+  background: var(--color-awards-light);
+  border-radius: var(--rounded-normal);
+  padding: 1em 1.4em;
+}
+.card-risk-light {
+  background: var(--color-red-light);
+  border-radius: var(--rounded-normal);
+  padding: 1.2em 1.4em;
+}
+/* ---------- card-gap: placeholder de contenido no resuelto todavía
+   (ej. "Equipo" sin integrantes reales). Nuevo, reusable en cualquier
+   entregable con gaps explícitos — ver
+   design-system/components/card-gap.md ---------- */
+.card-gap {
+  background: var(--color-white);
+  border: 1.5px dashed var(--muted);
+  border-radius: var(--rounded-normal);
+  padding: 1.2em 1.6em;
+  color: var(--muted);
+}
+.slide.dark .card-gap { background: transparent; border-color: var(--dark-muted); color: var(--dark-muted); }
+
+/* ---------- bullets ---------- */
+ul.bullets { list-style: none; margin: 0; padding: 0; }
+ul.bullets li {
+  position: relative;
+  padding-left: 1.3em;
+  margin-bottom: .7em;
+  font-size: 16px;
+  line-height: 1.4;
+}
+ul.bullets li::before {
+  content: "—";
+  position: absolute; left: 0; top: 0;
+  color: var(--color-awards);
+  font-weight: var(--font-bold);
+}
+ul.bullets.risk li::before { color: var(--color-red); }
+
+ol.steps { margin: 0; padding: 0; counter-reset: step; list-style: none; }
+ol.steps li {
+  position: relative;
+  padding-left: 2.1em;
+  margin-bottom: .8em;
+  font-size: 15px;
+  line-height: 1.45;
+  counter-increment: step;
+}
+ol.steps li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: -.05em;
+  width: 1.5em; height: 1.5em;
+  border-radius: 50%;
+  background: var(--color-awards);
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: var(--font-bold);
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ---------- stat grande ---------- */
+.stat-big {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: var(--font-bold);
+  color: var(--color-red);
+  line-height: 1;
+  margin: 0 0 .2em 0;
+}
+.stat-big.accent { color: var(--color-awards); }
+.stat-caption { font-size: 16px; color: var(--muted); max-width: 32em; }
+
+/* ---------- tabla ---------- */
+.table-wrap {
+  border: 1px solid var(--border-gray);
+  border-radius: var(--rounded-small);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+table { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 14px; }
+thead th {
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-align: left;
+  padding: .55em .8em;
+  font-weight: var(--font-bold);
+}
+tbody td { padding: .5em .8em; border-top: 1px solid var(--border-gray); }
+tbody tr:nth-child(even) { background: var(--bg-primary); }
+
+/* ---------- step-strip: patrón reusado para navegar sub-secciones dentro
+   de un bloque (Problema, Producto, Modelo de negocio, Mercado,
+   Financiero). Ver design-system/components/nav-presentacion.md ---------- */
+.step-strip { display: flex; gap: 10px; margin-bottom: 1.4em; flex-wrap: wrap; }
+.step-chip {
+  padding: .45em 1em;
+  border-radius: var(--rounded-large);
+  font-size: 12px;
+  font-weight: var(--font-medium);
+  background: var(--bg-3rd);
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition-default);
+}
+.step-chip:hover { background: #e2e2e2; }
+.step-chip.active { background: var(--color-awards); color: var(--color-white); font-weight: var(--font-bold); }
+.step-chip.active:hover { background: var(--color-awards); }
+
+/* ---------- grid genérico de 2 y 3 columnas ---------- */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6em; align-items: start; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2em; align-items: start; }
+.col-narrow { max-width: 40em; }
+
+/* ---------- timeline de fases (roadmap de producto) ---------- */
+.timeline { display: flex; align-items: stretch; gap: 8px; margin-bottom: 1.2em; flex-wrap: wrap; }
+.phase-box {
+  flex: 1;
+  min-width: 150px;
+  border-radius: var(--rounded-normal);
+  padding: 1em 1.1em;
+  background: var(--color-white);
+  border: 1px solid var(--border-gray);
+}
+.phase-box.active { background: var(--color-awards); color: var(--color-white); border: none; }
+.phase-tag { font-size: 11px; font-weight: var(--font-bold); color: var(--muted); }
+.phase-box.active .phase-tag { color: #ded6f5; }
+.phase-name { font-size: 16px; font-weight: var(--font-bold); margin: .25em 0; }
+.phase-detail { font-size: 11px; color: var(--muted); white-space: pre-line; }
+.phase-box.active .phase-detail { color: #ded6f5; }
+.phase-arrow { align-self: center; color: var(--color-awards); font-size: 20px; }
+
+/* ---------- tarjeta de pilar (moat: brand / embedding / distribución) ---------- */
+.pillar-card {
+  background: var(--color-white);
+  border: 1px solid var(--border-gray);
+  border-radius: var(--rounded-normal);
+  padding: 1.2em 1.3em;
+}
+.pillar-title { font-weight: var(--font-bold); font-size: 15px; margin-bottom: .4em; color: var(--color-awards); }
+.pillar-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+
+/* ---------- responsive: tablet (≤900px) ---------- */
+@media (max-width: 900px) {
+  .two-col, .three-col { grid-template-columns: 1fr; gap: 1.1em; }
+  h1 { max-width: 100%; }
+  .stat-big { font-size: clamp(36px, 8vw, 56px); }
+}
+
+/* ---------- responsive: mobile (≤600px) ----------
+   La timeline de fases pasa de fila horizontal a columna vertical (con
+   flechas rotadas 90°) — 4 cajas + 3 flechas en fila nunca entran
+   legibles en un teléfono. */
+@media (max-width: 600px) {
+  .topnav { padding: 0 3vw; height: 50px; }
+  .topnav .brand { font-size: 12px; padding: 6px 10px 6px 0; }
+  .topnav a { font-size: 12px; padding: 6px 9px; }
+  .slide { padding: calc(50px + 2vh) 5vw 3vh 5vw; }
+  h1 { font-size: clamp(21px, 6vw, 26px); }
+  .kicker { font-size: 11.5px; }
+  .stat-big { font-size: clamp(30px, 12vw, 44px); }
+  .stat-caption, ul.bullets li, ol.steps li, .card p, p { font-size: 14px; }
+  .card, .card-accent-light, .card-risk-light, .card-gap, .pillar-card { padding: 1em 1.1em; }
+  .footer { font-size: 9.5px; }
+
+  .timeline { flex-direction: column; }
+  .phase-arrow { transform: rotate(90deg); margin: -4px 0; align-self: center; }
+  .phase-box { min-width: 0; }
+
+  .navbtn-group { bottom: 1.4vh; right: 3vw; gap: 8px; }
+  .navbtn { width: 42px; height: 42px; font-size: 16px; }
+}
+
+/* pantallas bajas (celular en horizontal, notebooks chicas): priorizar que
+   entre contenido antes que aire decorativo */
+@media (max-height: 480px) {
+  .slide { padding-top: calc(50px + 1.2vh); padding-bottom: 1.5vh; }
+  .stat-big { font-size: clamp(26px, 7vh, 40px); margin-bottom: .1em; }
+  h1 { margin-bottom: .35em; }
+}
+
+@media print {
+  .topnav, .progress-track, .navbtn-group { display: none; }
+  .deck { height: auto; overflow: visible; }
+  .slide { height: 100vh; page-break-after: always; padding-top: 3.2vh; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+<nav class="topnav" aria-label="Secciones de la presentación">
+  <span class="brand" data-target="s-nombre" tabindex="0" role="link">Wallet COTO</span>
+  <a href="#s-problema-acceso" data-group="problema">Problema</a>
+  <a href="#s-solucion" data-group="solucion">Solución</a>
+  <a href="#s-producto-flujo" data-group="producto">Producto</a>
+  <a href="#s-modelo-moat" data-group="modelo">Modelo de negocio</a>
+  <a href="#s-mercado-tam" data-group="mercado">Mercado</a>
+  <a href="#s-ahora" data-group="ahora">Por qué ahora</a>
+  <a href="#s-competencia" data-group="competencia">Competencia</a>
+  <a href="#s-financiero-inversion" data-group="financiero">Financiero</a>
+  <a href="#s-cierre" data-group="cierre">Cierre</a>
+  <a href="#s-anexo" data-group="anexo">Anexo</a>
+</nav>
+
+<div class="deck">
+
+<!-- 1. NOMBRE DE LA EMPRESA -->
+<section class="slide dark" id="s-nombre" data-group="inicio">
+  <div style="margin-top:auto;">
+    <div style="width:48px;height:5px;background:var(--color-awards);border-radius:var(--rounded-small);margin-bottom:24px;"></div>
+    <h1 style="font-size:clamp(34px,4.6vw,56px); max-width:100%;">Wallet COTO</h1>
+    <p style="font-size:19px; color:var(--dark-muted); max-width:38em;">Business plan — pitch de venta de la idea de negocio a inversores</p>
+    <p style="font-size:13px; color:#9a8fc9; margin-top:2em; max-width:40em;">Nombre de trabajo — el naming final ("¿COTO Pay?", extensión de línea de "Coto Digital", u otro) es una decisión de branding que el equipo todavía no cerró.</p>
+    <p style="font-size:13px; color:#8a8a8a; margin-top:1.6em;">MT25 Estrategias de Negocios en Internet · Pitch de 15 minutos + 10 de preguntas</p>
+  </div>
+  <p style="font-size:10.5px;color:#8a8a8a;">Equipo del TP — Maestría en Gestión de Servicios Tecnológicos y de Telecomunicaciones</p>
+</section>
+
+<!-- 2. EQUIPO -->
+<section class="slide" id="s-equipo" data-group="inicio">
+  <div class="kicker muted-kicker">Equipo</div>
+  <h1>Equipo — a completar</h1>
+  <div class="card-gap" style="max-width:48em;">
+    <strong style="color:var(--color-primary);">Gap explícito, no resuelto en el documento.</strong>
+    <p style="margin:.6em 0 0 0; line-height:1.55;">No hay datos reales del equipo todavía — este guion no los inventa. Se completa acá con integrantes reales, background y foto antes de la entrega.</p>
+  </div>
+  <p class="muted" style="max-width:48em; margin-top:1.2em; font-size:14px; line-height:1.6;">Sugerencia de estructura una vez que haya datos: nombre + 1 línea de por qué esa persona es relevante para <em>este</em> negocio puntual (retail, pagos o producto) — no un CV genérico.</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Presentación</span><span>2 / 21</span></div>
+</section>
+
+<!-- 3. PROPÓSITO -->
+<section class="slide" id="s-proposito" data-group="inicio">
+  <div class="kicker muted-kicker">Propósito de la empresa</div>
+  <h1>Por qué existe esta empresa</h1>
+  <div class="card-accent" style="max-width:52em; margin-top:.6em;">
+    <p style="font-size:clamp(18px,2.1vw,23px); line-height:1.5; margin:0; font-weight:var(--font-medium);">"Construir la relación directa de pago, datos y fidelización que hoy COTO no tiene con sus propios clientes — porque hoy esa relación la construyen Mercado Pago y MODO, cada vez que un cliente paga digital en una sucursal COTO."</p>
+  </div>
+  <p class="muted" style="margin-top:1.2em; font-size:13.5px;">Esta frase vuelve casi igual en el cierre — cierra el círculo del pitch.</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Presentación</span><span>3 / 21</span></div>
+</section>
+
+<!-- 4. PROBLEMA · 1 de 2 -->
+<section class="slide" id="s-problema-acceso" data-group="problema">
+  <div class="step-strip">
+    <a class="step-chip active" data-target="s-problema-acceso">No es un problema de acceso</a>
+    <a class="step-chip" data-target="s-problema-real">Qué pierde COTO</a>
+  </div>
+  <div class="kicker muted-kicker">Problema · 1 de 2</div>
+  <h1>Esto no es un problema de acceso a pago digital</h1>
+  <div class="two-col" style="margin-top:.6em;">
+    <ul class="bullets">
+      <li>COTO ya tiene alianzas comerciales <strong>activas y vigentes</strong>: Mercado Pago (QR desde ~agosto 2020, con descuentos) y MODO (alianza renovada mayo 2024, reintegros 20-30% con tope $10.000–25.000 por banco).</li>
+      <li>Bajo el marco de la Clase 1 de MT25 (caso Movistar), esto ya es <strong>digitalización</strong> de un proceso existente — COTO ya lo hizo. No es transformación digital.</li>
+    </ul>
+    <div class="card">
+      <div class="stat-big accent" style="font-size:56px;">2x</div>
+      <p class="stat-caption">Según BBVA (22/1/2025), las alianzas de MODO con Coto y Día <strong>duplicaron el volumen de MODO en supermercados</strong> durante 2024.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Wallet COTO — Business plan · Problema</span><span>4 / 21</span></div>
+</section>
+
+<!-- 5. PROBLEMA · 2 de 2 -->
+<section class="slide" id="s-problema-real" data-group="problema">
+  <div class="step-strip">
+    <a class="step-chip" data-target="s-problema-acceso">No es un problema de acceso</a>
+    <a class="step-chip active" data-target="s-problema-real">Qué pierde COTO</a>
+  </div>
+  <div class="kicker muted-kicker">Problema · 2 de 2</div>
+  <h1>Qué pierde COTO al procesar ese pago vía terceros</h1>
+  <ul class="bullets" style="max-width:62em; margin-top:.6em;">
+    <li><strong>Datos de primera parte incompletos</strong> — el vínculo pago↔identidad↔comportamiento lo construye y posee el tercero.</li>
+    <li><strong>Fidelización cedida a terceros</strong> — el cliente asocia el beneficio a "MP" o "MODO", no a COTO, aunque el gasto pase en un local COTO.</li>
+    <li><strong>Cero control</strong> sobre el calendario promocional del propio checkout.</li>
+    <li><strong>Dependencia de reglas ajenas</strong> — cualquier cambio de MP/MODO/bancos impacta el checkout de COTO sin que COTO lo decida.</li>
+  </ul>
+  <div class="card-accent-light" style="max-width:62em; margin-top:.6em;">
+    <strong>La apuesta central (supuesto del equipo):</strong> ni MP, ni MODO, ni Ualá tienen visibilidad nativa del historial de compra de supermercado del cliente — solo ven el movimiento de dinero. Esa es la ventaja potencial que el resto del pitch explota.
+  </div>
+  <p class="muted" style="margin-top:1em; font-size:13.5px; max-width:62em;">Pregunta abierta para Q&amp;A: no hay fuente que confirme quién financia hoy los reintegros de MP/MODO en sucursales COTO (retomado en Modelo financiero y en el Anexo).</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Problema</span><span>5 / 21</span></div>
+</section>
+
+<!-- 6. SOLUCIÓN -->
+<section class="slide" id="s-solucion" data-group="solucion">
+  <div class="kicker">Solución</div>
+  <h1>No competimos como "banco digital más chico" — competimos por conocer mejor al cliente</h1>
+  <p class="muted" style="max-width:60em; font-size:15px;">COTO no tiene licencia bancaria ni track record fintech, y esa pelea ya la tienen ganada Mercado Pago y Ualá. La wallet COTO compite como <strong style="color:var(--color-primary);">la wallet que mejor conoce el historial de compra real de supermercado</strong> del cliente.</p>
+  <div class="two-col" style="margin-top:.8em;">
+    <div class="card">
+      <div class="pillar-title">Beneficios personalizados</div>
+      <p class="pillar-desc">Según historial real de compra (categoría, frecuencia, ticket) — no un % genérico por rubro como Cuenta DNI, ni dependiente de Meli+ como MP.</p>
+    </div>
+    <div class="card">
+      <div class="pillar-title">Fidelización dentro del pago</div>
+      <p class="pillar-desc">Vive dentro del mismo instrumento de pago, sin tarjeta aparte — ningún competidor integra "beneficio" y "pago" en el mismo QR con reglas fijas y visibles.</p>
+    </div>
+  </div>
+  <div class="card-risk-light" style="margin-top:1em; max-width:62em;">
+    <strong>Límite honesto:</strong> esta propuesta no resuelve por qué un cliente dejaría de usar MP o MODO — resuelve por qué <strong>sumaría</strong> la wallet COTO, apostando a ganar share of wallet con el tiempo. Sin inversión, crédito, cuenta remunerada ni IA generativa en esta fase.
+  </div>
+  <div class="footer"><span>Wallet COTO — Business plan · Solución</span><span>6 / 21</span></div>
+</section>
+
+<!-- 7. PRODUCTO · 1 de 2 -->
+<section class="slide" id="s-producto-flujo" data-group="producto">
+  <div class="step-strip">
+    <a class="step-chip active" data-target="s-producto-flujo">Flujo del producto</a>
+    <a class="step-chip" data-target="s-producto-roadmap">Roadmap de ejecución</a>
+  </div>
+  <div class="kicker muted-kicker">Producto · 1 de 2</div>
+  <h1>5 pantallas núcleo</h1>
+  <ol class="steps" style="max-width:56em; margin-top:.6em;">
+    <li><strong>Onboarding</strong> simplificado, sin costo de apertura.</li>
+    <li><strong>Home</strong> con beneficios calculados sobre historial de compra.</li>
+    <li><strong>Pagar en caja</strong> — QR propio, interoperable bajo el estándar BCRA de Transferencias 3.0: un tap paga, aplica el beneficio y suma puntos.</li>
+    <li><strong>Beneficios</strong> con reglas fijas y visibles por cliente.</li>
+    <li><strong>Recompra rápida</strong>, integrada con el catálogo de Coto Digital.</li>
+  </ol>
+  <div class="footer"><span>Wallet COTO — Business plan · Producto</span><span>7 / 21</span></div>
+</section>
+
+<!-- 8. PRODUCTO · 2 de 2 (roadmap) -->
+<section class="slide" id="s-producto-roadmap" data-group="producto">
+  <div class="step-strip">
+    <a class="step-chip" data-target="s-producto-flujo">Flujo del producto</a>
+    <a class="step-chip active" data-target="s-producto-roadmap">Roadmap de ejecución</a>
+  </div>
+  <div class="kicker muted-kicker">Producto · 2 de 2</div>
+  <h1>Piloto → rollout nacional en 3 años, atado a la captura de SAM</h1>
+  <div class="timeline" style="margin-top:.6em;">
+    <div class="phase-box active">
+      <div class="phase-tag">FASE 0 · MESES 0-6</div>
+      <div class="phase-name">Piloto</div>
+      <div class="phase-detail">15-20 sucursales en CABA</div>
+    </div>
+    <div class="phase-arrow">→</div>
+    <div class="phase-box">
+      <div class="phase-tag">AÑO 1</div>
+      <div class="phase-name">100% CABA</div>
+      <div class="phase-detail">59% de la red total
+5% del SAM capturado</div>
+    </div>
+    <div class="phase-arrow">→</div>
+    <div class="phase-box">
+      <div class="phase-tag">AÑO 2</div>
+      <div class="phase-name">+ GBA</div>
+      <div class="phase-detail">90% de la red
+15% del SAM</div>
+    </div>
+    <div class="phase-arrow">→</div>
+    <div class="phase-box">
+      <div class="phase-tag">AÑO 3</div>
+      <div class="phase-name">Rollout nacional</div>
+      <div class="phase-detail">100% de la red
+25% del SAM</div>
+    </div>
+  </div>
+  <p class="muted" style="max-width:62em; font-size:14px; line-height:1.55;">La cobertura física crece más rápido que la captura de GMV porque no hay exclusividad posible frente a MP/MODO — migrar un hábito de pago instalado toma tiempo aunque la sucursal ya esté habilitada.</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Producto</span><span>8 / 21</span></div>
+</section>
+
+<!-- 9. MODELO DE NEGOCIO · 1 de 4 (moat) -->
+<section class="slide" id="s-modelo-moat" data-group="modelo">
+  <div class="step-strip">
+    <a class="step-chip active" data-target="s-modelo-moat">Moat</a>
+    <a class="step-chip" data-target="s-modelo-amenaza">Amenaza</a>
+    <a class="step-chip" data-target="s-modelo-monetizacion">Monetización</a>
+    <a class="step-chip" data-target="s-modelo-barreras">Barreras</a>
+  </div>
+  <div class="kicker muted-kicker">Modelo de negocio · 1 de 4</div>
+  <h1>Qué tipo de defensibilidad tiene — y qué tipo no</h1>
+  <p class="muted" style="max-width:62em; font-size:14.5px;">No es un network effect clásico de dos lados — COTO es el único vendedor, no hay lógica de marketplace. Sí hay un network effect de datos, pero <strong style="color:var(--color-primary);">débil y unilateral</strong> — se marca explícitamente como moat débil, no como pilar del argumento. La defensibilidad real se apoya en tres cosas:</p>
+  <div class="three-col" style="margin-top:.6em;">
+    <div class="pillar-card">
+      <div class="pillar-title">Brand</div>
+      <p class="pillar-desc">COTO ya tiene relación de compra física, no arranca de cero — a Ualá le costó 8 años y capital de fondos globales llegar a 7,5M de clientes.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-title">Embedding</div>
+      <p class="pillar-desc">Historial y beneficios personalizados generan costo de cambio creciente para el cliente.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-title">Escala de distribución física</div>
+      <p class="pillar-desc">153 sucursales y una base que ya visita esas sucursales con frecuencia.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Wallet COTO — Business plan · Modelo de negocio</span><span>9 / 21</span></div>
+</section>
+
+<!-- 10. MODELO DE NEGOCIO · 2 de 4 (amenaza) -->
+<section class="slide" id="s-modelo-amenaza" data-group="modelo">
+  <div class="step-strip">
+    <a class="step-chip" data-target="s-modelo-moat">Moat</a>
+    <a class="step-chip active" data-target="s-modelo-amenaza">Amenaza</a>
+    <a class="step-chip" data-target="s-modelo-monetizacion">Monetización</a>
+    <a class="step-chip" data-target="s-modelo-barreras">Barreras</a>
+  </div>
+  <div class="kicker muted-kicker">Modelo de negocio · 2 de 4</div>
+  <h1>La amenaza, dicha en voz alta antes de que la pregunten: multi-tenanting</h1>
+  <div class="card-risk-light" style="max-width:64em; margin-top:.6em;">
+    <p style="margin:0; line-height:1.55;">MP y MODO ya son medios aceptados y activamente promocionados en las sucursales de COTO hoy. Nada impide que el cliente los siga usando en la misma caja, y por el mandato de interoperabilidad QR del BCRA, COTO tampoco podría forzar exclusividad aunque quisiera.</p>
+  </div>
+  <p style="max-width:64em; font-size:17px; font-weight:var(--font-bold); margin-top:1em; line-height:1.5;">La wallet COTO no reemplaza a MP/MODO, compite por una porción del share of wallet — exactamente lo que refleja la curva conservadora del SOM (5%→15%→25%).</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Modelo de negocio</span><span>10 / 21</span></div>
+</section>
+
+<!-- 11. MODELO DE NEGOCIO · 3 de 4 (monetización) -->
+<section class="slide" id="s-modelo-monetizacion" data-group="modelo">
+  <div class="step-strip">
+    <a class="step-chip" data-target="s-modelo-moat">Moat</a>
+    <a class="step-chip" data-target="s-modelo-amenaza">Amenaza</a>
+    <a class="step-chip active" data-target="s-modelo-monetizacion">Monetización</a>
+    <a class="step-chip" data-target="s-modelo-barreras">Barreras</a>
+  </div>
+  <div class="kicker muted-kicker">Modelo de negocio · 3 de 4</div>
+  <h1>Cómo se monetiza — 4 palancas, priorizadas</h1>
+  <div class="table-wrap" style="margin-top:.6em;">
+    <table>
+      <thead><tr><th>Palanca</th><th>Aplicación al caso COTO</th><th>Peso</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Frecuencia</strong></td><td>Palanca primaria: la wallet empuja a comprar más seguido en COTO en vez de repartir el gasto entre cadenas</td><td>Alta</td></tr>
+        <tr><td>Basket size</td><td>Cross-sell vía recompra en Coto Digital — sin dato de elasticidad propio, se deja cualitativo</td><td>Media</td></tr>
+        <tr><td>Take rate</td><td>No aplica — no es modelo de marketplace</td><td>No aplica</td></tr>
+        <tr><td>Ad load / retail media</td><td>Venta de espacios promocionales a proveedores/CPG — recién viable desde la Fase 3</td><td>Baja, complementaria</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:1em; max-width:60em; font-size:14.5px;">Modelo resultante: <strong style="color:var(--color-primary);">retención / margen retail incremental</strong>, no comisión ni suscripción al cliente final.</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Modelo de negocio</span><span>11 / 21</span></div>
+</section>
+
+<!-- 12. MODELO DE NEGOCIO · 4 de 4 (barreras) -->
+<section class="slide" id="s-modelo-barreras" data-group="modelo">
+  <div class="step-strip">
+    <a class="step-chip" data-target="s-modelo-moat">Moat</a>
+    <a class="step-chip" data-target="s-modelo-amenaza">Amenaza</a>
+    <a class="step-chip" data-target="s-modelo-monetizacion">Monetización</a>
+    <a class="step-chip active" data-target="s-modelo-barreras">Barreras</a>
+  </div>
+  <div class="kicker muted-kicker">Modelo de negocio · 4 de 4</div>
+  <h1>Barreras de entrada — con el límite dicho explícito</h1>
+  <div class="two-col" style="margin-top:.6em;">
+    <div class="card">
+      <div class="pillar-title">Frente a MP / MODO / Ualá</div>
+      <p class="pillar-desc">Brand + embedding + distribución, sin exclusividad posible en el propio checkout.</p>
+    </div>
+    <div class="card">
+      <div class="pillar-title">Frente a otro retailer (Carrefour, Cencosud, Día)</div>
+      <p class="pillar-desc">No hay barrera estructural fuerte — lo que compra tiempo es ser first mover entre las tres cadenas grandes, más el embedding acumulado.</p>
+    </div>
+  </div>
+  <div class="card-accent-light" style="margin-top:1em; max-width:64em;">
+    <strong>Conclusión honesta:</strong> es un moat moderado, basado en tiempo/ejecución, no en una barrera infranqueable.
+  </div>
+  <div class="footer"><span>Wallet COTO — Business plan · Modelo de negocio</span><span>12 / 21</span></div>
+</section>
+
+<!-- 13. MERCADO · 1 de 3 (TAM) -->
+<section class="slide" id="s-mercado-tam" data-group="mercado">
+  <div class="step-strip">
+    <a class="step-chip active" data-target="s-mercado-tam">TAM</a>
+    <a class="step-chip" data-target="s-mercado-sam">SAM</a>
+    <a class="step-chip" data-target="s-mercado-som">SOM</a>
+  </div>
+  <div class="kicker muted-kicker">Tamaño de mercado · 1 de 3</div>
+  <div class="card-gap" style="max-width:64em; margin-bottom:1em;">
+    <strong style="color:var(--color-primary);">Advertencia primero, no al final:</strong>
+    <p style="margin:.5em 0 0 0; line-height:1.55;">No existe ningún dato público de clientes, ticket promedio, frecuencia de compra ni facturación de COTO. Gran parte de este embudo son supuestos propios del equipo, marcados paso a paso — se prioriza mostrar la lógica de cada salto sobre la precisión del número final.</p>
+  </div>
+  <h1>TAM — ventas totales de supermercados en Argentina</h1>
+  <div class="stat-big accent">≈ARS 24,8 billones/año</div>
+  <p class="stat-caption">INDEC, promediando los 5 meses de 2025 disponibles y anualizando. No incluye diciembre (mes pico) ni ajusta inflación intra-año — cifra direccional.</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Tamaño de mercado</span><span>13 / 21</span></div>
+</section>
+
+<!-- 14. MERCADO · 2 de 3 (SAM) -->
+<section class="slide" id="s-mercado-sam" data-group="mercado">
+  <div class="step-strip">
+    <a class="step-chip" data-target="s-mercado-tam">TAM</a>
+    <a class="step-chip active" data-target="s-mercado-sam">SAM</a>
+    <a class="step-chip" data-target="s-mercado-som">SOM</a>
+  </div>
+  <div class="kicker muted-kicker">Tamaño de mercado · 2 de 3</div>
+  <h1>SAM — el gasto que ya se paga hoy con billeteras/medios digitales</h1>
+  <p class="muted" style="max-width:62em; font-size:14.5px;">Se define como la porción del gasto de COTO que <strong style="color:var(--color-primary);">ya se paga hoy</strong> con billeteras/medios digitales — el segmento listo para migrar, no el que hay que convertir del efectivo primero.</p>
+  <div class="two-col" style="margin-top:.6em;">
+    <ol class="steps">
+      <li>Carrefour + Cencosud + COTO ≈50% del TAM (fuente de agregador, no verificada contra el informe original).</li>
+      <li>Sin dato para diferenciar por cadena, <strong>supuesto de split parejo 1/3</strong> → COTO ≈ARS 4,1 billones/año.</li>
+      <li>Se aplica el 11,1% de "otros medios" que INDEC midió a nivel nacional en supermercados.</li>
+    </ol>
+    <div class="card">
+      <div class="stat-big accent" style="font-size:44px;">≈ARS 458.000M/año</div>
+      <p class="stat-caption">SAM — "esto es, literalmente, la cuantificación del problema: dinero que ya eligió pagar digital en COTO, pero hoy no vía COTO."</p>
+    </div>
+  </div>
+  <div class="footer"><span>Wallet COTO — Business plan · Tamaño de mercado</span><span>14 / 21</span></div>
+</section>
+
+<!-- 15. MERCADO · 3 de 3 (SOM) -->
+<section class="slide" id="s-mercado-som" data-group="mercado">
+  <div class="step-strip">
+    <a class="step-chip" data-target="s-mercado-tam">TAM</a>
+    <a class="step-chip" data-target="s-mercado-sam">SAM</a>
+    <a class="step-chip active" data-target="s-mercado-som">SOM</a>
+  </div>
+  <div class="kicker muted-kicker">Tamaño de mercado · 3 de 3</div>
+  <h1>SOM — captura conservadora, atada al roadmap de sucursales</h1>
+  <div class="table-wrap" style="margin-top:.6em;">
+    <table>
+      <thead><tr><th>Año</th><th>Cobertura de sucursales</th><th>% del SAM capturado</th><th>GMV vía wallet COTO</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>~59% (CABA)</td><td>5%</td><td>≈ARS 22.900 millones/año</td></tr>
+        <tr><td>2</td><td>~90% (+GBA)</td><td>15%</td><td>≈ARS 68.750 millones/año</td></tr>
+        <tr><td>3</td><td>100% (+resto del país)</td><td>25%</td><td>≈ARS 114.600 millones/año</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="max-width:62em; font-size:14px; margin-top:1em;">Este GMV <strong>no equivale a ingreso incremental</strong> para COTO — se resuelve en Modelo financiero.</p>
+  <p class="muted" style="max-width:62em; font-size:13px; font-style:italic;">Chequeo de plausibilidad: no hay bottom-up independiente posible por falta de dato de tráfico por sucursal — se dice así explícitamente en vez de forzar una segunda cuenta disfrazada de fuente independiente.</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Tamaño de mercado</span><span>15 / 21</span></div>
+</section>
+
+<!-- 16. POR QUÉ AHORA -->
+<section class="slide" id="s-ahora" data-group="ahora">
+  <div class="kicker">Por qué ahora</div>
+  <h1>No es una apuesta sobre tecnología emergente — es sustitución de medio de pago ya en curso y medible</h1>
+  <div class="two-col" style="margin-top:.6em;">
+    <div class="card">
+      <div class="stat-big" style="font-size:44px;">+45,8%</div>
+      <p class="stat-caption">BCRA: pagos con QR interoperable interanual; débito <strong>cayendo</strong> 16,8% — sustitución activa del medio de pago, no solo crecimiento nuevo.</p>
+    </div>
+    <ul class="bullets">
+      <li><strong>Global Payments Report 2026:</strong> billeteras digitales pasaron de 34% a 43% del valor pagado en comercio físico en Argentina en un año; 84% de los argentinos usa QR para pagar con el celular — el más alto de Latinoamérica.</li>
+      <li><strong>INDEC:</strong> "otros medios" (incluye billeteras) ya es 11,1% de las ventas de supermercados (nov. 2024) — el sector ya muestra tracción, sin que exista todavía una wallet propia de COTO.</li>
+    </ul>
+  </div>
+  <div class="footer"><span>Wallet COTO — Business plan · Por qué ahora</span><span>16 / 21</span></div>
+</section>
+
+<!-- 17. COMPETENCIA -->
+<section class="slide" id="s-competencia" data-group="competencia">
+  <div class="kicker">Competencia</div>
+  <h1>La única cancha con ventaja defendible: el historial de compra real</h1>
+  <div class="table-wrap" style="margin-top:.6em;">
+    <table>
+      <thead><tr><th>Competidor</th><th>Límite frente a la propuesta de wallet COTO</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Mercado Pago</strong></td><td>Ecosistema financiero completo, pero sin visibilidad del historial de compra de supermercado del cliente</td></tr>
+        <tr><td><strong>MODO</strong></td><td>Fricción cero (ya está "adentro" del banco), pero es promoción de marca del tercero, sin personalización por historial</td></tr>
+        <tr><td><strong>Cuenta DNI</strong></td><td>Descuento genérico por rubro, sin alianza confirmada con COTO, sin personalización individual</td></tr>
+        <tr><td><strong>Ualá</strong></td><td>Competidor indirecto — licencia bancaria, 8 años de scoring, ~7,5M de clientes — pero sin relación con la compra recurrente de supermercado</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:1em; max-width:64em; font-size:14.5px;">El pitch no se apoya en "aceptar pagos digitales" — eso ya lo resuelven MP y MODO hoy dentro del propio checkout de COTO. La única cancha con ventaja potencial y defendible es el historial de compra real.</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Competencia</span><span>17 / 21</span></div>
+</section>
+
+<!-- 18. FINANCIERO · 1 de 2 (inversión) -->
+<section class="slide" id="s-financiero-inversion" data-group="financiero">
+  <div class="step-strip">
+    <a class="step-chip active" data-target="s-financiero-inversion">Inversión y costos</a>
+    <a class="step-chip" data-target="s-financiero-resultado">De GMV a resultado</a>
+  </div>
+  <div class="kicker muted-kicker">Modelo financiero · 1 de 2</div>
+  <p class="muted" style="max-width:62em; font-size:13.5px; font-style:italic;">No existe ningún dato financiero público de COTO. Todo lo que sigue es una cadena de supuestos del equipo con su lógica al lado — el objetivo es mostrar una estructura defendible, no una proyección precisa.</p>
+  <h1 style="margin-top:.4em;">CAPEX y OPEX — supuestos de trabajo, no cotizaciones</h1>
+  <div class="two-col" style="margin-top:.4em;">
+    <div class="card">
+      <div class="stat-big accent" style="font-size:40px;">USD 900.000</div>
+      <p class="stat-caption">CAPEX inicial (Fase 0-1) — punto medio del rango 650K-1,15M original. Plataforma vía partnership con un PSP/BaaS existente. Ningún componente cotizado con proveedor real todavía.</p>
+    </div>
+    <ul class="bullets">
+      <li>Equipo de 8-12 personas para Fase 0-1 (sin costo salarial estimado).</li>
+      <li>Incentivos de lanzamiento equivalentes a 3-5% del GMV objetivo de cada fase — por analogía de orden de magnitud con los reintegros de la competencia (10-25% MP, 20-30% MODO).</li>
+    </ul>
+  </div>
+  <div class="footer"><span>Wallet COTO — Business plan · Modelo financiero</span><span>18 / 21</span></div>
+</section>
+
+<!-- 19. FINANCIERO · 2 de 2 (resultado) -->
+<section class="slide" id="s-financiero-resultado" data-group="financiero">
+  <div class="step-strip">
+    <a class="step-chip" data-target="s-financiero-inversion">Inversión y costos</a>
+    <a class="step-chip active" data-target="s-financiero-resultado">De GMV a resultado</a>
+  </div>
+  <div class="kicker muted-kicker">Modelo financiero · 2 de 2</div>
+  <h1>El GMV no es ingreso incremental por sí mismo</h1>
+  <p class="muted" style="max-width:64em; font-size:14.5px;">Se fija <strong style="color:var(--color-primary);">20%</strong> (extremo conservador del rango 20-30%) como fracción de GMV genuinamente incremental, con margen bruto retail de <strong style="color:var(--color-primary);">22%</strong> sobre ese incremental — ambos supuestos del equipo, ver Anexo.</p>
+  <div class="two-col" style="margin-top:.6em;">
+    <div class="card-accent-light">
+      <strong>Cómo se presenta el caso:</strong>
+      <p style="margin:.5em 0 0 0; font-size:14px; line-height:1.5;">No se lidera con un número de VAN/ROI optimista construido sobre esta cadena de supuestos. Se presenta el número puntual junto con la lógica de por qué es conservador, citando el Anexo de supuestos.</p>
+    </div>
+    <div class="card-risk-light">
+      <strong>Riesgo financiero principal:</strong>
+      <p style="margin:.5em 0 0 0; font-size:14px; line-height:1.5;">La fracción de GMV genuinamente incremental sigue siendo el supuesto menos sólido de todo el modelo — pesa más que el riesgo tecnológico o de costo de plataforma.</p>
+    </div>
+  </div>
+  <div class="footer"><span>Wallet COTO — Business plan · Modelo financiero</span><span>19 / 21</span></div>
+</section>
+
+<!-- 20. CIERRE -->
+<section class="slide dark" id="s-cierre" data-group="cierre">
+  <div style="margin-top:auto;">
+    <div class="card-accent" style="max-width:56em; background:#332a52;">
+      <p style="font-size:clamp(17px,2vw,21px); line-height:1.55; margin:0;">"La oportunidad no es vender más pagos digitales — eso ya lo resuelven MP y MODO dentro del propio checkout de COTO. La oportunidad es que COTO deje de financiar, con su propio piso de venta, la construcción del activo de datos y fidelización de un competidor de facto — y empiece a construir el suyo."</p>
+    </div>
+    <p style="font-size:15px; color:var(--dark-muted); max-width:50em; margin-top:1.4em; line-height:1.6;">Quedan 10 minutos y hay preguntas que nosotros mismos nos hicimos primero — arranquemos por esas si quieren.</p>
+  </div>
+  <div class="footer"><span>Wallet COTO — Business plan · Cierre</span><span>20 / 21</span></div>
+</section>
+
+<!-- 21. ANEXO -->
+<section class="slide" id="s-anexo" data-group="anexo">
+  <div class="kicker muted-kicker">Anexo · para los 10 minutos de Q&amp;A</div>
+  <h1>5 cifras sin fuente confirmada — documentadas para que el panel las vea</h1>
+  <div class="table-wrap" style="margin-top:.6em;">
+    <table>
+      <thead><tr><th>#</th><th>Gap</th><th>Cifra adoptada</th><th>Fuente</th><th>Nivel de respaldo</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Sucursales COTO</td><td>153</td><td>Parcial (suma verificable de la propia página de COTO)</td><td>Medio-alto</td></tr>
+        <tr><td>2</td><td>Fracción de GMV incremental</td><td>20% (extremo conservador de 20-30%)</td><td>Ninguna — supuesto del equipo</td><td>Bajo, con lógica de negocio explícita (multi-tenanting)</td></tr>
+        <tr><td>3</td><td>Financiamiento de reintegros MP/MODO</td><td>COTO cofinancia ~60%, tasa combinada de reintegro 20%</td><td>Ninguna — supuesto del equipo</td><td>El más bajo de los cinco</td></tr>
+        <tr><td>4</td><td>CAPEX inicial</td><td>USD 900.000 (punto medio del rango)</td><td>Ninguna — supuesto del equipo</td><td>Bajo, sin sesgo direccional razonado</td></tr>
+        <tr><td>5</td><td>Margen bruto retail</td><td>22%</td><td>Ninguna específica de AR/COTO — conocimiento general de industria</td><td>Bajo — junto con el punto 3, el de mayor incertidumbre</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:1em; max-width:66em; font-size:13.5px;">Ninguno de los cinco se presenta como un hecho verificado en el documento — se marcan como supuestos explícitos del equipo, consistente con la regla de este TP de nunca afirmar un dato de mercado o cifra sin fuente citada.</p>
+  <div class="footer"><span>Wallet COTO — Business plan · Anexo de supuestos</span><span>21 / 21</span></div>
+</section>
+
+</div>
+
+<div class="navbtn-group">
+  <button class="navbtn" id="prevBtn" aria-label="Sección anterior" title="Sección anterior (↑ / ←)">‹</button>
+  <button class="navbtn" id="nextBtn" aria-label="Siguiente sección" title="Siguiente sección (↓ / →)">›</button>
+</div>
+
+<script>
+(function () {
+  var deck = document.querySelector('.deck');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.topnav a[data-group]'));
+  var progressFill = document.getElementById('progressFill');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var brand = document.querySelector('.topnav .brand');
+
+  function currentIndex() {
+    var idx = 0, minDist = Infinity;
+    sections.forEach(function (s, i) {
+      var dist = Math.abs(s.getBoundingClientRect().top);
+      if (dist < minDist) { minDist = dist; idx = i; }
+    });
+    return idx;
+  }
+
+  function updateUI() {
+    var idx = currentIndex();
+    var group = sections[idx].dataset.group;
+    navLinks.forEach(function (a) {
+      var active = a.dataset.group === group;
+      a.classList.toggle('active', active);
+      if (active) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
+    });
+    progressFill.style.width = (idx / (sections.length - 1) * 100) + '%';
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === sections.length - 1;
+  }
+
+  function goToIndex(idx) {
+    idx = Math.max(0, Math.min(sections.length - 1, idx));
+    sections[idx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function goToId(id) {
+    var el = document.getElementById(id);
+    if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  }
+
+  navLinks.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      goToId(a.getAttribute('href').slice(1));
+    });
+  });
+
+  document.querySelectorAll('.step-chip[data-target]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      goToId(a.dataset.target);
+    });
+  });
+
+  function goHome() { goToId('s-nombre'); }
+  brand.addEventListener('click', goHome);
+  brand.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goHome(); } });
+
+  prevBtn.addEventListener('click', function () { goToIndex(currentIndex() - 1); });
+  nextBtn.addEventListener('click', function () { goToIndex(currentIndex() + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (['ArrowDown', 'ArrowRight', 'PageDown'].indexOf(e.key) !== -1) { e.preventDefault(); goToIndex(currentIndex() + 1); }
+    else if (['ArrowUp', 'ArrowLeft', 'PageUp'].indexOf(e.key) !== -1) { e.preventDefault(); goToIndex(currentIndex() - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goToIndex(0); }
+    else if (e.key === 'End') { e.preventDefault(); goToIndex(sections.length - 1); }
+  });
+
+  var ticking = false;
+  deck.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(function () { updateUI(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('load', updateUI);
+  updateUI();
+})();
+</script>
+</body>
+</html>

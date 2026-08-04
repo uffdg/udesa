@@ -35,6 +35,15 @@ de negocios — solo lo traducís a un formato de presentación efectivo.
   entre presentaciones de distintas materias. Si todavía no hay nada
   definido ahí, no inventes un estilo — avisá que falta ese insumo si el
   pedido lo requiere.
+- **Si el artefacto de la presentación es un `.pptx`**: se construye con
+  `design-system/components/pptx_kit.py` siguiendo el patrón de
+  `design-system/components/pptx-pitch-deck.md` (fuente canónica:
+  `plataforma-fidelizacion-coto.pptx` de mt10) — nunca armando
+  textboxes/shapes sueltos con `python-pptx` puro. Esto es una regla dura
+  del design-system, no una preferencia de estilo: cualquier `.pptx` nuevo
+  de cualquier materia replica esa estructura (kicker+headline, stat
+  callouts, chips, tablas por shapes, footer de marca, roadmap con
+  flechas), no solo su paleta de colores.
 
 ## Cómo trabajás
 

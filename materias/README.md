@@ -18,3 +18,7 @@ La consigna de cada entregable vive aparte, en `consignas/<materia-slug>-<entreg
 - `mt10-innovacion-tecnologica/` — MT10 Innovación Tecnológica
   - `fidelizacion-coto/` — plan de negocios de fidelización para COTO (ver
     `consignas/mt10-fidelizacion-coto.md`)
+- `mt25-estrategias-negocios-internet/` — MT25 Estrategias de Negocios en
+  Internet
+  - `business-plan-coto/` — business plan y pitch de 15' de la billetera
+    virtual de COTO (ver `consignas/mt25-business-plan-coto.md`)

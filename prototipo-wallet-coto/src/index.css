@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/*
+  Paleta tomada de design-system/tokens/tokens.css, mismo acento
+  --color-awards (#502bd8, violeta) que ya usa presentacion.html de
+  mt10-fidelizacion-coto — consistencia visual entre los dos TPs y este
+  prototipo, no una decisión de branding real de COTO.
+
+  --color-ink, --color-brand-pale y --radius-card están alineados byte a
+  byte con los valores que usan los dos decks HTML (--color-primary,
+  --color-awards-light y --rounded-normal en design-system/tokens/tokens.css
+  y en el CSS embebido de ambas presentacion.html) — no son una paleta
+  aparte "inspirada en", son los mismos valores.
+*/
+@theme {
+  --font-sans: "Inter Tight", "Inter", system-ui, sans-serif;
+
+  --color-ink: #222222;
+  --color-paper: #f8f8f8;
+  --color-card: #ffffff;
+  --color-border: #ededed;
+
+  --color-brand: #502bd8;
+  --color-brand-light: #917eda;
+  --color-brand-pale: #ece7fa;
+
+  --color-accent: #fa5d29;
+  --color-success: #2fa84f;
+  --color-success-pale: #e0f4d9;
+  --color-warning: #b8940a;
+  --color-warning-pale: #fff083;
+
+  --radius-card: 8px;
+  --radius-pill: 72px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Simula el viewport de un teléfono para las pantallas de member,
+   independiente del tamaño real de la ventana del navegador — así el
+   dashboard de manager puede quedar full-width al lado. */
+.phone-frame {
+  width: 390px;
+  max-width: 100%;
+  min-height: 780px;
+  border-radius: 2.5rem;
+  box-shadow: 0 20px 60px -20px rgb(0 0 0 / 0.35);
+  overflow: hidden;
+  background: var(--color-card);
+}

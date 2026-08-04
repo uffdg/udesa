@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"/Users/marianafiorillo/Documents/GitHub/udesa/materias/mt25-estrategias-negocios-internet/business-plan-coto/research/fuentes\")",
+      "Bash(mv \"MT25 Programa MBT.pdf\" \"UdeSA - MOATS -  042025.pdf\" \"IBS Clase 1 2026 parte 1.pdf\" \"Evolcuión digital_Programa UdeSA_Abr2026_.pdf\" \"Trabajo Final_ [Nombre de la empresa] \\(4\\).pptx.pdf\" \"2026_04_22 Compilado en UdeSA.pdf\" \"Pitch Cuota Q - Estrategias de negocios en Internet.pdf\" \"[Ualá] 2026-04-15_Presentación institucional_español UdeSA.pdf\" \"_GRIDX Institutional Deck \\(Apr26\\)_compressed.pdf\" \"anana.pdf\" business-plan-coto/research/fuentes/)",
+      "Bash(mkdir -p \"/Users/marianafiorillo/Documents/GitHub/udesa/.claude/skills/how-to-size-market-tam-sam-som\")",
+      "Edit(/.claude/skills/how-to-size-market-tam-sam-som/**)",
+      "Edit(/.claude/skills/how-to-structure-pitch/**)",
+      "Bash(brew list *)",
+      "Bash(brew install *)",
+      "WebSearch",
+      "WebFetch(domain:www.bcra.gob.ar)",
+      "WebFetch(domain:www.faecys.org.ar)"
+    ],
+    "additionalDirectories": [
+      "/Users/marianafiorillo/Documents/GitHub/udesa/.claude/skills"
+    ]
+  }
+}
