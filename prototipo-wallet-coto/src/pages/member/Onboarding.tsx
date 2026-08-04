@@ -20,7 +20,23 @@ export default function Onboarding() {
 
   return (
     <div className="p-6 flex flex-col gap-5 h-full">
-      <h1 className="text-lg font-semibold">Activar Wallet COTO</h1>
+      <div>
+        <h1 className="text-lg font-semibold">Activar Wallet COTO</h1>
+        {/* Indicador de paso: sin esto, un flujo de 2 pasos con contenido
+            corto quedaba flotando arriba de una pantalla vacía, sin ninguna
+            señal de progreso ni de que falta un paso más. */}
+        <div className="flex items-center gap-1.5 mt-2" role="presentation">
+          {[0, 1].map((i) => (
+            <span
+              key={i}
+              className={`h-1.5 rounded-full transition-all ${
+                i === step ? 'w-6 bg-[var(--color-brand)]' : 'w-1.5 bg-[var(--color-brand-pale)]'
+              }`}
+            />
+          ))}
+          <span className="ml-1 text-xs text-black/40">Paso {step + 1} de 2</span>
+        </div>
+      </div>
 
       {step === 0 && (
         <div className="flex flex-col gap-4">

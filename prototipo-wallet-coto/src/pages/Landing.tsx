@@ -5,8 +5,13 @@ export default function Landing() {
   const resetDemo = useWalletStore((s) => s.resetDemo)
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16 gap-10 text-center">
-      <div className="space-y-3 max-w-xl">
+    <div className="min-h-screen w-full overflow-x-hidden flex flex-col items-center justify-center px-6 py-16 gap-10 text-center">
+      {/* w-full en ambos bloques: en un flex-col con items-center, un hijo
+          sin ancho explícito se dimensiona a su contenido preferido (la
+          línea de texto entera sin cortar) y sólo después se recorta contra
+          el viewport — en mobile angosto eso cortaba el párrafo y el kicker
+          en vez de hacerlos ajustar (wrap) dentro del ancho disponible. */}
+      <div className="w-full space-y-3 max-w-xl">
         <p className="text-sm font-medium text-[var(--color-brand)] tracking-wide uppercase">
           Prototipo funcional — datos sideados
         </p>
@@ -19,7 +24,11 @@ export default function Landing() {
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-6 w-full max-w-2xl">
+      {/* grid-cols-1 explícito: sin él, un grid mobile-first sin columnas
+          declaradas usa tracks "auto" que se dimensionan al max-content de
+          las cards (todo el texto en una sola línea) e ignoran el w-full
+          del contenedor — otro caso del mismo bug de overflow horizontal. */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
         <Link
           to="/member"
           className="group rounded-[var(--radius-card)] border border-[var(--color-border)] bg-white p-8 text-left shadow-sm transition hover:shadow-md hover:border-[var(--color-brand)]"

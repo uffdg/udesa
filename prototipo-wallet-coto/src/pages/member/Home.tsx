@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useWalletStore } from '../../store/useWalletStore'
 import { formatoMoneda } from '../../lib/analytics'
 import { SEGMENTOS, SUCURSALES } from '../../data/seed'
+import { IconScan } from '../../components/Icons'
 
 export default function Home() {
   const clientes = useWalletStore((s) => s.clientes)
@@ -46,9 +47,10 @@ export default function Home() {
 
       <Link
         to="/member/pagar"
-        className="rounded-[var(--radius-card)] border-2 border-[var(--color-brand)] text-[var(--color-brand)] py-3 text-center font-medium"
+        className="flex items-center justify-center gap-2 rounded-[var(--radius-card)] border-2 border-[var(--color-brand)] text-[var(--color-brand)] py-3 text-center font-medium"
       >
-        📷 Pagar en caja
+        <IconScan className="w-5 h-5" />
+        Pagar en caja
       </Link>
 
       {beneficiosDisponibles.length > 0 && (
@@ -56,16 +58,26 @@ export default function Home() {
           <p className="text-xs font-medium text-black/40 uppercase tracking-wide mb-2">
             Beneficios activos para vos
           </p>
-          <div className="flex gap-3 overflow-x-auto pb-1">
-            {beneficiosDisponibles.map((b) => (
-              <div
-                key={b.id}
-                className="min-w-[200px] rounded-xl bg-[var(--color-brand-pale)] p-3 text-sm"
-              >
-                <p className="font-semibold text-[var(--color-brand)]">{b.descuentoPct}% off</p>
-                <p className="text-xs mt-1 text-black/70">{b.descripcion}</p>
-              </div>
-            ))}
+          {/* overflow-x-auto + fade a la derecha: sin el fade, la última
+              card queda cortada justo en el borde del phone-frame y se lee
+              como un error de layout en vez de "hay más, deslizá". */}
+          <div className="relative -mx-5">
+            <div className="flex gap-3 overflow-x-auto px-5 pb-1 snap-x snap-proximity scroll-px-5">
+              {beneficiosDisponibles.map((b) => (
+                <div
+                  key={b.id}
+                  className="min-w-[200px] snap-start rounded-[var(--radius-card)] bg-[var(--color-brand-pale)] p-3 text-sm"
+                >
+                  <p className="font-semibold text-[var(--color-brand)]">{b.descuentoPct}% off</p>
+                  <p className="text-xs mt-1 text-black/70">{b.descripcion}</p>
+                </div>
+              ))}
+            </div>
+            <div
+              className="pointer-events-none absolute right-0 top-0 bottom-1 w-8"
+              style={{ background: 'linear-gradient(to right, transparent, var(--color-card))' }}
+              aria-hidden="true"
+            />
           </div>
         </div>
       )}
