@@ -48,8 +48,16 @@ footer(s, "Portada", 1, on_dark=True)
 s = k.add_slide(prs)
 k.set_bg(s, k.BG_LIGHT)
 top = k.kicker_headline(s, "Quiénes somos", "Equipo")
-_, tf = k.textbox(s, k.MARGIN_L, top, k.CONTENT_W, 0.9)
-k.run(tf.paragraphs[0], "Espacio reservado para foto, nombre y background de cada integrante.", 18)
+k.chip_card(
+    s, "PENDIENTE",
+    "Espacio reservado para foto, nombre y background de cada integrante.",
+    left=k.MARGIN_L, top=top, width=k.CONTENT_W, height=1.6, active_chip=False,
+)
+k.callout_box(
+    s,
+    "El equipo debe completar esta sección con los datos reales de cada integrante antes de la entrega — no se inventan nombres ni backgrounds.",
+    top + 1.6 + 0.35, kind="note",
+)
 k.add_speaker_notes(
     s,
     "Gap explícito: el documento final no tiene datos reales del equipo todavía — no se inventan nombres.",
@@ -70,14 +78,28 @@ k.run(
     "en una sucursal COTO.”",
     26, color=k.BRAND, italic=True,
 )
+# Refuerzo visual de "quién" construye hoy esa relación (los mismos dos
+# nombres que ya están en la cita de arriba, re-presentados como chips en
+# vez de solo texto corrido) — no agrega ningún dato nuevo.
+_, tf_lbl = k.textbox(s, k.MARGIN_L, 5.05, k.CONTENT_W, 0.35)
+k.run(tf_lbl.paragraphs[0], "HOY, ESA RELACIÓN LA CONSTRUYEN", 12, color=k.MUTED, bold=True)
+k.chip(s, "Mercado Pago", k.MARGIN_L, 5.45, width=2.4, height=0.42, active=False)
+k.chip(s, "MODO", k.MARGIN_L + 2.4 + 0.2, 5.45, width=1.6, height=0.42, active=False)
 footer(s, "Propósito", 3)
 
 # 4. Problema -----------------------------------------------------------------
 s = k.add_slide(prs)
 k.set_bg(s, k.BG_LIGHT)
 top = k.kicker_headline(s, "El problema", "No es un problema de aceptar pagos digitales", content_top=2.05)
-_, tf = k.textbox(s, k.MARGIN_L, top, k.CONTENT_W, 3.1)
-k.bullets_dash(tf, [
+# Columna izquierda: la cifra que ya está en el segundo bullet (reintegro
+# MODO), promovida a stat_callout — mismo patrón que la slide "El problema"
+# de mt10 (número suelto + bullets al lado), en vez de solo texto corrido.
+k.stat_callout(
+    s, "20-30%",
+    ["reintegro que ofrece MODO en sucursales", "COTO desde may. 2024 — acumulable con", "ofertas propias de COTO"],
+    left=k.MARGIN_L, top=top, width=4.0, big_size=40, label_size=13,
+)
+problema_bullets = [
     ("Mercado Pago acepta QR en COTO desde 2020, con descuentos.", 0),
     ("MODO renovó alianza en mayo 2024 — reintegros 20-30%.", 0),
     ("BBVA (ene. 2025): las alianzas de MODO con Coto y Día duplicaron su volumen en supermercados durante 2024.", 0),
@@ -86,11 +108,18 @@ k.bullets_dash(tf, [
     ("Fidelización cedida a la marca del tercero, no a COTO", 1),
     ("Cero control del calendario promocional del propio checkout", 1),
     ("Dependencia de reglas ajenas (MP/MODO/bancos)", 1),
-], size=14.5, bold_level0=True, space_after=7)
+]
+bullets_left = k.MARGIN_L + 4.0 + 0.4
+bullets_width = k.CONTENT_W - 4.0 - 0.4
+_, tf = k.textbox(s, bullets_left, top, bullets_width, 3.3)
+k.bullets_dash(tf, problema_bullets, size=14.5, bold_level0=True, space_after=7)
+# callout posicionado dinámicamente después del bloque de bullets real (no
+# un top fijo hardcodeado) — mismo criterio que pptx-callout-buffer-overlap.md.
+bullets_bottom = top + k.bullets_height(problema_bullets, width=bullets_width, size=14.5, space_after=7)
 k.callout_box(
     s,
     "Apuesta central (supuesto del equipo): ni MP, ni MODO, ni Ualá ven el historial de compra real de supermercado — solo el movimiento de dinero.",
-    5.55, kind="note", height=0.55,
+    bullets_bottom + 0.40, kind="note", height=0.65,
 )
 k.add_speaker_notes(
     s,
@@ -102,18 +131,33 @@ footer(s, "El problema", 4)
 s = k.add_slide(prs)
 k.set_bg(s, k.BG_LIGHT)
 top = k.kicker_headline(s, "Solución", "La wallet que conoce tu historial real de compra")
-_, tf = k.textbox(s, k.MARGIN_L, top, k.CONTENT_W, 3.3)
-k.bullets_dash(tf, [
+solucion_bullets = [
     ("No compite como “banco digital más chico” — sin licencia bancaria ni track record fintech.", 0),
     ("Compite como la wallet que mejor conoce el historial de compra real de supermercado del cliente.", 0),
     ("Diferenciadores clave:", 0),
-    ("Beneficios personalizados por historial real (no % genérico por rubro)", 1),
-    ("Fidelización dentro del mismo instrumento de pago, sin tarjeta aparte", 1),
-], size=15.5, bold_level0=True)
+]
+_, tf = k.textbox(s, k.MARGIN_L, top, k.CONTENT_W, 2.0)
+k.bullets_dash(tf, solucion_bullets, size=15.5, bold_level0=True)
+# Los 2 diferenciadores, antes sub-bullets, promovidos a chip_card (mismo
+# componente que la slide "Competencia") — mismo texto, más peso visual.
+bullets_bottom = top + k.bullets_height(solucion_bullets, width=k.CONTENT_W, size=15.5, space_after=10)
+cards_top = bullets_bottom + 0.35
+card_w = (k.CONTENT_W - 0.3) / 2
+k.chip_card(
+    s, "Beneficios personalizados",
+    "Por historial real de compra — no un % genérico por rubro, como Cuenta DNI.",
+    left=k.MARGIN_L, top=cards_top, width=card_w, height=1.35, active_chip=True,
+)
+k.chip_card(
+    s, "Fidelización integrada",
+    "Dentro del mismo instrumento de pago, sin tarjeta aparte.",
+    left=k.MARGIN_L + card_w + 0.3, top=cards_top, width=card_w, height=1.35, active_chip=True,
+)
+cards_bottom = cards_top + 1.35
 k.callout_box(
     s,
     "Límite honesto: no resuelve por qué dejar de usar MP/MODO — resuelve por qué sumar Wallet COTO además. Sin inversión, crédito ni IA generativa en esta fase.",
-    5.85, kind="risk",
+    cards_bottom + 0.30, kind="risk", height=0.85,
 )
 footer(s, "Solución", 5)
 
@@ -158,28 +202,42 @@ footer(s, "Producto", 6)
 s = k.add_slide(prs)
 k.set_bg(s, k.BG_LIGHT)
 top = k.kicker_headline(s, "Modelo de negocio", "Captura de valor — moats, monetización, barreras", content_top=2.10)
-_, tf = k.textbox(s, k.MARGIN_L, top, 5.8, 3.6)
-k.bullets_dash(tf, [
+left_bullets = [
     ("No es network effect clásico de dos lados — COTO es el único vendedor.", 0),
     ("Network effect de datos: débil y unilateral (no es el pilar del argumento).", 0),
     ("Defensibilidad real:", 0),
     ("Brand — COTO ya tiene relación de compra física", 1),
     ("Embedding — historial y beneficios generan costo de cambio", 1),
     ("Escala — 153 sucursales con base que ya visita seguido", 1),
-], size=13, bold_level0=True, space_after=6)
-_, tf2 = k.textbox(s, 6.8, top, 5.8, 3.6)
-k.bullets_dash(tf2, [
+]
+_, tf = k.textbox(s, k.MARGIN_L, top, 5.8, 3.6)
+k.bullets_dash(tf, left_bullets, size=13, bold_level0=True, space_after=6)
+right_bullets = [
     ("Monetización — 4 palancas:", 0),
     ("Frecuencia (primaria) · Basket size (secundaria)", 1),
     ("Take rate: no aplica (no es marketplace)", 1),
     ("Ad load / retail media: complementaria, desde Fase 3", 1),
     ("Modelo: retención / margen retail incremental", 0),
     ("Barrera frente a otro retailer: moderada — first mover + tiempo, no estructural", 0),
-], size=13, bold_level0=True, space_after=6)
+]
+_, tf2 = k.textbox(s, 6.8, top, 5.8, 3.6)
+k.bullets_dash(tf2, right_bullets, size=13, bold_level0=True, space_after=6)
+# Tag visual de los 3 pilares de defensibilidad (mismas 3 palabras que ya
+# están en los sub-bullets de arriba) — confinado al ancho de la columna
+# izquierda (0.6 a 6.4in) para que, sin importar cuánto se extienda en Y,
+# nunca se superponga en X con la columna derecha (6.8 a 12.6in).
+left_bottom = top + k.bullets_height(left_bullets, width=5.8, size=13, space_after=6)
+chips_top = left_bottom + 0.30
+k.chip_strip(
+    s, ["Brand", "Embedding", "Escala"], active_index=-1,
+    left=k.MARGIN_L, top=chips_top, chip_width=1.79, chip_height=0.45, gap=0.12, size=12,
+)
+chips_bottom = chips_top + 0.45
+right_bottom = top + k.bullets_height(right_bullets, width=5.8, size=13, space_after=6)
 k.callout_box(
     s,
     "Amenaza dicha en voz alta: MP y MODO siguen aceptados en la misma caja — la wallet COTO no reemplaza, compite por share of wallet.",
-    6.05, kind="risk",
+    max(chips_bottom, right_bottom) + 0.30, kind="risk", height=0.85,
 )
 footer(s, "Modelo de negocio", 7)
 
@@ -227,10 +285,24 @@ stats = [
     ("84%", ["de argentinos usa QR para pagar —", "el más alto de LatAm"]),
     ("11,1%", ["de ventas de supermercados ya es", "“otros medios” (INDEC, nov. 2024)"]),
 ]
+# stat_card en vez de stat_callout suelto: mismo número y label, pero con
+# card blanca detrás — da peso visual real a la fila en vez de tipografía
+# flotando sobre fondo vacío.
+card_width = 2.75
+card_height = 1.90
 x = k.MARGIN_L
 for big, label in stats:
-    k.stat_callout(s, big, label, left=x, top=top, width=2.75, big_size=32, label_size=12)
-    x += 2.75 + 0.2
+    k.stat_card(s, big, label, left=x, top=top, width=card_width, height=card_height, big_size=24)
+    x += card_width + 0.20
+# Frase de síntesis que ya abre la sección "Por qué ahora" del documento
+# (business-plan-coto.md §9) pero todavía no estaba en la slide — la
+# conexión entre las 4 fuentes independientes es parte del argumento, no
+# solo las 4 cifras sueltas.
+k.callout_box(
+    s,
+    "Cuatro fuentes independientes (regulador, consultora de pagos, cámara de e-commerce, estadística oficial de supermercados) apuntan en la misma dirección al mismo tiempo — no es una apuesta sobre tecnología emergente, es una sustitución de medio de pago ya en curso y medible.",
+    top + card_height + 0.35, kind="note", height=1.05,
+)
 footer(s, "Por qué ahora", 9)
 
 # 10. Competencia -----------------------------------------------------
@@ -252,18 +324,33 @@ footer(s, "Competencia", 10)
 s = k.add_slide(prs)
 k.set_bg(s, k.BG_LIGHT)
 top = k.kicker_headline(s, "Modelo financiero", "Alto nivel — cadena de supuestos, no una proyección precisa", content_top=2.10)
-k.stat_callout(s, "USD 900.000", ["CAPEX inicial (Fase 0-1) — partnership", "con PSP/BaaS, sin infra. bancaria propia"],
-               left=0.6, top=top, width=5.6, big_size=40)
-_, tf = k.textbox(s, 6.6, top, 5.9, 2.2)
-k.bullets_dash(tf, [
+# stat_card (no stat_callout suelto) con el desglose de CAPEX por
+# componente — ya está en business-plan-coto.md §11.1, no estaba
+# desagregado en la slide, solo el total.
+card_height = 3.6
+k.stat_card(
+    s, "USD 900.000",
+    ["CAPEX inicial (Fase 0-1) — partnership", "con PSP/BaaS, sin infra. bancaria propia"],
+    bullet_items=[
+        "Plataforma (app+backend+QR) — USD 550.000",
+        "Integración con COTO (POS, CRM) — USD 200.000",
+        "Compliance / KYC-AML — USD 150.000",
+    ],
+    left=0.6, top=top, width=5.6, height=card_height, big_size=34,
+)
+right_bullets = [
     ("OPEX: equipo de 8-12 personas + incentivos de lanzamiento 3-5% del GMV objetivo (por analogía con reintegros de MP 10-25% / MODO 20-30%).", 0),
     ("GMV capturado ≠ ingreso incremental: 20% se fija como fracción genuinamente incremental (extremo conservador de 20-30%).", 0),
     ("Margen bruto retail asociado: 22% (supuesto del equipo, sin benchmark local).", 0),
-], size=12.5, bold_level0=True, space_after=8)
+]
+_, tf = k.textbox(s, 6.6, top, 5.9, 2.6)
+k.bullets_dash(tf, right_bullets, size=12.5, bold_level0=True, space_after=8)
+right_bottom = top + k.bullets_height(right_bullets, width=5.9, size=12.5, space_after=8)
+callout_top = max(top + card_height, right_bottom) + 0.30
 k.callout_box(
     s,
     "No se lidera con VAN/ROI optimista sobre esta cadena de supuestos — se presenta el número con su lógica. Riesgo principal: la fracción de GMV incremental es el supuesto menos sólido de todo el modelo.",
-    5.75, kind="risk",
+    callout_top, kind="risk", height=0.70,
 )
 footer(s, "Modelo financiero", 11)
 

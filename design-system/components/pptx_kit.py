@@ -266,20 +266,39 @@ def stat_callout(slide, big_text, label_lines, left=MARGIN_L, top=2.35,
 # ---------------------------------------------------------------------------
 
 def stat_card(slide, big_text, label, bullet_items=None, left=7.40, top=2.50,
-              width=5.35, height=3.55, big_size=28):
+              width=5.35, height=3.55, big_size=28, label_size=13):
+    """`label` acepta un str (una línea, comportamiento original) o una
+    lista de str (varias líneas, igual que `stat_callout`) — la altura del
+    bloque de label y la posición de `bullet_items` se ajustan solas según
+    cuántas líneas tenga, así que agregar una segunda línea nunca empuja el
+    bloque de bullets a superponerse con el label."""
     card = _shape(slide, MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height, fill=WHITE)
     card.adjustments[0] = 0.06
 
     inset_l = left + 0.35
     inset_w = width - 0.65
-    _, tf = textbox(slide, inset_l, top + 0.30, inset_w, 0.50)
+    # word_wrap=False: a diferencia de stat_callout (que usa el ancho completo
+    # del slide), stat_card tiene ~0.7in menos de ancho útil por el padding
+    # interno de la card — un big_text que entraría cómodo en un stat_callout
+    # puede wrappear acá y superponerse visualmente con el label de abajo. Sin
+    # wrap, en el peor caso el número se recorta contra el borde de la card en
+    # vez de invadir la línea siguiente (bug real visto en la fila de 4
+    # stat_card de "Por qué ahora" — ver tp-ux-ui-designer memory).
+    _, tf = textbox(slide, inset_l, top + 0.30, inset_w, 0.50, word_wrap=False)
     _run(tf.paragraphs[0], big_text, big_size, color=BRAND, bold=True)
 
-    _, tf2 = textbox(slide, inset_l, top + 0.88, inset_w, 0.50)
-    _run(tf2.paragraphs[0], label, 13, color=MUTED)
+    label_lines = label if isinstance(label, (list, tuple)) else [label]
+    label_line_h = label_size * 0.0205  # ~0.27in a 13pt — estimación conservadora
+    label_block_h = label_line_h * len(label_lines) + 0.15
+    _, tf2 = textbox(slide, inset_l, top + 0.88, inset_w, label_block_h)
+    for i, line in enumerate(label_lines):
+        p = tf2.paragraphs[0] if i == 0 else tf2.add_paragraph()
+        _run(p, line, label_size, color=MUTED)
 
     if bullet_items:
-        _, tf3 = textbox(slide, inset_l, top + 1.55, inset_w, height - 1.70)
+        bullets_top = top + 0.88 + label_block_h + 0.20
+        bullets_h = max(0.3, height - (bullets_top - top) - 0.15)
+        _, tf3 = textbox(slide, inset_l, bullets_top, inset_w, bullets_h)
         bullets_dash(tf3, bullet_items, size=13, space_after=8)
     return card
 

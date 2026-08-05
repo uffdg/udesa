@@ -73,3 +73,49 @@ coordenada/tamaño en la API pública es un float en pulgadas, nunca un
 `Length` ya envuelto" — documentado explícito en el docstring del módulo.
 Si se agrega una función nueva al kit, seguir esa convención o vuelve a
 aparecer el mismo bug.
+
+## Segunda pasada (2026-08-04) — el kit no garantiza densidad, hay que usarlo a fondo
+
+Un primer `build-pptx.py` que ya importaba `pptx_kit.py` correctamente
+seguía viéndose "plano" en varias slides (usuario: "el documento pptx
+sigue mal", sin overlap real pendiente) — 3.85 `AUTO_SHAPE`/slide contra
+7.18/slide de mt10. **Tener el kit disponible no alcanza si varias slides
+solo llaman `kicker_headline` + un bloque de bullets + un `callout_box`**
+— exactamente el patrón plano original, solo que ahora con las piezas
+correctas disponibles y sin usarlas. Se identificaron 6 de 13 slides en
+ese estado (Equipo, Propósito, El problema, Solución, Modelo de negocio,
+Por qué ahora, Modelo financiero) y se corrigieron reusando piezas ya
+existentes del kit con datos que **ya estaban en el mismo documento o en
+la misma slide** (nunca contenido nuevo):
+
+- Un número que ya estaba en un bullet (ej. "20-30%" de reintegro MODO,
+  slide "El problema") promovido a `stat_callout` al lado de los bullets
+  — mismo patrón de mt10 (número + bullets), no un bullet más.
+- Sub-bullets de 1-2 líneas cada uno promovidos a `chip_card` (slide
+  "Solución": los 2 diferenciadores; slide "Modelo de negocio": los 3
+  pilares de defensibilidad como `chip_strip` corto, confinado al ancho
+  de su propia columna para no arriesgar overlap con la columna vecina).
+- `stat_callout` sueltos en fila (4 mini-stats sin card, mucho espacio
+  vacío debajo) convertidos a `stat_card` con la misma cifra/label — ver
+  `pptx-stat-card-narrow-width-wrap-overlap.md` para un bug real que este
+  cambio destapó.
+- Una frase que ya estaba en el documento fuente pero no en la slide (la
+  apertura de §9 "Cuatro fuentes independientes...") agregada como
+  `callout_box(kind="note")` — la regla "no inventar contenido" permite
+  traer texto del documento fuente aunque no estuviera ya en esa slide
+  puntual, siempre que no sea nuevo respecto al documento.
+- Un desglose que ya estaba en una tabla del documento (CAPEX por
+  componente, §11.1) pero nunca se había volcado a la slide, agregado
+  como `bullet_items` dentro de un `stat_card` existente.
+- Una placeholder de una sola línea de texto (slide "Equipo", gap de
+  contenido real, no inventable) rediseñada como `chip_card` + una
+  segunda `callout_box` con la misma disclosure que ya estaba en el
+  documento — se mejora el tratamiento visual de un gap señalado sin
+  inventar los datos que faltan.
+
+Resultado verificado: 5.23 `AUTO_SHAPE`/slide (de 3.85), 0 shapes fuera de
+canvas, 0 overlaps nuevos confirmado por export a PNG con Keynote de las
+13 slides. **Lección**: la métrica de conteo de shapes sirve para
+detectar el problema, pero corregirlo requiere revisar slide por slide
+qué pieza del kit correspondía a ese contenido puntual — no hay un fix
+automático de "correr un script que aumente el conteo".

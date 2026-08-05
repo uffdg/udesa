@@ -8,6 +8,19 @@ a diferencia de MT10).
 
 - `guion.md` — minutado del pitch, reparto sugerido, y preguntas de riesgo
   esperables en los 10 minutos de Q&A con respuesta corta preparada.
+- `guion.docx` — mismo contenido de `guion.md` exportado a Word, para
+  compartir con quien no trabaje en markdown. Generado con
+  `pandoc guion.md -o guion.docx --from=markdown+yaml_metadata_block --to=docx --standalone --table-of-contents --toc-depth=2 --reference-doc=../../../../../design-system/components/docx-reference.docx`
+  seguido de `python3 ../../../../../design-system/components/docx_kit.py guion.docx`
+  (pinta header oscuro + bandas de las tablas directo en cada celda, ver
+  por qué en `docx-guion.md`). Nunca se edita a mano en Word/Pages — si
+  cambia `guion.md`, se repite el pipeline completo. Aplica los mismos
+  tokens que el `.pptx`/`.html` (headings en `BRAND` `#502BD8`, blockquote
+  con filete de acento, tabla con header oscuro) vía
+  `design-system/components/docx-reference.docx`, documentado en
+  `design-system/components/docx-guion.md`. Fuente: Arial (no Inter —
+  decisión explícita distinta a la del `.pptx`, ver esa misma doc, porque
+  este archivo puede abrirse en una máquina fuera de nuestro control).
 - `presentacion.html` — las 12 secciones de la plantilla de pitch a
   inversores (Nombre, Equipo, Propósito, Problema, Solución, Producto con
   su roadmap de ejecución, Modelo de negocio, Tamaño de mercado, Por qué
