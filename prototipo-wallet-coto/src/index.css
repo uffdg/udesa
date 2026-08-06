@@ -1,36 +1,35 @@
 @import "tailwindcss";
 
 /*
-  Paleta tomada de design-system/tokens/tokens.css, mismo acento
-  --color-awards (#502bd8, violeta) que ya usa presentacion.html de
-  mt10-fidelizacion-coto — consistencia visual entre los dos TPs y este
-  prototipo, no una decisión de branding real de COTO.
-
-  --color-ink, --color-brand-pale y --radius-card están alineados byte a
-  byte con los valores que usan los dos decks HTML (--color-primary,
-  --color-awards-light y --rounded-normal en design-system/tokens/tokens.css
-  y en el CSS embebido de ambas presentacion.html) — no son una paleta
-  aparte "inspirada en", son los mismos valores.
+  Paleta actualizada a la identidad visual de COTO:
+  - Rojo como color principal de marca
+  - Amarillo como acento para oportunidades, ahorro y promociones
+  - Verde solo para confirmaciones, ahorro obtenido y operaciones exitosas
+  - Grises cálidos para fondos y jerarquías secundarias
 */
 @theme {
   --font-sans: "Inter Tight", "Inter", system-ui, sans-serif;
 
-  --color-ink: #222222;
-  --color-paper: #f8f8f8;
+  --color-ink: #1a1a1a;
+  --color-paper: #f5f4f2;
   --color-card: #ffffff;
-  --color-border: #ededed;
+  --color-border: #e8e8e6;
 
-  --color-brand: #502bd8;
-  --color-brand-light: #917eda;
-  --color-brand-pale: #ece7fa;
+  --color-brand: #d90012;
+  --color-brand-light: #e84455;
+  --color-brand-pale: #fdeaec;
 
-  --color-accent: #fa5d29;
-  --color-success: #2fa84f;
-  --color-success-pale: #e0f4d9;
-  --color-warning: #b8940a;
-  --color-warning-pale: #fff083;
+  --color-accent: #f5c500;
+  --color-accent-pale: #fffce0;
+  --color-accent-dark: #c4a000;
 
-  --radius-card: 8px;
+  --color-success: #2a9d4a;
+  --color-success-pale: #e4f5ec;
+
+  --color-warning: #f07800;
+  --color-warning-pale: #fff2e0;
+
+  --radius-card: 12px;
   --radius-pill: 72px;
 }
 
@@ -42,8 +41,7 @@ body {
 }
 
 /* Simula el viewport de un teléfono para las pantallas de member,
-   independiente del tamaño real de la ventana del navegador — así el
-   dashboard de manager puede quedar full-width al lado. */
+   independiente del tamaño real de la ventana del navegador. */
 .phone-frame {
   width: 390px;
   max-width: 100%;

@@ -3,16 +3,24 @@ import { persist } from 'zustand/middleware'
 import {
   CAMPANIAS_SEED,
   CLIENTES,
+  CUPONES_SEED,
+  INSIGNIAS_SEED,
+  MISIONES_SEED,
   REGLAS_BENEFICIO,
   SUCURSALES,
+  TARJETAS_SEED,
   TRANSACCIONES_SEED,
 } from '../data/seed'
 import type {
   Campania,
   Categoria,
   Cliente,
+  Cupon,
   EventoLog,
+  Insignia,
+  Mision,
   ReglaBeneficio,
+  Tarjeta,
   Transaccion,
 } from '../data/types'
 
@@ -23,6 +31,10 @@ interface WalletState {
   reglas: ReglaBeneficio[]
   eventos: EventoLog[]
   clienteActivoId: string
+  misiones: Mision[]
+  insignias: Insignia[]
+  tarjetas: Tarjeta[]
+  cupones: Cupon[]
 
   setClienteActivo: (id: string) => void
   pagarEnCaja: (items: { categoria: Categoria; producto: string; monto: number }[]) => {
@@ -31,6 +43,9 @@ interface WalletState {
   }
   crearCampania: (input: Omit<Campania, 'id' | 'estado' | 'fechaCreacion'>) => void
   avanzarEstadoCampania: (id: string) => void
+  activarCupon: (cuponId: string) => void
+  reservarPuntos: (cantidad: number) => void
+  setTarjetaPrincipal: (tarjetaId: string) => void
   resetDemo: () => void
 }
 
@@ -65,6 +80,10 @@ export const useWalletStore = create<WalletState>()(
       reglas: REGLAS_BENEFICIO,
       eventos: [],
       clienteActivoId: CLIENTES[0].id,
+      misiones: MISIONES_SEED,
+      insignias: INSIGNIAS_SEED,
+      tarjetas: TARJETAS_SEED,
+      cupones: CUPONES_SEED,
 
       setClienteActivo: (id) => set({ clienteActivoId: id }),
 
@@ -76,6 +95,7 @@ export const useWalletStore = create<WalletState>()(
         const montoBruto = items.reduce((acc, it) => acc + it.monto, 0)
         const montoTotal = Math.round(montoBruto * (1 - descuento))
         const puntosGanados = Math.round(montoTotal / 100)
+        const descuentoAplicado = montoBruto - montoTotal
 
         const transaccion: Transaccion = {
           id: `tx-${String(txSeqLocal++).padStart(3, '0')}`,
@@ -87,6 +107,8 @@ export const useWalletStore = create<WalletState>()(
           medioPago: 'Wallet COTO',
           beneficioAplicadoId: beneficio?.id ?? null,
           puntosGanados,
+          descuentoAplicado,
+          comercioNombre: 'COTO (pago en caja)',
         }
 
         const evento: EventoLog = {
@@ -103,7 +125,12 @@ export const useWalletStore = create<WalletState>()(
           eventos: [evento, ...state.eventos].slice(0, 30),
           clientes: state.clientes.map((c) =>
             c.id === cliente.id
-              ? { ...c, puntos: c.puntos + puntosGanados, walletActivada: true }
+              ? {
+                  ...c,
+                  puntos: c.puntos + puntosGanados,
+                  walletActivada: true,
+                  ahorroMes: (c.ahorroMes ?? 0) + descuentoAplicado,
+                }
               : c,
           ),
         })
@@ -150,6 +177,28 @@ export const useWalletStore = create<WalletState>()(
         })
       },
 
+      activarCupon: (cuponId) => {
+        set((state) => ({
+          cupones: state.cupones.map((c) =>
+            c.id === cuponId && c.estado === 'disponible' ? { ...c, estado: 'activado' } : c,
+          ),
+        }))
+      },
+
+      reservarPuntos: (cantidad) => {
+        set((state) => ({
+          clientes: state.clientes.map((c) =>
+            c.id === state.clienteActivoId ? { ...c, puntosReservados: cantidad } : c,
+          ),
+        }))
+      },
+
+      setTarjetaPrincipal: (tarjetaId) => {
+        set((state) => ({
+          tarjetas: state.tarjetas.map((t) => ({ ...t, esPrincipal: t.id === tarjetaId })),
+        }))
+      },
+
       resetDemo: () => {
         txSeqLocal = TRANSACCIONES_SEED.length + 1
         cmpSeqLocal = CAMPANIAS_SEED.length + 1
@@ -160,15 +209,15 @@ export const useWalletStore = create<WalletState>()(
           reglas: REGLAS_BENEFICIO,
           eventos: [],
           clienteActivoId: CLIENTES[0].id,
+          misiones: MISIONES_SEED,
+          insignias: INSIGNIAS_SEED,
+          tarjetas: TARJETAS_SEED,
+          cupones: CUPONES_SEED,
         })
       },
     }),
     {
       name: 'coto-wallet-demo',
-      // Sincroniza el estado entre pestañas/ventanas del navegador vía
-      // localStorage — así el pago hecho en la vista "member" (ej. en un
-      // recorte de tamaño teléfono) aparece en vivo en el dashboard
-      // "manager" abierto en otra pestaña, sin backend real.
     },
   ),
 )
