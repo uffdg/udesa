@@ -28,7 +28,7 @@ un "arco" completo, no una lista de datos sueltos:
 | Bloque | Secciones | Duración | Tema |
 |---|---|---|---|
 | **Bloque 1** | 1–3 (CotoPay, Equipo, Propósito) | ~1:05 | Quiénes somos y para qué |
-| **Bloque 2** | 4 (Problema) | ~2:30 | El problema — la sección que más pesa |
+| **Bloque 2** | 4 (Problema) + Customer Journey | ~2:30 | El problema (comprimido) + Customer Journey AS-IS/TO-BE |
 | **Bloque 3** | 5–6 (Solución, Producto) | ~3:20 | Qué construimos y cómo se usa |
 | **Bloque 4** | 7 (Modelo de negocio) | ~2:30 | Por qué es defendible — la sección escéptica |
 | **Bloque 5** | 8–10 (Mercado, Por qué ahora, Competencia) | ~3:40 | Tamaño, timing y posición competitiva |
@@ -47,7 +47,8 @@ son la misma persona, fusionar en un bloque A+F y reasignar.
 | 1 | Nombre de la empresa | 0:20 | 0:20 |
 | 2 | Equipo | 0:20 | 0:40 |
 | 3 | Propósito de la empresa | 0:25 | 1:05 |
-| 4 | **Problema** | **2:30** | 3:35 |
+| 4 | **Problema** | **1:00** | 2:05 |
+| 4b | **Customer Journey — AS-IS y TO-BE** | **1:30** | 3:35 |
 | 5 | Solución | 2:00 | 5:35 |
 | 6 | Producto | 1:20 | 6:55 |
 | 7 | **Modelo de negocio (captura de valor)** | **2:30** | 9:25 |
@@ -95,7 +96,14 @@ haya datos: nombre + 1 línea de por qué esa persona es relevante para
 Esta frase se puede repetir casi igual en el cierre (§12) para cerrar el
 círculo.
 
-## 4. Problema (2:30) — la sección que más pesa
+## 4. Problema (1:00, comprimida) — la sección que más pesa
+
+**Nota de compresión**: este bloque se redujo a 1:00 (era 2:30). El Customer
+Journey (§4b) que sigue cubre la capa experiencial y visual del problema — los
+momentos de mayor pérdida de dato en el recorrido real del cliente. En este
+1:00 se priorizan los dos tiempos estructurales (descartar lo obvio + el
+problema real), comprimidos; la imagen del flywheel y los momentos críticos se
+los lleva el Journey.
 
 **Estructura en dos tiempos, tal como está en el documento (§4):**
 
@@ -131,6 +139,51 @@ financia el 100% de las campañas emisoras vía MP/MODO — y al hacerlo,
 no retiene ningún dato del cliente para uso propio. Ese costo sale del
 grupo económico cada mes y construye el activo de datos de un tercero,
 no el de COTO (retomado en §11 y en la lista de preguntas más abajo).
+
+## 4b. Customer Journey — AS-IS y TO-BE (1:30)
+
+**Dos slides — AS-IS + TO-BE** (uno por acto). El orador no lee las ocho
+etapas una por una: las presenta como un arco narrativo en dos actos.
+
+**Acto 1 — AS-IS (0:45)**
+
+"Sigamos al cliente desde que decide ir a COTO hasta que vuelve a comprar."
+
+- El recorrido arranca con el trigger: una oferta masiva de baja relevancia —
+  tasa de redención del 3%.
+- El primer momento crítico es la caja: entre el 35% y el 45% de los 12
+  millones de tickets mensuales se cierran sin identificar al cliente.
+- El segundo momento crítico es el reclamo: entre 8 y 15 minutos de espera,
+  USD 3,50 por ticket, el cliente tiene que repetir su problema desde cero.
+- Imagen de cierre del acto: "El flywheel de datos no puede girar porque el
+  35–45% del dato falta en cada vuelta."
+
+**Acto 2 — TO-BE (0:45)**
+
+"Con CotoPay, el mismo recorrido se convierte en un ciclo que aprende."
+
+- El trigger es personalizado: de 3% a 12% de redención proyectada — solo
+  COTO tiene dato de góndola para construir esa oferta.
+- La caja: un tap, 100% identificado, comisión propia.
+- El reclamo: resuelto en la app sin repetir el problema, USD 0,40 por ticket.
+- La recompra: el dato de esa compra alimenta la próxima oferta. El flywheel
+  gira.
+
+**Momentos de verdad a nombrar explícito:**
+- **Etapa 3 (caja)**: "El momento de mayor volumen es el momento de mayor
+  pérdida de dato en el AS-IS — y el momento de mayor captura en el TO-BE."
+- **Etapa 8 (recompra)**: "La recompra es la prueba de que el flywheel
+  funcionó al menos una vez."
+
+*(Tabla de métricas — para Q&A, no leer en el pitch):*
+
+| Dimensión | AS-IS | TO-BE |
+|---|---|---|
+| Trazabilidad en caja | 55–65% | ~100% |
+| Redención de cupones | 3% | 12% proyectado |
+| Costo reclamo/ticket | USD 3,50 | USD 0,40 |
+| Tiempo de reclamo | 8–15 min | Automático hasta $15.000 ARS |
+| Autoservicio reclamos | ~0% digital | 65% proyectado |
 
 ## 5. Solución (2:00)
 
@@ -335,6 +388,51 @@ sólido de todo el modelo — pesa más que el riesgo tecnológico o de costo
 de plataforma.
 
 ## 12. Cierre (0:35)
+
+### Evolutivos del producto — visión de escala (0:30)
+
+Antes de la frase de cierre, 30 segundos de visión estratégica a mediano
+plazo — se dice rápido, como horizonte que muestra profundidad del negocio
+sin comprometer el scope del piloto. No son parte del plan financiero de
+lanzamiento: son la razón de fondo por la que el dato que se genera hoy
+vale más allá de la comisión que se ahorra. Corre sobre el buffer de 20
+segundos del minutado; si hace falta, comprimir a una sola frase ancla.
+
+Guion hablado (casi textual):
+
+> "Una vez que el flywheel de datos esté girando — y eso es lo que
+> construimos en las tres fases — dos evolutivos naturales se habilitan:
+> primero, **micropréstamos para consumo dentro de COTO**, instrumentados a
+> través de TCI, la unidad financiera del holding que ya existe. El historial
+> de compra real de CotoPay es una señal crediticia mejor que cualquier score
+> bancario para predecir si este cliente va a repagar un préstamo de consumo
+> en el mismo supermercado donde lo originó. Segundo, **hiperpersonalización
+> de la oferta a nivel de ítem**: pasar de segmentar por RFM a modelos que
+> saben exactamente qué descuento acepta este cliente, en esta categoría, en
+> esta visita — y vender esa capacidad de targeting a las marcas proveedoras
+> como retail media de alta precisión. Estos dos evolutivos no son el scope
+> del piloto, pero son la razón por la que el dato que generamos hoy vale
+> mucho más que la comisión que ahorramos."
+
+**Qué no decir**: cifras de retorno o proyecciones de estos evolutivos —
+no hay números validados. Se presenta como visión estratégica fundamentada
+en la lógica del negocio, no como plan.
+
+**Nota de contenido** (para quien lo dice y para preguntas de Q&A):
+- **Micropréstamos vía TCI**: TCI ya existe dentro del holding — no requiere
+  licencia bancaria nueva. El dato de compra real de CotoPay es mejor señal
+  crediticia para consumo en supermercados que el score de un banco que solo
+  ve el movimiento de dinero. El crédito es captive (solo para consumo dentro
+  de COTO): reduce riesgo de incobrabilidad y aumenta el ticket. Regulación:
+  TCI ya opera en ese marco; escalar el volumen de originaciones requiere
+  capacidad que se construye con datos de CotoPay, no antes.
+- **Hiperpersonalización**: el dato de compra ítem a ítem es el activo que
+  ningún competidor de pagos (MP, MODO, Ualá) puede tener — solo COTO lo
+  genera. Conecta con la palanca de retail media ya mencionada en la Fase 3
+  del roadmap (§6.3), pero a escala y con modelos más sofisticados sobre un
+  volumen mayor de datos históricos acumulados.
+
+### Cierre propiamente dicho
 
 **Mensaje de cierre, casi textual del documento** (§12):
 
