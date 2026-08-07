@@ -109,7 +109,10 @@ marco de la Clase 1 de MT25 (caso Movistar), esto ya es digitalización
 resuelta — no es lo que falta.
 
 **b) El problema real (1:30-1:45)**: qué pierde COTO al procesar ese pago
-vía terceros, cuatro puntos (§4.2):
+vía terceros, cuatro puntos (§4.2). Aplica a dos perfiles de cliente: el
+**registrado** —con Comunidad COTO o Tarjeta TCI activa— y el **casual**,
+que no dejó ningún dato en el sistema. Ambos son invisibles para MP/MODO
+en términos de historial de compra de supermercado:
 1. Datos de primera parte incompletos — el vínculo pago↔identidad↔
    comportamiento lo construye y posee el tercero.
 2. Fidelización cedida a terceros — el cliente asocia el beneficio a "MP"
@@ -123,9 +126,11 @@ MODO, ni Ualá tienen visibilidad nativa del historial de compra de
 supermercado del cliente — solo ven el movimiento de dinero. Esa es la
 ventaja potencial que el resto del pitch explota.
 
-**Nombrar en voz alta, sin resolver** (10s): no hay fuente que confirme
-quién financia hoy los reintegros de MP/MODO en sucursales COTO — queda
-abierto para Q&A (retomado en §11 y en la lista de preguntas más abajo).
+**Dato confirmado en workshop, decirlo con seguridad** (10s): COTO
+financia el 100% de las campañas emisoras vía MP/MODO — y al hacerlo,
+no retiene ningún dato del cliente para uso propio. Ese costo sale del
+grupo económico cada mes y construye el activo de datos de un tercero,
+no el de COTO (retomado en §11 y en la lista de preguntas más abajo).
 
 ## 5. Solución (2:00)
 
@@ -135,14 +140,15 @@ record fintech, y esa pelea ya la tienen ganada MP y Ualá. Compite como
 **la wallet que mejor conoce el historial de compra real de supermercado**
 del cliente.
 
-**Los dos diferenciadores que más importan decir** (60s, de la tabla
-completa del §5, priorizando los dos que ningún competidor iguala):
-- Beneficios personalizados según historial real de compra (categoría,
-  frecuencia, ticket) — no un % genérico por rubro como Cuenta DNI, ni
-  dependiente de Meli+ como MP.
-- La fidelización vive dentro del mismo instrumento de pago, sin tarjeta
-  aparte — ningún competidor integra "beneficio" y "pago" en el mismo
-  QR con reglas fijas y visibles.
+**Los tres pilares en orden, decirlos explícito** (60s):
+1. **Fidelización**: CotoPay construye la relación directa y continua de
+   COTO con su cliente — sin depender de que un tercero la intermedie.
+2. **Beneficios personalizados**: según historial real de compra
+   (categoría, frecuencia, ticket) — no un % genérico por rubro como
+   Cuenta DNI, ni dependiente de Meli+ como MP.
+3. **Medio de pago embebido**: la fidelización vive dentro del mismo
+   instrumento de pago, sin tarjeta aparte — ningún competidor integra
+   "beneficio" y "pago" en el mismo QR con reglas fijas y visibles.
 
 **Límite honesto, decirlo sin que lo pregunten** (30s, §5): esta propuesta
 no resuelve por qué un cliente dejaría de usar MP o MODO — resuelve por
@@ -158,7 +164,9 @@ de compra, no un modelo de IA sofisticado.
 "pagar en caja" con QR propio interoperable bajo el estándar BCRA de
 Transferencias 3.0 (un tap: paga, aplica beneficio, suma puntos),
 beneficios con reglas fijas y visibles por cliente, y recompra rápida
-integrada con Coto Digital.
+integrada con Coto Digital. La capacidad diferencial que habilita todo
+esto: **procesamiento de tarjetas propio**, que mantiene el dato de cada
+transacción dentro del ecosistema COTO sin pasarlo por un riel externo.
 
 **Roadmap, la parte que importa para inversores** (45s, §6.3): piloto de
 15-20 sucursales en CABA (meses 0-6) → fin Año 1: 100% CABA, 59% de la red
@@ -261,7 +269,12 @@ completa del documento** (§9) — elegir los más contundentes:
   Latinoamérica.
 - INDEC: "otros medios" (incluye billeteras) ya es 11,1% de las ventas de
   supermercados (nov. 2024) — el sector ya muestra tracción, sin que
-  exista todavía una wallet propia de COTO.
+  exista todavía una wallet propia de COTO. Las curvas de adopción QR
+  proyectan 35–40% para 2026 — el tiempo de actuar es ahora, no en dos
+  años.
+- Dos referentes de finanzas embebidas en ecosistemas propios validan el
+  modelo: **Shellbox (YPF)** y **FarmaPay** — la analogía directa con lo
+  que sería CotoPay para la red COTO.
 
 Frase de cierre de la sección: esto no es una apuesta sobre tecnología
 emergente, es una sustitución de medio de pago ya en curso y medible.
@@ -293,17 +306,16 @@ supuestos del equipo con su lógica al lado — el objetivo es mostrar una
 estructura defendible, no una proyección precisa.
 
 **Los tres números que hay que decir** (35s):
-- CAPEX inicial (Fase 0-1): **USD 900.000** (punto medio del rango
-  650K-1,15M original, sin sesgo direccional) — plataforma vía partnership
+- CAPEX inicial (Fase 0-1): **USD 500.000** — plataforma vía partnership
   con un PSP/BaaS existente en vez de construir infraestructura bancaria
   propia (§11.1). Ningún componente está cotizado con un proveedor real
-  todavía — sigue siendo un supuesto de trabajo, ahora puntual en vez de
-  rango.
+  todavía — es un supuesto de trabajo aprobado en workshop.
 - OPEX: equipo de 8-12 personas para Fase 0-1 (sin costo salarial
   estimado); incentivos de lanzamiento equivalentes a 3-5% del GMV
-  objetivo de cada fase, por analogía de orden de magnitud con los
-  reintegros de la competencia (10-25% MP, 20-30% MODO) — no un benchmark
-  propio (§11.2).
+  objetivo de cada fase. Desde la Fase 2, se suman USD 100.000
+  adicionales de escala. Palanca de financiamiento parcial: un 20% de
+  conversión de clientes de MP a CotoPay genera ahorro de comisiones que
+  fondea parcialmente el OPEX de la siguiente fase (§11.2).
 - El punto que hay que decir sin que lo pregunten (§11.3): el GMV **no es
   ingreso incremental por sí mismo** — es en gran parte el mismo gasto que
   el cliente ya hacía en COTO, migrado de otro riel de pago. Se fija
@@ -314,11 +326,13 @@ estructura defendible, no una proyección precisa.
 **Cómo se presenta el caso, decirlo explícito** (15s, §11.4): no se lidera
 con un número de VAN/ROI optimista construido sobre esta cadena de
 supuestos — sería el error que un panel que ya vio el caso Ualá
-descartaría de inmediato. Se presenta el número puntual junto con la
-lógica de por qué es conservador, citando el Anexo de supuestos. El
-riesgo financiero principal a nombrar en voz alta: la fracción de GMV
-genuinamente incremental sigue siendo el supuesto menos sólido de todo el
-modelo — pesa más que el riesgo tecnológico o de costo de plataforma.
+descartaría de inmediato. El horizonte del modelo financiero es **24
+meses**; el VAN puntual está **a definir con modelo actualizado**. Se
+presenta la lógica de por qué es conservador, citando el Anexo de
+supuestos. El riesgo financiero principal a nombrar en voz alta: la
+fracción de GMV genuinamente incremental sigue siendo el supuesto menos
+sólido de todo el modelo — pesa más que el riesgo tecnológico o de costo
+de plataforma.
 
 ## 12. Cierre (0:35)
 

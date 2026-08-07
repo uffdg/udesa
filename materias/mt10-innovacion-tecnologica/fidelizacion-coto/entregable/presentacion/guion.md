@@ -79,6 +79,9 @@ Guion hablado:
   cierran sin que el cliente consigne su DNI o su carnet de Comunidad COTO.
   Ese cliente queda invisible para cualquier segmentación, campaña o
   atención personalizada — sobre 12 millones de transacciones al mes.
+  Hay dos perfiles de cliente afectados: el **registrado** —que tiene
+  Comunidad COTO o Tarjeta TCI activa— y el **casual**, que no dejó
+  ningún dato en el sistema.
 - No es un problema de tecnología de punta. Es un problema de identificación
   del cliente en el momento de la transacción, y es la restricción de la que
   parte todo lo demás en esta presentación.
@@ -98,6 +101,12 @@ Guion hablado:
 - La ventana para que COTO entre a esta categoría sin quedar en tercer
   lugar sigue abierta — pero se angosta cada trimestre. Y el dato que se
   pierde hoy, en una transacción sin identificar, no se recupera después.
+- La adopción de billeteras en supermercados ya es 11,1% del volumen
+  (INDEC, 2024) y las curvas de adopción QR proyectan 35–40% para 2026.
+  No es tendencia emergente: es sustitución en curso. Dos referentes de
+  finanzas embebidas en ecosistemas propios validan el modelo: **Shellbox
+  (YPF)** y **FarmaPay** — la analogía directa con lo que sería CotoPay
+  para la red COTO.
 
 ### Bloque 3 — La propuesta, como experiencia de cliente + omnicanalidad (1:45–4:00) · **Voz 2** (y **Voz 3** si el equipo es de 6)
 
@@ -106,6 +115,13 @@ como recorrido de cliente. Sugerencia de diapositivas: una por momento del
 recorrido (4 a 5 diapositivas cortas). El slide de redes/WhatsApp lleva el
 título "Redes sociales y WhatsApp: omnicanalidad con el mismo agente" —
 usar ese encuadre al hablar del punto 5.
+
+**Antes de arrancar el recorrido, anclar los tres pilares en orden** (15s):
+la propuesta tiene tres capas que se construyen en secuencia:
+**fidelización** del cliente como base, **beneficios personalizados** que
+se construyen sobre el historial de compra, y el **medio de pago embebido**
+que integra todo en el momento de la transacción. El recorrido que sigue
+muestra cómo se vive en la práctica.
 
 Guion hablado (recorrido):
 1. **En caja**: en menos de 800 milisegundos, el sistema sugiere la
@@ -146,9 +162,12 @@ negocio, no de tecnología.
 Guion hablado:
 - Todo lo anterior corre sobre una sola capa de segmentación (RFM:
   recencia, frecuencia, monto) y una sola plataforma de datos — no seis
-  proyectos de IA sueltos. Es la respuesta directa al problema del bloque
-  1: el dato no se pierde porque falte tecnología, se pierde porque las
-  fuentes no se cruzan.
+  proyectos de IA sueltos. A esto se suma una capacidad propia clave:
+  **procesamiento de tarjetas propio**, que permite capturar el dato de
+  cada transacción dentro del ecosistema COTO sin depender de la lectura
+  de un tercero. Es la respuesta directa al problema del bloque 1: el dato
+  no se pierde porque falte tecnología, se pierde porque las fuentes no se
+  cruzan.
 - Esto no se lanza de una sola vez a toda la base: arranca en un piloto de
   15.000 usuarios y escala en dos pasos más — lo retomamos en el plan de
   implementación.
@@ -161,8 +180,10 @@ documento. La primera cifra grande en pantalla **no** es el VAN ni el ROI.
 **5a — Costo de no hacerlo (4:45–5:30, 0:45)**
 - Cada mes sin esto es un mes más de dato de cliente que se genera y se
   pierde, sobre 12 millones de transacciones. El 45% de las ventas se paga
-  hoy con tarjeta de un tercero, con una comisión de 1,2%–1,8% más IVA que
-  sale del grupo económico cada mes, con o sin proyecto.
+  hoy con tarjeta de un tercero, con una comisión de 0,6% promedio que
+  sale del grupo económico cada mes, con o sin proyecto. A eso se suma que
+  COTO financia el 100% de las campañas emisoras vía MP/MODO sin retener
+  ningún dato del cliente para uso propio.
 
 **5b — Por qué ahora (5:30–6:00, 0:30)**
 - Retoma el bloque 2 en una frase: la ventana frente a Carrefour y Cencosud
@@ -176,13 +197,14 @@ no el VAN base" según el propio documento.
 
 **5c — El rango, no el número optimista (6:00–6:45, 0:45)**
 - No trabajamos con un solo número. Trabajamos con un rango: en el
-  escenario base, VAN de $5,24M y ROI de 1.505,7% a 36 meses. Pero el
-  argumento que importa acá no es esa cifra — es que **incluso en el
-  escenario más adverso que modelamos** (caída de 50% en adopción), el VAN
-  se mantiene positivo, en $2,15M, con un ROI de ~620%.
-- (Nota interna, no leer en voz alta salvo que pregunten: no confundir el
-  piso de $2,15M con el escenario "Conservador" de la tabla anterior — son
-  dos ejercicios distintos, sección 8.9 del documento.)
+  escenario base, VAN **a definir con modelo actualizado** y ROI a **24
+  meses**. Pero el argumento que importa acá no es esa cifra — es que
+  **incluso en el escenario más adverso que modelamos** (caída de 50% en
+  adopción), el VAN se mantiene positivo, con un ROI sustancial.
+- (Nota interna, no leer en voz alta salvo que pregunten: los escenarios
+  de sensibilidad se recalcularán con el modelo actualizado a 24 meses —
+  los pisos de cada escenario quedan a definir con ese modelo; la
+  estructura del argumento no cambia, sección 8.9 del documento.)
 
 **5d — El riesgo principal, sin rodeos (6:45–7:15, 0:30)**
 - El riesgo principal no es tecnológico ni de costo de infraestructura de
@@ -191,11 +213,16 @@ no el VAN base" según el propio documento.
   compañía: el tamaño real del padrón de Comunidad COTO.
 
 **5e — Plan de des-arriesgamiento (7:15–7:45, 0:30)**
-- Por eso no pedimos autorizar el CAPEX completo hoy. Pedimos autorizar una
-  fase 0: tres experimentos de bajo costo — una prueba de latencia en el
-  punto de venta, un piloto de WhatsApp con 5.000 socios, y un
-  benchmarking de costo de IA — diseñados específicamente para reemplazar
-  los supuestos más importantes de este caso por evidencia propia de COTO.
+- Por eso no pedimos autorizar el CAPEX completo hoy. El CAPEX total del
+  proyecto es **USD 500.000** — pedimos autorizar una fase 0: tres
+  experimentos de bajo costo — una prueba de latencia en el punto de
+  venta, un piloto de WhatsApp con 5.000 socios, y un benchmarking de
+  costo de IA — diseñados específicamente para reemplazar los supuestos
+  más importantes de este caso por evidencia propia de COTO. Desde la
+  Fase 2, el OPEX incorpora USD 100.000 adicionales de escala. La palanca
+  de financiamiento parcial: un 20% de conversión de clientes de MP a
+  CotoPay ya genera ahorro de comisiones que fondea parcialmente el OPEX
+  de la siguiente fase.
 
 ### Bloque 6 — Plan de implementación y adopción (7:45–9:15) · **Voz 5** (o Voz 4 si el equipo es de 4-5)
 
@@ -317,6 +344,38 @@ documento — para que quien responda no improvise un dato nuevo.
    cronograma dentro de cada fase, y cómo se mide la adopción interna más
    allá de las métricas de negocio. Es investigación adicional que
    corresponde hacer si el directorio aprueba avanzar.
+
+**Riesgos estructurales — respuesta corta para la defensa**
+
+Tres riesgos de fondo que el directorio puede plantear. Las respuestas
+son cortas a propósito: 20–30 segundos, sin improvisar datos nuevos.
+
+**Riesgo 1 — Reacción competitiva**
+*"MP/MODO bajan su costo para COTO — pierden diferencial y market share
+antes de llegar a masa crítica."*
+→ El plan contempla un escenario dinámico. El moat no está solo en el
+precio sino en el historial de compra acumulado — una base de datos de
+comportamiento que MP/MODO no tienen porque solo ven el movimiento de
+dinero, no la canasta. Ese historial es el activo que COTO empieza a
+construir desde el día 1 y que no se puede replicar instantáneamente
+aunque la competencia baje el costo.
+
+**Riesgo 2 — Gestión de producto financiero**
+*"COTO no tiene experiencia operando un instrumento financiero regulado —
+riesgo en compliance y atención al cliente."*
+→ Se mitiga con un partnership PSP/BaaS que trae el know-how regulatorio.
+COTO opera la relación comercial, no la infraestructura bancaria. El socio
+tecnológico es el responsable regulado — COTO no necesita licencia bancaria
+para operar el modelo de este plan.
+
+**Riesgo 3 — Agresividad asimétrica**
+*"La competencia no va a reaccionar igual sino que va a cambiar las
+reglas del juego."*
+→ El roadmap por fases con gates de decisión explícitos está diseñado
+exactamente para esto: cada gate es un punto de pivote. El compromiso de
+hoy es solo la Fase 0 — exactamente el nivel de decisión que genera la
+información necesaria para ver cómo empieza a reaccionar el mercado antes
+de escalar.
 
 ---
 
