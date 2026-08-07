@@ -218,6 +218,7 @@ export const useWalletStore = create<WalletState>()(
     }),
     {
       name: 'coto-wallet-demo',
+      version: 1,
     },
   ),
 )
