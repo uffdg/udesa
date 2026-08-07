@@ -365,16 +365,12 @@ cifra.
 
 **1. ¿Quién financia hoy los reintegros de MP/MODO en sucursales COTO?**
 (§4.2, §11.3, Anexo punto 3)
-> Respuesta corta: "No tenemos ese dato confirmado con COTO, y lo decimos
-> así en el documento. Adoptamos una posición de trabajo: COTO cofinancia
-> aproximadamente el 60% del costo de esos reintegros, sobre una tasa
-> combinada de reintegro del 20% — es el supuesto con menos respaldo de
-> los cinco que documentamos en el Anexo, ni siquiera tiene un anclaje
-> indirecto fuerte. Con esa cifra de trabajo, redirigir ese presupuesto a
-> la wallet propia representaría un ahorro potencial de 12% del GMV
-> migrado cada año — pero si COTO confirma que financia 0%, esa línea
-> desaparece completa del caso financiero. Es la primera pregunta que le
-> haríamos a COTO si arrancamos el piloto."
+> Respuesta corta: "Ese punto está confirmado: COTO financia el 100% de
+> las campañas emisoras vía MP/MODO. El costo sale íntegro del grupo
+> económico cada mes sin que COTO retenga ningún dato del cliente para
+> uso propio. Redirigir ese presupuesto a la wallet propia es una fuente
+> de ahorro directa que fondea parcialmente el OPEX del proyecto — ese
+> argumento ya no es un supuesto, es un insumo confirmado del modelo."
 
 **2. ¿Cuál es la cifra real de sucursales de COTO?** (153 usado en este
 documento vs. 120 citado en notas de prensa sobre las alianzas MP/MODO, vs.
@@ -425,15 +421,13 @@ financiero menos sólido de todo el plan, Anexo punto 2)
 **5. ¿Qué proveedor de PSP/BaaS se elegiría, y a qué costo real?**
 (determina si el CAPEX de §11.1 se sostiene, Anexo punto 4)
 > Respuesta corta: "Todavía no hay cotización real de ningún proveedor.
-> Para poder avanzar fijamos un punto de trabajo de USD 900.000 de CAPEX
-> inicial — el punto medio de cada componente del rango de orden de
-> magnitud que manejábamos antes (650k-1.15M), sin sesgo hacia arriba o
-> abajo porque no hay una razón de negocio para inclinarnos a ningún
-> extremo, a diferencia de otros supuestos del modelo. La decisión de ir
-> por partnership en vez de licencia bancaria propia (como Ualá) es la que
-> mantiene ese costo en ese orden de magnitud; elegir proveedor y cerrar
-> el costo real de procesamiento por transacción es de los primeros pasos
-> ejecutivos post-aprobación, no algo que se resuelve en este pitch."
+> El CAPEX de referencia es USD 500.000 — supuesto aprobado en workshop,
+> validado como orden de magnitud para una plataforma vía partnership
+> PSP/BaaS, sin construir infraestructura bancaria propia como Ualá. La
+> decisión de ir por partnership es la que mantiene ese costo en ese
+> orden; elegir proveedor y cerrar el costo real de procesamiento por
+> transacción es de los primeros pasos ejecutivos post-aprobación, no
+> algo que se resuelve en este pitch."
 
 ## Preguntas adicionales anticipables (no listadas en §12, pero previsibles
 dado el modelo específico)
@@ -478,6 +472,39 @@ sucursal física?**
 > sucursal. El hito de salida del piloto (mes 6) es justamente medir tasa
 > de activación/repetición antes de escalar — todavía no fijamos el umbral
 > mínimo porque no hay benchmark citado para hacerlo hoy."
+
+---
+
+## Riesgos estructurales — respuesta corta para la defensa
+
+Tres riesgos de fondo que el panel puede plantear. Respuesta de 20–30
+segundos cada uno, sin improvisar datos nuevos.
+
+**10. Reacción competitiva**
+*"MP/MODO bajan su costo para COTO — pierden diferencial y market share
+antes de llegar a masa crítica."*
+> Respuesta corta: "El plan contempla un escenario dinámico. El moat no
+> está solo en el precio sino en el historial de compra acumulado —
+> MP/MODO solo ven el movimiento de dinero, no la canasta. Ese historial
+> es el activo que COTO empieza a construir desde el día 1 y que no se
+> puede replicar instantáneamente aunque la competencia baje el costo."
+
+**11. Gestión de producto financiero**
+*"COTO no tiene experiencia operando un instrumento financiero regulado —
+riesgo en compliance y atención al cliente."*
+> Respuesta corta: "Se mitiga con el partnership PSP/BaaS que trae el
+> know-how regulatorio. COTO opera la relación comercial, no la
+> infraestructura bancaria — el socio es el responsable regulado. Eso ya
+> está contemplado en la decisión de no ir por licencia bancaria propia."
+
+**12. Agresividad asimétrica**
+*"La competencia no va a reaccionar igual sino que va a cambiar las
+reglas del juego."*
+> Respuesta corta: "El roadmap por fases con gates de decisión explícitos
+> permite pivotar en base a cómo reacciona el mercado. El compromiso de
+> hoy es solo la Fase 0 — exactamente el nivel de decisión que genera la
+> información necesaria para ver cómo se mueve la competencia antes de
+> escalar."
 
 ---
 
