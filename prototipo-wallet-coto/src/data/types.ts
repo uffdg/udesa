@@ -88,6 +88,10 @@ export interface Cliente {
   puntosReservados?: number
   ahorroMes?: number
   numeroSocio?: string
+  // Campos de cuenta bancaria (CVU) para la wallet de pagos
+  saldoARS?: number
+  cvu?: string
+  alias?: string
 }
 
 export type EstadoCampania =
