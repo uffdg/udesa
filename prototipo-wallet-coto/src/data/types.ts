@@ -19,6 +19,12 @@ export interface SegmentoInfo {
   color: string
 }
 
+export type NivelComunidad =
+  | 'Comunidad'
+  | 'Comunidad Plus'
+  | 'Comunidad Gold'
+  | 'Comunidad Platinum'
+
 export type Categoria =
   | 'Almacén'
   | 'Frescos'
@@ -49,6 +55,11 @@ export interface Transaccion {
   medioPago: 'Wallet COTO' | 'Mercado Pago' | 'MODO' | 'Efectivo' | 'Débito/Crédito'
   beneficioAplicadoId: string | null
   puntosGanados: number
+  // Campos enriquecidos opcionales para la pantalla de Actividad
+  descuentoAplicado?: number
+  cuponAplicadoId?: string
+  puntosUsados?: number
+  comercioNombre?: string
 }
 
 export interface ReglaBeneficio {
@@ -71,6 +82,12 @@ export interface Cliente {
   puntos: number
   sucursalHabitualId: string
   fechaAlta: string
+  // Campos extendidos para la experiencia completa de wallet
+  nivel?: NivelComunidad
+  puntosVencimiento?: { cantidad: number; fecha: string }
+  puntosReservados?: number
+  ahorroMes?: number
+  numeroSocio?: string
 }
 
 export type EstadoCampania =
@@ -96,4 +113,70 @@ export interface EventoLog {
   fecha: string
   tipo: 'pago' | 'campania_creada' | 'campania_aprobada' | 'alta_wallet'
   descripcion: string
+}
+
+// --- Nuevas entidades para las pantallas adicionales ---
+
+export type EstadoMision = 'disponible' | 'activa' | 'completada' | 'vencida'
+
+export interface Mision {
+  id: string
+  titulo: string
+  descripcion: string
+  recompensaPuntos: number
+  fechaLimite: string
+  progresoActual: number
+  progresoTotal: number
+  estado: EstadoMision
+  ctaLabel: string
+  ctaRuta?: string
+}
+
+export interface Insignia {
+  id: string
+  nombre: string
+  descripcion: string
+  icono: string // emoji usado como ícono simple
+  fechaObtenida?: string
+  beneficioDesbloqueado?: string
+  progresoActual?: number
+  progresoTotal?: number
+  bloqueada: boolean
+}
+
+export type MarcaTarjeta = 'Visa' | 'Mastercard' | 'Amex' | 'COTO'
+
+export interface Tarjeta {
+  id: string
+  tipo: 'credito' | 'debito' | 'tci'
+  banco: string
+  marca: MarcaTarjeta
+  ultimosCuatro: string
+  titular: string
+  vencimiento: string // MM/YY
+  esPrincipal: boolean
+  beneficioDestacado?: string
+}
+
+export type CanalCupon = 'presencial' | 'online' | 'ambos'
+export type EstadoCupon = 'disponible' | 'activado' | 'usado' | 'vencido'
+
+export interface Cupon {
+  id: string
+  marca: string
+  titulo: string
+  descripcion: string
+  descuento: string // "20% off" o "$5.000 de desc."
+  vigencia: string // fecha ISO o texto legible
+  canal: CanalCupon
+  estado: EstadoCupon
+  esTercero: boolean
+  logoEmoji?: string
+  condiciones: string
+  topeReintegro?: number
+  medioPagoRequerido?: string
+  localesAdheridos?: string[]
+  activacionRequerida: boolean
+  distancia?: string // solo para terceros
+  codigo?: string
 }
