@@ -45,7 +45,7 @@ body {
 .phone-frame {
   width: 390px;
   max-width: 100%;
-  min-height: 780px;
+  height: 780px;
   border-radius: 2.5rem;
   box-shadow: 0 20px 60px -20px rgb(0 0 0 / 0.35);
   overflow: hidden;

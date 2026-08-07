@@ -46,8 +46,8 @@ frase, no en un minuto.
 |---|---|---|---|---|
 | 1 | 0:00–1:00 | 1:00 | Apertura + el problema | Resumen ejecutivo, 1.1–1.2 |
 | 2 | 1:00–1:45 | 0:45 | Por qué ahora / panorama competitivo | 1.3, 1.4, 8.3 |
-| 3 | 1:45–4:00 | 2:15 | La propuesta, como experiencia de cliente | 2, 3.3, 4.3–4.4, 5.3, 6.2 |
-| 4 | 4:00–4:45 | 0:45 | Lo que lo hace posible: segmentación en tiempo real + Big Data | 6.1, 6.3, 7.1–7.2 |
+| 3 | 1:45–4:00 | 2:15 | La propuesta — recorrido de cliente + omnicanalidad | 2, 3.3, 4.3–4.4, 5.3, 6.2 |
+| 4 | 4:00–4:45 | 0:45 | Lo que lo hace posible: Big Data & Data Analytics + segmentación RFM | 6.1, 6.3, 7.1–7.2 |
 | 5 | 4:45–7:45 | 3:00 | Caso de ROI | 8.1–8.8 |
 | 6 | 7:45–9:15 | 1:30 | Plan de implementación y adopción | 9.1–9.6 (+ hueco 9.7) |
 | 7 | 9:15–10:00 | 0:45 | Cierre | 10 |
@@ -63,7 +63,9 @@ comprimible) antes que el bloque 5 (ROI) o el 3 (experiencia de cliente).
 ### Bloque 1 — Apertura + el problema (0:00–1:00) · **Voz 1**
 
 **Diapositiva 1 — Título**: "Plataforma de fidelización COTO" + nombres del
-equipo.
+equipo. El slide incluye un **QR en la esquina inferior derecha** que lleva
+al prototipo de CotoPay en vivo — la audiencia puede escanearlo cuando
+quiera para explorar la app en su celular.
 
 **Diapositiva 2 — El problema en una imagen**: cifra grande, `35%–45%` +
 "de las transacciones presenciales pierden trazabilidad de cliente" sobre
@@ -97,12 +99,13 @@ Guion hablado:
   lugar sigue abierta — pero se angosta cada trimestre. Y el dato que se
   pierde hoy, en una transacción sin identificar, no se recupera después.
 
-### Bloque 3 — La propuesta, como experiencia de cliente (1:45–4:00) · **Voz 2** (y **Voz 3** si el equipo es de 6)
+### Bloque 3 — La propuesta, como experiencia de cliente + omnicanalidad (1:45–4:00) · **Voz 2** (y **Voz 3** si el equipo es de 6)
 
 **No leer la tabla de casos de uso (CU-01 a CU-06) de la sección 2.** Narrar
 como recorrido de cliente. Sugerencia de diapositivas: una por momento del
-recorrido (4 a 5 diapositivas cortas, con un mockup o wireframe simple de
-pantalla si el equipo tiene tiempo de producirlo).
+recorrido (4 a 5 diapositivas cortas). El slide de redes/WhatsApp lleva el
+título "Redes sociales y WhatsApp: omnicanalidad con el mismo agente" —
+usar ese encuadre al hablar del punto 5.
 
 Guion hablado (recorrido):
 1. **En caja**: en menos de 800 milisegundos, el sistema sugiere la
@@ -122,24 +125,23 @@ Guion hablado (recorrido):
 4. **En Coto Digital**: el cliente arma su lista de compras dentro de un
    presupuesto que él mismo define, y si falta stock, el sistema sugiere el
    sustituto con mayor probabilidad de aceptación en menos de 500 ms.
-5. **En redes sociales y WhatsApp** — nombrar con el mismo tono acotado que
-   usa el documento, sin inflar: hoy WhatsApp es un canal de difusión
-   unidireccional y un reclamo iniciado en redes se deriva al 0800 y el
-   cliente tiene que repetirlo. La propuesta no crea agentes nuevos para
-   redes: extiende los mismos agentes de atención y promociones como una
-   interfaz adicional, y agrega un clasificador liviano que evita que el
-   cliente tenga que re-explicar su problema en otro canal. **No le
+5. **En redes sociales y WhatsApp — omnicanalidad con el mismo agente**: hoy
+   WhatsApp es un canal de difusión unidireccional y un reclamo iniciado en
+   redes se deriva al 0800; el cliente tiene que repetirlo desde cero en
+   otro canal. La propuesta no crea agentes nuevos: extiende los mismos
+   agentes de atención y promociones como interfaz adicional, con el mismo
+   contexto en cualquier punto de contacto — eso es omnicanalidad. **No le
    asignamos un número de retorno propio a este componente** — todavía
-   faltan datos públicos (volumen real de reclamos por redes, si ya existe
-   integración interna) para hacerlo con responsabilidad.
+   faltan datos públicos (volumen real de reclamos por redes, integración
+   interna) para hacerlo con responsabilidad.
 
-### Bloque 4 — Lo que lo hace posible (4:00–4:45) · **Voz 3**
+### Bloque 4 — Lo que lo hace posible: Big Data & Data Analytics (4:00–4:45) · **Voz 3**
 
 **Diapositiva — un solo diagrama**: los cinco sistemas hoy separados (POS,
 Coto Digital, core TCI, stock, redes) convergiendo en "un orquestador de
-agentes / una fuente de verdad de cliente". Nada de arquitectura técnica
-detallada — esto lo pide el checklist, pero la audiencia es de negocio, no
-de tecnología.
+agentes + una capa de Big Data para segmentación RFM y Data Analytics en
+tiempo real". Nada de arquitectura técnica detallada — la audiencia es de
+negocio, no de tecnología.
 
 Guion hablado:
 - Todo lo anterior corre sobre una sola capa de segmentación (RFM:

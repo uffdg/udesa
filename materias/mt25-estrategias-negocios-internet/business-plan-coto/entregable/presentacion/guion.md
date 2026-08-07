@@ -10,7 +10,7 @@ formato: consignas/mt25-business-plan-coto.md — pitch de 15' "vendiendo" la
   de equipo fijado por la consigna oficial.
 ---
 
-# Guion del pitch — Wallet COTO
+# Guion del pitch — CotoPay
 
 > Este guion es la versión hablada y priorizada del documento final. No
 > agrega ningún dato, cifra o afirmación que no esté ya en
@@ -19,23 +19,24 @@ formato: consignas/mt25-business-plan-coto.md — pitch de 15' "vendiendo" la
 > del equipo** o **gap**, el guion lo dice en voz alta de la misma forma:
 > nunca se presenta un supuesto como hecho frente al panel.
 
-## Cómo repartir por integrante (placeholder, sin nombres reales)
+## Reparto — equipo de 6 (Mariana, Andres, Diego, Luciano, Agustin, Emma)
 
-El documento final marca en su §2 que no hay datos reales del equipo
-todavía — este guion no los inventa. Para facilitar el reparto una vez que
-el equipo esté confirmado, las 12 secciones se agrupan en **3 bloques**
-pensados para 3 presentadores (se puede subdividir más si el equipo es más
-grande, o menos si presenta una sola persona):
+Las 12 secciones se dividen en 6 bloques para que hable cada integrante.
+Los bloques respetan la lógica narrativa del pitch — cada persona recibe
+un "arco" completo, no una lista de datos sueltos:
 
-| Bloque | Secciones | Duración | Tema central |
+| Bloque | Secciones | Duración | Tema |
 |---|---|---|---|
-| **Bloque A** — Presentador 1 | 1–5 (Nombre, Equipo, Propósito, Problema, Solución) | ~5:35 | Por qué existe esta empresa y qué problema resuelve |
-| **Bloque B** — Presentador 2 | 6–7 (Producto, Modelo de negocio) | ~3:50 | Cómo funciona y por qué es defendible |
-| **Bloque C** — Presentador 3 | 8–12 (Mercado, Por qué ahora, Competencia, Financiero, Cierre) | ~5:15 | Tamaño, timing, plata y cierre |
+| **Bloque 1** | 1–3 (CotoPay, Equipo, Propósito) | ~1:05 | Quiénes somos y para qué |
+| **Bloque 2** | 4 (Problema) | ~2:30 | El problema — la sección que más pesa |
+| **Bloque 3** | 5–6 (Solución, Producto) | ~3:20 | Qué construimos y cómo se usa |
+| **Bloque 4** | 7 (Modelo de negocio) | ~2:30 | Por qué es defendible — la sección escéptica |
+| **Bloque 5** | 8–10 (Mercado, Por qué ahora, Competencia) | ~3:40 | Tamaño, timing y posición competitiva |
+| **Bloque 6** | 11–12 (Financiero, Cierre) | ~1:35 | Plata y cierre |
 
-Si el equipo termina siendo de 2 personas: Bloque A+B para una persona,
-Bloque C para la otra. Si es individual, el minutado por sección sigue
-sirviendo igual como guía de ritmo.
+El bloque 2 (Problema) es el más largo de uno solo — concentra 2:30. Los
+bloques 1 y 6 son los más cortos; si el orador de apertura y el de cierre
+son la misma persona, fusionar en un bloque A+F y reasignar.
 
 ---
 
@@ -69,10 +70,10 @@ ya están implícitas en el argumento del Problema.
 
 ## 1. Nombre de la empresa (0:20)
 
-**Qué decir**: "Wallet COTO" — nombre de trabajo. El naming final (¿"COTO
-Pay", extensión de "Coto Digital", u otro?) es una decisión de branding
-que el equipo todavía no cerró (§1). No hay que sobre-explicar esto: una
-frase y seguir.
+**Qué decir**: "CotoPay" — nombre definitivo de la wallet. El slide de
+apertura lo muestra grande y tiene un **QR en la esquina inferior derecha**
+que lleva al prototipo en vivo; mencionar brevemente que la audiencia puede
+escanearlo cuando quiera para verlo en su celular. Una frase y seguir.
 
 ## 2. Equipo (0:20)
 
