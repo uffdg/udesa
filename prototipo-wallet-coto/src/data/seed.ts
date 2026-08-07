@@ -109,6 +109,9 @@ const MARIANA: Cliente = {
   puntosReservados: 3000,
   ahorroMes: 28450,
   numeroSocio: '0042-8812-3',
+  saldoARS: 45850,
+  cvu: '0000003100012346500000',
+  alias: 'mariana.garcia.cotopay',
 }
 
 const NOMBRES: Array<[string, string]> = [
