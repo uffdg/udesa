@@ -1,6 +1,15 @@
 import { Link } from 'react-router-dom'
 import { useWalletStore } from '../store/useWalletStore'
 
+function openMobileWindow() {
+  const base = window.location.href.replace(/#.*$/, '')
+  window.open(
+    base + '#/member',
+    'cotopay-member',
+    'width=390,height=844,menubar=no,toolbar=no,location=no,status=no,resizable=no',
+  )
+}
+
 export default function Landing() {
   const resetDemo = useWalletStore((s) => s.resetDemo)
 
@@ -29,9 +38,10 @@ export default function Landing() {
           las cards (todo el texto en una sola línea) e ignoran el w-full
           del contenedor — otro caso del mismo bug de overflow horizontal. */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl">
-        <Link
-          to="/member"
-          className="group rounded-[var(--radius-card)] border border-[var(--color-border)] bg-white p-8 text-left shadow-sm transition hover:shadow-md hover:border-[var(--color-brand)]"
+        <button
+          type="button"
+          onClick={openMobileWindow}
+          className="group rounded-[var(--radius-card)] border border-[var(--color-border)] bg-white p-8 text-left shadow-sm transition hover:shadow-md hover:border-[var(--color-brand)] w-full"
         >
           <p className="text-xs font-medium uppercase tracking-wide text-black/40">Vista</p>
           <h2 className="text-2xl font-semibold mt-1">Member</h2>
@@ -40,9 +50,9 @@ export default function Landing() {
             ver beneficios activos y recomprar desde el historial.
           </p>
           <span className="inline-block mt-4 text-sm font-medium text-[var(--color-brand)] group-hover:underline">
-            Entrar como member →
+            Abrir en ventana móvil →
           </span>
-        </Link>
+        </button>
 
         <Link
           to="/manager"

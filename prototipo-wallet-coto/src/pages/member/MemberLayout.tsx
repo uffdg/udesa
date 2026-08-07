@@ -19,8 +19,8 @@ export default function MemberLayout() {
   const setClienteActivo = useWalletStore((s) => s.setClienteActivo)
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden flex flex-col items-center px-3 py-8 gap-4 bg-[var(--color-paper)]">
-      <div className="w-full max-w-[390px] flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-black/50">
+    <div className="phone-shell min-h-screen w-full overflow-x-hidden flex flex-col items-center px-3 py-8 gap-4 bg-[var(--color-paper)]">
+      <div className="phone-debug w-full max-w-[390px] flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-black/50">
         <Link to="/" className="hover:underline shrink-0">
           ← volver
         </Link>

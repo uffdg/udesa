@@ -45,8 +45,9 @@ frase, no en un minuto.
 | # | Tiempo | Duración | Bloque | Fuente en el documento |
 |---|---|---|---|---|
 | 1 | 0:00–1:00 | 1:00 | Apertura + el problema | Resumen ejecutivo, 1.1–1.2 |
-| 2 | 1:00–1:45 | 0:45 | Por qué ahora / panorama competitivo | 1.3, 1.4, 8.3 |
-| 3 | 1:45–4:00 | 2:15 | La propuesta — recorrido de cliente + omnicanalidad | 2, 3.3, 4.3–4.4, 5.3, 6.2 |
+| 1b | 1:00–2:30 | 1:30 | Customer Journey — AS-IS y TO-BE | CJM (AS-IS/TO-BE) |
+| 2 | 2:30–3:15 | 0:45 | Por qué ahora / panorama competitivo | 1.3, 1.4, 8.3 |
+| 3 | 3:15–4:00 | 0:45 | La propuesta — recorrido de cliente + omnicanalidad | 2, 3.3, 4.3–4.4, 5.3, 6.2 |
 | 4 | 4:00–4:45 | 0:45 | Lo que lo hace posible: Big Data & Data Analytics + segmentación RFM | 6.1, 6.3, 7.1–7.2 |
 | 5 | 4:45–7:45 | 3:00 | Caso de ROI | 8.1–8.8 |
 | 6 | 7:45–9:15 | 1:30 | Plan de implementación y adopción | 9.1–9.6 (+ hueco 9.7) |
@@ -86,7 +87,52 @@ Guion hablado:
   del cliente en el momento de la transacción, y es la restricción de la que
   parte todo lo demás en esta presentación.
 
-### Bloque 2 — Por qué ahora / panorama competitivo (1:00–1:45) · **Voz 1** (continúa)
+### Bloque 1b — Customer Journey: AS-IS y TO-BE (1:00–2:30) · **Voz 2**
+
+**Dos slides — AS-IS + TO-BE** (uno por acto). El orador no lee las ocho
+etapas una por una: las presenta como un arco narrativo en dos actos.
+
+**Acto 1 — AS-IS (0:45)**
+
+"Sigamos al cliente desde que decide ir a COTO hasta que vuelve a comprar."
+
+- El recorrido arranca con el trigger: una oferta masiva de baja relevancia —
+  tasa de redención del 3%.
+- El primer momento crítico es la caja: entre el 35% y el 45% de los 12
+  millones de tickets mensuales se cierran sin identificar al cliente.
+- El segundo momento crítico es el reclamo: entre 8 y 15 minutos de espera,
+  USD 3,50 por ticket, el cliente tiene que repetir su problema desde cero.
+- Imagen de cierre del acto: "El flywheel de datos no puede girar porque el
+  35–45% del dato falta en cada vuelta."
+
+**Acto 2 — TO-BE (0:45)**
+
+"Con CotoPay, el mismo recorrido se convierte en un ciclo que aprende."
+
+- El trigger es personalizado: de 3% a 12% de redención proyectada — solo
+  COTO tiene dato de góndola para construir esa oferta.
+- La caja: un tap, 100% identificado, comisión propia.
+- El reclamo: resuelto en la app sin repetir el problema, USD 0,40 por ticket.
+- La recompra: el dato de esa compra alimenta la próxima oferta. El flywheel
+  gira.
+
+**Momentos de verdad a nombrar explícito:**
+- **Etapa 3 (caja)**: "El momento de mayor volumen es el momento de mayor
+  pérdida de dato en el AS-IS — y el momento de mayor captura en el TO-BE."
+- **Etapa 8 (recompra)**: "La recompra es la prueba de que el flywheel
+  funcionó al menos una vez."
+
+*(Tabla de métricas — para Q&A, no leer en el pitch):*
+
+| Dimensión | AS-IS | TO-BE |
+|---|---|---|
+| Trazabilidad en caja | 55–65% | ~100% |
+| Redención de cupones | 3% | 12% proyectado |
+| Costo reclamo/ticket | USD 3,50 | USD 0,40 |
+| Tiempo de reclamo | 8–15 min | Automático hasta $15.000 ARS |
+| Autoservicio reclamos | ~0% digital | 65% proyectado |
+
+### Bloque 2 — Por qué ahora / panorama competitivo (2:30–3:15) · **Voz 1** (continúa)
 
 **Diapositiva 3 — Tabla comparativa reducida**: solo 3 filas (COTO,
 Carrefour, Cencosud) × columna "¿billetera digital propia?" — no la tabla
@@ -108,7 +154,13 @@ Guion hablado:
   (YPF)** y **FarmaPay** — la analogía directa con lo que sería CotoPay
   para la red COTO.
 
-### Bloque 3 — La propuesta, como experiencia de cliente + omnicanalidad (1:45–4:00) · **Voz 2** (y **Voz 3** si el equipo es de 6)
+### Bloque 3 — La propuesta, como experiencia de cliente + omnicanalidad (3:15–4:00) · **Voz 2** (y **Voz 3** si el equipo es de 6)
+
+**Nota de compresión**: este bloque se redujo a 0:45 (era 2:15) porque el
+Customer Journey del Bloque 1b ya cubrió la capa experiencial del recorrido.
+En estos 0:45 se prioriza el ancla de los tres pilares + 2 a 3 puntos del
+recorrido; el resto queda disponible para Q&A o para profundizar en la
+defensa oral.
 
 **No leer la tabla de casos de uso (CU-01 a CU-06) de la sección 2.** Narrar
 como recorrido de cliente. Sugerencia de diapositivas: una por momento del
@@ -248,6 +300,56 @@ Guion hablado:
 
 ### Bloque 7 — Cierre (9:15–10:00) · **Voz 1** (cierra quien abrió)
 
+#### Evolutivos del producto — visión de escala (9:15–9:45, 0:30–0:45)
+
+Antes de la frase de cierre, 30–45 segundos de visión estratégica a mediano
+plazo — se dice rápido, como horizonte que muestra profundidad del negocio
+sin comprometer el scope del piloto. No son parte del plan financiero de
+lanzamiento: son la razón de fondo por la que el dato que se genera desde
+la Fase 1 tiene valor más allá de la comisión ahorrada. Si el pitch va
+ajustado de tiempo, comprimir a 20 segundos con solo la frase ancla; el
+colchón alternativo sin tocar Bloque 5 ni Bloque 3 es Bloque 4, el más
+comprimible del minutado.
+
+Guion hablado de los evolutivos (casi textual):
+
+> "Una vez que el flywheel de datos esté girando — y eso es lo que
+> construimos en las tres fases — dos evolutivos naturales se habilitan:
+> primero, **micropréstamos para consumo dentro de COTO**, instrumentados a
+> través de TCI, la unidad financiera del holding que ya existe. El historial
+> de compra real de CotoPay es una señal crediticia mejor que cualquier score
+> bancario para predecir si este cliente va a repagar un préstamo de consumo
+> en el mismo supermercado donde lo originó. Segundo, **hiperpersonalización
+> de la oferta a nivel de ítem**: pasar de segmentar por RFM a modelos que
+> saben exactamente qué descuento acepta este cliente, en esta categoría, en
+> esta visita — y vender esa capacidad de targeting a las marcas proveedoras
+> como retail media de alta precisión. Estos dos evolutivos no son el scope
+> del piloto, pero son la razón por la que el dato que generamos hoy vale
+> mucho más que la comisión que ahorramos."
+
+**Qué no decir**: cifras de retorno o proyecciones de estos evolutivos —
+no hay números validados. Se presenta como visión estratégica fundamentada
+en la lógica del negocio, no como plan.
+
+**Nota de contenido** (para quien lo dice y para preguntas posibles de la
+defensa oral):
+- **Micropréstamos vía TCI**: TCI (Tarjeta COTO Identificada) ya opera como
+  unidad financiera del holding — no requiere licencia bancaria nueva. El
+  dato de compra real de CotoPay es mejor señal crediticia para consumo en
+  supermercados que el score de un banco que solo ve el movimiento de dinero.
+  El crédito es captive (solo para consumo dentro de COTO): reduce riesgo de
+  incobrabilidad y aumenta el ticket. Si preguntan por regulación: TCI ya
+  opera en ese marco; escalar el volumen de originaciones requiere capacidad
+  regulatoria que se construye con datos de CotoPay, no antes.
+- **Hiperpersonalización**: pasar de segmentación RFM (Fases 1-2) a modelos
+  de ML a nivel de ítem, visita y canal. El dato de compra ítem a ítem es el
+  activo que ningún competidor de pagos (MP, MODO, Ualá) puede tener — solo
+  COTO lo genera. La Fase 3 del roadmap ya menciona retail media; este
+  evolutivo es la versión a escala de esa palanca sobre un volumen mayor de
+  datos históricos acumulados.
+
+#### Cierre (9:45–10:00)
+
 Guion hablado:
 - COTO no necesita entrar al retail digital: ya lo lidera. Lo que
   proponemos es cerrar la brecha de datos que hoy impide que ese liderazgo
@@ -267,7 +369,7 @@ Guion hablado:
 | Voz | Bloques a cargo | Si el equipo es de 4 |
 |---|---|---|
 | Voz 1 | Bloque 1, 2 y 7 (abre y cierra) | igual |
-| Voz 2 | Bloque 3 (experiencia de cliente) | absorbe también Bloque 4 |
+| Voz 2 | Bloque 1b (Customer Journey) y Bloque 3 (propuesta) | absorbe también Bloque 4 |
 | Voz 3 | Bloque 4 (segmentación + Big Data) | se funde con Voz 2 |
 | Voz 4 | Bloque 5a–5c (ROI: costo/por qué ahora/rango) | absorbe también 5d–5e |
 | Voz 5 | Bloque 5d–5e (riesgo + des-arriesgamiento) | se funde con Voz 4 |
