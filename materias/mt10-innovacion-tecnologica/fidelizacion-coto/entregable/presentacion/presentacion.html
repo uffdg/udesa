@@ -188,6 +188,11 @@ button { font-family: var(--font-1); }
 }
 #s-cierre > * { position: relative; z-index: 1; }
 
+/* ---------- flujo del prototipo: mockups recortados al borde real ---------- */
+.mockup-shot { width: min(168px, 17vw); flex-shrink: 0; text-align: center; }
+.mockup-shot img { width: 100%; height: auto; display: block; border-radius: 18px; overflow: hidden; box-shadow: 0 14px 32px -14px rgba(0,0,0,.32); }
+.mockup-shot p { font-size: 12.5px; color: var(--muted); margin: .6em 0 0 0; }
+
 .kicker {
   font-size: 13px;
   font-weight: var(--font-bold);
@@ -537,7 +542,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       <p style="font-size:13px; color:#9a8fc9; margin-top:2em; letter-spacing:.02em;">MT10 — Innovación Tecnológica · Presentación a CFO / CEO / CMO · 10 minutos</p>
     </div>
     <div style="flex-shrink:0; width:min(270px,32vw); border-radius:26px; overflow:hidden; box-shadow:0 30px 70px -20px rgba(0,0,0,.55);">
-      <img src="../../../../../prototipo-wallet-coto/public/wallet-home.png" alt="Home del prototipo CotoPay: saldo, alias/CVU, acciones rápidas y beneficios" style="width:100%; height:auto; display:block;">
+      <img src="../../../../../prototipo-wallet-coto/public/01-wallet-home.png" alt="Home del prototipo CotoPay: saldo, alias/CVU, acciones rápidas y beneficios" style="width:100%; height:auto; display:block;">
     </div>
   </div>
   <p style="font-size:12px;color:#afafaf;margin-top:1.8em;">Mariana Fiorillo &nbsp;·&nbsp; Andres Franco &nbsp;·&nbsp; Diego Pouton &nbsp;·&nbsp; Luciano Suarez &nbsp;·&nbsp; Agustin Trucco &nbsp;·&nbsp; Emma Vignoles</p>
@@ -568,7 +573,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       </ul>
     </div>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · El problema</span><span>2 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · El problema</span><span>2 / 25</span></div>
 </section>
 
 <!-- 3. CUSTOMER JOURNEY — AS-IS -->
@@ -633,7 +638,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
     </div>
   </div>
   <p style="font-size:12px; color:var(--muted); margin-top:.1em;">35-45% de los 12M de transacciones mensuales quedan anónimas — etapas <strong>03</strong> y <strong>04</strong> son las fricciones más costosas.</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Customer Journey</span><span>3 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Customer Journey</span><span>3 / 25</span></div>
 </section>
 
 <!-- 4. CUSTOMER JOURNEY — TO-BE -->
@@ -705,7 +710,36 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
     </div>
   </div>
   <p style="color:rgba(255,255,255,0.5); font-size:12px; margin-top:.1em;">Cada transacción CotoPay es un tick del flywheel — dato capturado → mejor oferta → más lealtad</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Customer Journey</span><span>4 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Customer Journey</span><span>4 / 25</span></div>
+</section>
+
+<!-- 4b. FLUJO DEL PROTOTIPO -->
+<section class="slide" id="s-flujo-mockups" data-group="journey">
+  <div class="kicker">Customer Journey · El prototipo</div>
+  <h1>Así se ve en la app: las pantallas del flujo</h1>
+  <div style="display:flex; gap:1.3em; margin-top:1.3em; flex-wrap:wrap; justify-content:center;">
+    <div class="mockup-shot">
+      <img src="../../../../../prototipo-wallet-coto/public/01-wallet-home-crop.png" alt="Home">
+      <p>Home</p>
+    </div>
+    <div class="mockup-shot">
+      <img src="../../../../../prototipo-wallet-coto/public/02-wallet-transacciones-crop.png" alt="Transacciones">
+      <p>Transacciones</p>
+    </div>
+    <div class="mockup-shot">
+      <img src="../../../../../prototipo-wallet-coto/public/03-wallet-beneficios-crop.png" alt="Beneficios">
+      <p>Beneficios</p>
+    </div>
+    <div class="mockup-shot">
+      <img src="../../../../../prototipo-wallet-coto/public/04-wallet-actividad-crop.png" alt="Actividad">
+      <p>Actividad</p>
+    </div>
+    <div class="mockup-shot">
+      <img src="../../../../../prototipo-wallet-coto/public/05-wallet-perfil-crop.png" alt="Perfil">
+      <p>Perfil</p>
+    </div>
+  </div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Customer Journey</span><span>5 / 25</span></div>
 </section>
 
 <!-- 5. PANORAMA COMPETITIVO -->
@@ -743,7 +777,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       <p style="font-size:13px;margin:0;color:var(--muted);">proyección 2026, siguiendo la curva de adopción actual de pagos QR en Argentina</p>
     </div>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Panorama competitivo</span><span>5 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Panorama competitivo</span><span>6 / 25</span></div>
 </section>
 
 <!-- 4. COTOPAY: INTRODUCCION A LA PROPUESTA -->
@@ -773,7 +807,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
     El diferenciador: la fidelización no es un add-on del medio de pago — es su razón de ser
   </div>
   <p class="muted" style="font-size:13px; margin-top:.8em;">Los siguientes slides recorren los 5 puntos de contacto del cliente donde la plataforma actúa.</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: CotoPay</span><span>6 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: CotoPay</span><span>7 / 25</span></div>
 </section>
 
 <!-- 5. En caja -->
@@ -798,7 +832,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       <li>Es también el punto de contacto de mayor volumen (12M/mes) para migrar pagos hacia TCI.</li>
     </ul>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>7 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>8 / 25</span></div>
 </section>
 
 <!-- 5. Reclamo posventa -->
@@ -823,7 +857,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       <li>El cliente no repite su reclamo desde cero.</li>
     </ul>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>8 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>9 / 25</span></div>
 </section>
 
 <!-- 6. Campañas -->
@@ -848,7 +882,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       <li>Un gerente de marketing aprueba el lote antes de salir — velocidad con supervisión, no autonomía plena.</li>
     </ul>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>9 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>10 / 25</span></div>
 </section>
 
 <!-- 7. Coto Digital -->
@@ -873,7 +907,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       <li>Reduce cancelaciones de pedidos online en aproximadamente 25%.</li>
     </ul>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>10 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>11 / 25</span></div>
 </section>
 
 <!-- 8. Redes sociales -->
@@ -895,7 +929,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   <div class="card-accent-light" style="max-width:55em; margin-top:1em;">
     <em>No le asignamos un número de retorno propio a este componente: todavía faltan datos públicos (volumen real de reclamos por redes, integración interna existente) para hacerlo con responsabilidad.</em>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>11 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · La propuesta: experiencia de cliente</span><span>12 / 25</span></div>
 </section>
 
 <!-- 9. LA PLATAFORMA -->
@@ -917,7 +951,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
     <li>No se lanza de una vez a toda la base — arranca en un piloto de 15.000 usuarios y escala en dos pasos más.</li>
     <li>COTO tiene procesamiento de tarjetas propio (TCI) — una capacidad técnica que la mayoría de los competidores no posee y que habilita CotoPay sin depender de un banco tercero.</li>
   </ul>
-  <div class="footer"><span>COTO — Plataforma de fidelización · La plataforma que lo hace posible</span><span>12 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · La plataforma que lo hace posible</span><span>13 / 25</span></div>
 </section>
 
 <!-- 13. SEGMENTACION RFM -->
@@ -959,7 +993,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
     </div>
   </div>
   <p style="font-size:13px; color:var(--muted); font-style:italic; margin-top:1em;">La segmentación se recalcula con cada nueva transacción — el perfil del cliente se actualiza en tiempo real, no en batch mensual</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Segmentación RFM</span><span>13 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Segmentación RFM</span><span>14 / 25</span></div>
 </section>
 
 <!-- 14. GENERACION DE DEMANDA — FLYWHEEL -->
@@ -1011,7 +1045,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
     </div>
   </div>
   <p style="font-size:14.5px; color:var(--dark-muted); font-style:italic; margin-top:1em;">A diferencia de MP o MODO, este ciclo solo puede existir con el dato de góndola — el activo exclusivo de COTO</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Generación de demanda</span><span>14 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Generación de demanda</span><span>15 / 25</span></div>
 </section>
 
 <!-- 15. POR QUE HACERLO -->
@@ -1042,7 +1076,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       </ul>
     </div>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI</span><span>15 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI</span><span>16 / 25</span></div>
 </section>
 
 <!-- 16. RANGO DE ESCENARIOS -->
@@ -1080,7 +1114,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       <p style="font-size:13px;color:var(--muted);margin:0;">Referencia a 24 meses — ver análisis de sensibilidad en el siguiente slide para rango conservador / base / optimista.</p>
     </div>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI</span><span>16 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI</span><span>17 / 25</span></div>
 </section>
 
 <!-- 17. SENSIBILIDAD -->
@@ -1113,7 +1147,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       <p style="font-size:14px; line-height:1.5;">No es tecnológico ni de costo de IA — ambos pesan poco en la sensibilidad.<br><br>Depende del tamaño real del padrón de Comunidad COTO, hoy sin validar por la compañía.</p>
     </div>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI</span><span>17 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI</span><span>18 / 25</span></div>
 </section>
 
 <!-- 18. FASE 0 -->
@@ -1144,7 +1178,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
     </div>
   </div>
   <p style="font-style:italic; margin-top:1.1em;">Bajo costo, alta información — diseñados para reemplazar los supuestos más importantes de este caso por evidencia propia de COTO.</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI — Fase 0</span><span>18 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI — Fase 0</span><span>19 / 25</span></div>
 </section>
 
 <!-- 19. IMPLEMENTACION -->
@@ -1183,7 +1217,7 @@ CU-01 + CU-04</div>
   <div class="card-accent-light" style="max-width:65em;">
     <em>Con transparencia: todavía no está definido el dueño organizacional de cada rediseño de incentivo ni el cronograma exacto — es el siguiente paso de trabajo si el directorio da luz verde a la Fase 0.</em>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Plan de implementación y adopción</span><span>19 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Plan de implementación y adopción</span><span>20 / 25</span></div>
 </section>
 
 <!-- 20. EVOLUTIVOS DEL PRODUCTO -->
@@ -1215,7 +1249,7 @@ CU-01 + CU-04</div>
     </div>
   </div>
   <p style="font-size:13px; color:var(--muted); font-style:italic; margin-top:1.2em;">Estos evolutivos no son el scope del piloto — son la razón por la que el dato que generamos hoy vale mucho más que la comisión que ahorramos</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Evolutivos del producto</span><span>20 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Evolutivos del producto</span><span>21 / 25</span></div>
 </section>
 
 <!-- 21. RIESGOS -->
@@ -1242,7 +1276,7 @@ CU-01 + CU-04</div>
   <div class="card-risk-light" style="max-width:65em; margin-top:1.2em;">
     <strong>Mitigación base:</strong> la Fase 0 de des-arriesgamiento reduce la exposición antes de escalar. Los tres riesgos son de monitoreo continuo — no se resuelven una vez, se gestionan en cada gate de decisión.
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Riesgos</span><span>21 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Riesgos</span><span>22 / 25</span></div>
 </section>
 
 <!-- 17. CIERRE -->
@@ -1256,7 +1290,7 @@ CU-01 + CU-04</div>
       <p style="font-size:16.5px; line-height:1.55; margin-top:.4em;">Autorizar la Fase 0: tres experimentos de bajo costo y alta información, diseñados para reemplazar los supuestos más importantes de este caso —empezando por el padrón real de Comunidad COTO— por evidencia propia de COTO.</p>
     </div>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Cierre</span><span>22 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Cierre</span><span>23 / 25</span></div>
 </section>
 
 <!-- 16. ANEXO COMPETIDORES -->
@@ -1280,7 +1314,7 @@ CU-01 + CU-04</div>
       </tbody>
     </table>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Anexo — competidores</span><span>23 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Anexo — competidores</span><span>24 / 25</span></div>
 </section>
 
 <!-- 17. ANEXO CASOS DE USO -->
@@ -1305,7 +1339,7 @@ CU-01 + CU-04</div>
     </table>
   </div>
   <p class="muted" style="font-style:italic; margin-top:.9em;">Escala de autonomía 0-5 según el dossier de factibilidad; ningún caso de uso alcanza Nivel 5 (autonomía total).</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Anexo — casos de uso</span><span>24 / 24</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Anexo — casos de uso</span><span>25 / 25</span></div>
 </section>
 
 </div>
