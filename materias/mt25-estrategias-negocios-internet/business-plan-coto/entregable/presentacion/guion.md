@@ -46,7 +46,7 @@ son la misma persona, fusionar en un bloque A+F y reasignar.
 |---|---|---|---|
 | 1 | Nombre de la empresa | 0:20 | 0:20 |
 | 2 | Equipo | 0:20 | 0:40 |
-| 3 | Propósito de la empresa | 0:25 | 1:05 |
+| 3 | Propósito de COMUNIDAD COTO | 0:25 | 1:05 |
 | 4 | **Problema** | **2:30** | 3:35 |
 | 5 | Solución | 2:00 | 5:35 |
 | 6 | Producto | 1:20 | 6:55 |
@@ -138,21 +138,25 @@ record fintech, y esa pelea ya la tienen ganada MP y Ualá. Compite como
 **la wallet que mejor conoce el historial de compra real de supermercado**
 del cliente.
 
-**Los tres pilares en orden, decirlos explícito** (60s):
-1. **Fidelización**: CotoPay construye la relación directa y continua de
-   COTO con su cliente — sin depender de que un tercero la intermedie.
-2. **Beneficios personalizados**: según historial real de compra
+**Los cuatro pilares en orden, decirlos explícito** (60s):
+1. **Beneficios personalizados**: según historial real de compra
    (categoría, frecuencia, ticket) — no un % genérico por rubro como
    Cuenta DNI, ni dependiente de Meli+ como MP.
-3. **Medio de pago embebido**: la fidelización vive dentro del mismo
-   instrumento de pago, sin tarjeta aparte — ningún competidor integra
-   "beneficio" y "pago" en el mismo QR con reglas fijas y visibles.
+2. **Fidelización dentro del pago**: vive dentro del mismo instrumento de
+   pago, sin tarjeta aparte — ningún competidor integra "beneficio" y
+   "pago" en el mismo QR con reglas fijas y visibles.
+3. **Coto Digital**: la wallet amplía la Comunidad COTO al canal
+   e-commerce, no solo a la sucursal física.
+4. **Nuevos servicios financieros**: tarjetas, micropréstamos, cuenta en
+   dólares, cuenta remunerada — visión de largo plazo, no del piloto (se
+   retoma en Evolutivos, después del Anexo).
 
 **Límite honesto, decirlo sin que lo pregunten** (30s, §5): esta propuesta
 no resuelve por qué un cliente dejaría de usar MP o MODO — resuelve por
 qué **sumaría** la wallet COTO, apostando a ganar share of wallet con el
-tiempo. No hay inversión, crédito, cuenta remunerada ni IA generativa en
-esta fase — la personalización es segmentación/analítica sobre historial
+tiempo. El pilar 4 (servicios financieros) es visión, no scope del piloto:
+la Fase 0-1 no incluye inversión, crédito, cuenta remunerada ni IA
+generativa — la personalización es segmentación/analítica sobre historial
 de compra, no un modelo de IA sofisticado.
 
 ## 6. Producto (1:20)
@@ -470,9 +474,6 @@ sucursal física?**
 > sucursal. El hito de salida del piloto (mes 6) es justamente medir tasa
 > de activación/repetición antes de escalar — todavía no fijamos el umbral
 > mínimo porque no hay benchmark citado para hacerlo hoy."
-
----
-
 
 ---
 

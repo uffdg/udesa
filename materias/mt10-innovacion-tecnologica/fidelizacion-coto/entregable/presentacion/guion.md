@@ -89,8 +89,9 @@ Guion hablado:
 
 ### Bloque 1b — Customer Journey: AS-IS y TO-BE (1:00–2:30) · **Voz 2**
 
-**Dos slides — AS-IS + TO-BE** (uno por acto). El orador no lee las ocho
-etapas una por una: las presenta como un arco narrativo en dos actos.
+**Dos slides — AS-IS + TO-BE** (ocho etapas en AS-IS, nueve en TO-BE con el
+paso 0 de bienvenida). El orador no las lee una por una: las presenta como
+un arco narrativo en dos actos.
 
 **Acto 1 — AS-IS (0:45)**
 
