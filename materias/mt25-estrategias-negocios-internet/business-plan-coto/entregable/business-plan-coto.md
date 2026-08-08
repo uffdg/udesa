@@ -8,7 +8,7 @@ fuente_de_contenido: materias/mt25-estrategias-negocios-internet/business-plan-c
   materias/mt25-estrategias-negocios-internet/business-plan-coto/research/
 ---
 
-# Wallet COTO — Business Plan (respaldo del pitch a inversores)
+# CotoPay — Business Plan (respaldo del pitch a inversores)
 
 > **Sobre este documento**: es el respaldo escrito del pitch de 15 minutos
 > (+10 de preguntas) que evalúa la consigna, no un informe académico
@@ -37,29 +37,26 @@ fuente_de_contenido: materias/mt25-estrategias-negocios-internet/business-plan-c
 
 ## 1. Nombre de la empresa
 
-**Wallet COTO** (nombre de trabajo). No hay research ni diseño de marca/
-naming propio en `plans/` — el nombre usado de forma consistente en los 5
-planes es descriptivo ("wallet propia de COTO"), no una marca definida.
-**Gap señalado, no resuelto acá**: el naming final (¿"COTO Pay", extensión
-de línea de "Coto Digital", u otro?) es una decisión de branding que el
-equipo debe tomar antes de la presentación; no se inventa un nombre de
-fantasía en este documento.
+**CotoPay** — naming definitivo, cierra el gap de branding que los 5 planes
+de `plans/` dejaban abierto (ahí el nombre usado era descriptivo, "wallet
+propia de COTO", no una marca). El resto del documento usa "CotoPay" como
+nombre propio de la propuesta y sigue usando "wallet COTO" en minúscula
+como término descriptivo genérico donde corresponde (ej. "la wallet COTO no
+compite como banco digital más chico"), consistente con el resto de los
+materiales del pitch (`entregable/presentacion/`).
 
 ## 2. Equipo
 
-**Gap señalado, no resuelto acá**: no existe en `research/` ni en `plans/`
-información sobre la conformación real del equipo (integrantes, background,
-foto) — la consigna de este TP, a diferencia de la de MT10, tampoco fija
-tamaño de equipo ni roles. Esta sección debe completarse con los datos
-reales de los integrantes antes de la entrega; no se inventan nombres ni
-backgrounds.
+Mariana Fiorillo, Andres Franco, Diego Pouton, Luciano Suarez, Agustin
+Trucco, Emma Vignoles. No hay research ni plan con background individual
+de cada integrante — esta sección lista los nombres reales del equipo, sin
+inventar CVs ni roles que no estén confirmados.
 
-## 3. Propósito de la empresa
+## 3. Propósito de COMUNIDAD COTO
 
-Construir la relación directa de pago, datos y fidelización que hoy COTO
-**no tiene** con sus propios clientes — porque hoy esa relación la
-construyen Mercado Pago y MODO, no COTO, cada vez que un cliente paga
-digital en una sucursal COTO.
+"Aumentar los miembros de la comunidad prestando nuevos servicios,
+construir una relación directa con los clientes que supere la venta en la
+góndola."
 
 ## 4. Problema
 
@@ -76,11 +73,6 @@ Coto y Día **duplicaron el volumen de MODO en supermercados** durante
 descuentos genéricos por rubro razonablemente aplican en cualquier
 sucursal adherida.
 
-Bajo el marco de la Clase 1 de MT25 (caso Movistar —
-digitización/digitalización/transformación digital), esto es
-**digitalización** de un proceso existente (cobrar): COTO ya lo hizo. No
-es transformación digital.
-
 ### 4.2 El problema real: qué pierde COTO al procesar ese pago vía terceros
 
 1. **Datos de primera parte incompletos**: cuando el cliente paga con QR
@@ -90,8 +82,9 @@ es transformación digital.
 2. **Fidelización cedida a terceros**: los beneficios que el cliente ve en
    la caja de COTO están diseñados, calendarizados y con la marca de un
    tercero — el cliente asocia el beneficio a "Mercado Pago" o "MODO", no a
-   COTO, aunque el gasto ocurra en un local COTO.
-3. **Cero control sobre el calendario promocional del propio checkout**:
+   COTO, aunque el gasto ocurra en un local COTO y la promoción le aporta
+   100% COTO.
+3. **Flexibilidad sobre el calendario promocional del propio checkout**:
    las promos de MP y MODO se deciden y timean externamente; COTO no puede
    alinearlas con su propia gestión de categorías, stock o márgenes.
 4. **Dependencia de reglas ajenas**: cualquier cambio de términos, tasas o
