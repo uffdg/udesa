@@ -428,7 +428,7 @@ tbody td { padding: .5em .8em; border-top: 1px solid var(--border-gray); }
 tbody tr:nth-child(even) { background: var(--bg-primary); }
 
 /* ---------- step-strip: patrón reusado para el recorrido de cliente (4-8)
-   y para los 6 pasos del caso de ROI (16-21). Ver
+   y para los 4 pasos del caso de ROI (16-19). Ver
    design-system/components/nav-presentacion.md ---------- */
 .step-strip { display: flex; gap: 10px; margin-bottom: 1.4em; flex-wrap: wrap; }
 .step-chip {
@@ -1257,12 +1257,10 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   <div class="step-strip">
     <a class="step-chip active" data-target="s-roi-porque">1. Por qué / ahora</a>
     <a class="step-chip" data-target="s-roi-rango">2. Rango</a>
-    <a class="step-chip" data-target="s-roi-economia">3. Economía</a>
-    <a class="step-chip" data-target="s-roi-cac-ltv">4. CAC / LTV</a>
-    <a class="step-chip" data-target="s-roi-sensibilidad">5. Sensibilidad</a>
-    <a class="step-chip" data-target="s-roi-fase0">6. Fase 0</a>
+    <a class="step-chip" data-target="s-roi-sensibilidad">3. Sensibilidad</a>
+    <a class="step-chip" data-target="s-roi-fase0">4. Fase 0</a>
   </div>
-  <div class="kicker muted-kicker">Caso de ROI · 1 de 6</div>
+  <div class="kicker muted-kicker">Caso de ROI · 1 de 4</div>
   <h1>Por qué es necesario hacerlo, por qué ahora</h1>
   <div class="two-col" style="margin-top:.5em;">
     <div class="card">
@@ -1290,12 +1288,10 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   <div class="step-strip">
     <a class="step-chip" data-target="s-roi-porque">1. Por qué / ahora</a>
     <a class="step-chip active" data-target="s-roi-rango">2. Rango</a>
-    <a class="step-chip" data-target="s-roi-economia">3. Economía</a>
-    <a class="step-chip" data-target="s-roi-cac-ltv">4. CAC / LTV</a>
-    <a class="step-chip" data-target="s-roi-sensibilidad">5. Sensibilidad</a>
-    <a class="step-chip" data-target="s-roi-fase0">6. Fase 0</a>
+    <a class="step-chip" data-target="s-roi-sensibilidad">3. Sensibilidad</a>
+    <a class="step-chip" data-target="s-roi-fase0">4. Fase 0</a>
   </div>
-  <div class="kicker muted-kicker">Caso de ROI · 2 de 6</div>
+  <div class="kicker muted-kicker">Caso de ROI · 2 de 4</div>
   <h1>Trabajamos con un rango, no con un único número optimista</h1>
   <div class="table-wrap" style="margin-top:.6em;">
     <table>
@@ -1325,17 +1321,73 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI</span><span>17 / 27</span></div>
 </section>
 
-<!-- 17. ECONOMIA DEL PROYECTO -->
-<section class="slide" id="s-roi-economia" data-group="roi">
+<!-- 18. SENSIBILIDAD -->
+<section class="slide" id="s-roi-sensibilidad" data-group="roi">
   <div class="step-strip">
     <a class="step-chip" data-target="s-roi-porque">1. Por qué / ahora</a>
     <a class="step-chip" data-target="s-roi-rango">2. Rango</a>
-    <a class="step-chip active" data-target="s-roi-economia">3. Economía</a>
-    <a class="step-chip" data-target="s-roi-cac-ltv">4. CAC / LTV</a>
-    <a class="step-chip" data-target="s-roi-sensibilidad">5. Sensibilidad</a>
-    <a class="step-chip" data-target="s-roi-fase0">6. Fase 0</a>
+    <a class="step-chip active" data-target="s-roi-sensibilidad">3. Sensibilidad</a>
+    <a class="step-chip" data-target="s-roi-fase0">4. Fase 0</a>
   </div>
-  <div class="kicker muted-kicker">Caso de ROI · 3 de 6</div>
+  <div class="kicker muted-kicker">Caso de ROI · 3 de 4</div>
+  <h1>Incluso en el escenario más adverso, el VAN se mantiene positivo</h1>
+  <div style="display:flex; gap:1.6em; margin-top:.6em; align-items:stretch; flex-wrap:wrap;">
+    <div class="table-wrap" style="flex:1.6; min-width:340px;">
+      <table>
+        <thead><tr><th>Variación</th><th>VAN (USD)</th><th>ROI</th><th>Riesgo</th></tr></thead>
+        <tbody>
+          <tr><td>Caso base</td><td>$5.241.800</td><td>1.505,7%</td><td>Referencia</td></tr>
+          <tr><td>Costo IA/Cloud +50%</td><td>$4.850.000</td><td>1.380,0%</td><td>Bajo</td></tr>
+          <tr><td>Caída de adopción −50% MAU</td><td>$2.150.000</td><td>620,0%</td><td>Medio</td></tr>
+          <tr><td>Uplift de frecuencia −50%</td><td>$3.100.000</td><td>890,0%</td><td>Medio</td></tr>
+          <tr><td>Devaluación ARS +50%</td><td>$3.650.000</td><td>1.050,0%</td><td>Alto</td></tr>
+          <tr><td>Falla integración POS (retraso 3m)</td><td>$4.200.000</td><td>1.200,0%</td><td>Alto</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-risk-light" style="flex:1; min-width:240px;">
+      <div class="kicker" style="color:var(--color-red);">Riesgo principal</div>
+      <div style="font-size:30px; font-weight:var(--font-bold); color:var(--color-red); margin:.2em 0 .5em 0;">Adopción</div>
+      <p style="font-size:14px; line-height:1.5;">No es tecnológico ni de costo de IA — ambos pesan poco en la sensibilidad.<br><br>Depende del tamaño real del padrón de Comunidad COTO, hoy sin validar por la compañía.</p>
+    </div>
+  </div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI</span><span>18 / 27</span></div>
+</section>
+
+<!-- 19. FASE 0 -->
+<section class="slide" id="s-roi-fase0" data-group="roi">
+  <div class="step-strip">
+    <a class="step-chip" data-target="s-roi-porque">1. Por qué / ahora</a>
+    <a class="step-chip" data-target="s-roi-rango">2. Rango</a>
+    <a class="step-chip" data-target="s-roi-sensibilidad">3. Sensibilidad</a>
+    <a class="step-chip active" data-target="s-roi-fase0">4. Fase 0</a>
+  </div>
+  <div class="kicker muted-kicker">Caso de ROI · 4 de 4</div>
+  <h1>No pedimos el CAPEX completo hoy. Pedimos autorizar una Fase 0.</h1>
+  <div class="exp-row" style="margin-top:.6em;">
+    <div class="exp-card">
+      <div class="exp-num">1</div>
+      <div class="exp-title">PoC de latencia POS-Cloud</div>
+      <div class="exp-desc">Mide si una API agéntica responde dentro de los &lt;800 ms que requiere la recomendación en caja, desde un terminal POS real.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-num">2</div>
+      <div class="exp-title">Piloto de WhatsApp con 5.000 socios</div>
+      <div class="exp-desc">Mide tasa de conversión e incremento de ticket real, para reemplazar el proxy de uplift por evidencia propia de COTO.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-num">3</div>
+      <div class="exp-title">Benchmarking de caché de prompts</div>
+      <div class="exp-desc">Mide el % real de reutilización de contexto en RAG sobre el maestro de SKUs, para validar la estructura de costo de IA.</div>
+    </div>
+  </div>
+  <p style="font-style:italic; margin-top:1.1em;">Bajo costo, alta información — diseñados para reemplazar los supuestos más importantes de este caso por evidencia propia de COTO.</p>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI — Fase 0</span><span>19 / 27</span></div>
+</section>
+
+<!-- 20. ECONOMIA DEL PROYECTO -->
+<section class="slide" id="s-roi-economia" data-group="roi">
+  <div class="kicker muted-kicker">Después del ROI · Economía del proyecto</div>
   <h1>COTO App · Economía del proyecto</h1>
   <p style="font-size:18px; margin:.2em 0 0;">Resumen ejecutivo · 24 meses · USD</p>
   <div class="metric-grid">
@@ -1377,20 +1429,12 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
       </ul>
     </div>
   </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI — Economía del proyecto</span><span>18 / 27</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · Economía del proyecto</span><span>20 / 27</span></div>
 </section>
 
-<!-- 18. CAC Y LTV -->
+<!-- 21. CAC Y LTV -->
 <section class="slide" id="s-roi-cac-ltv" data-group="roi">
-  <div class="step-strip">
-    <a class="step-chip" data-target="s-roi-porque">1. Por qué / ahora</a>
-    <a class="step-chip" data-target="s-roi-rango">2. Rango</a>
-    <a class="step-chip" data-target="s-roi-economia">3. Economía</a>
-    <a class="step-chip active" data-target="s-roi-cac-ltv">4. CAC / LTV</a>
-    <a class="step-chip" data-target="s-roi-sensibilidad">5. Sensibilidad</a>
-    <a class="step-chip" data-target="s-roi-fase0">6. Fase 0</a>
-  </div>
-  <div class="kicker muted-kicker">Caso de ROI · 4 de 6</div>
+  <div class="kicker muted-kicker">Después del ROI · Unit economics</div>
   <h1>CAC &amp; LTV · Cálculo sobre los supuestos del modelo</h1>
   <p style="font-size:18px; margin:.2em 0 0;">Cálculo estimado con base en Mes 7 y margen incremental del 20%</p>
   <div class="metric-grid">
@@ -1436,78 +1480,10 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
     </div>
   </div>
   <p class="finance-footnote">Nota: el CAC y LTV no aparecen calculados explícitamente en el documento; son una estimación derivada de sus supuestos. Se asume que las ventas incrementales del Mes 7 equivalen a clientes nuevos y que el cliente mantiene 2 compras mensuales durante 24 meses.</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI — CAC / LTV</span><span>19 / 27</span></div>
+  <div class="footer"><span>COTO — Plataforma de fidelización · CAC / LTV</span><span>21 / 27</span></div>
 </section>
 
-<!-- 19. SENSIBILIDAD -->
-<section class="slide" id="s-roi-sensibilidad" data-group="roi">
-  <div class="step-strip">
-    <a class="step-chip" data-target="s-roi-porque">1. Por qué / ahora</a>
-    <a class="step-chip" data-target="s-roi-rango">2. Rango</a>
-    <a class="step-chip" data-target="s-roi-economia">3. Economía</a>
-    <a class="step-chip" data-target="s-roi-cac-ltv">4. CAC / LTV</a>
-    <a class="step-chip active" data-target="s-roi-sensibilidad">5. Sensibilidad</a>
-    <a class="step-chip" data-target="s-roi-fase0">6. Fase 0</a>
-  </div>
-  <div class="kicker muted-kicker">Caso de ROI · 5 de 6</div>
-  <h1>Incluso en el escenario más adverso, el VAN se mantiene positivo</h1>
-  <div style="display:flex; gap:1.6em; margin-top:.6em; align-items:stretch; flex-wrap:wrap;">
-    <div class="table-wrap" style="flex:1.6; min-width:340px;">
-      <table>
-        <thead><tr><th>Variación</th><th>VAN (USD)</th><th>ROI</th><th>Riesgo</th></tr></thead>
-        <tbody>
-          <tr><td>Caso base</td><td>$5.241.800</td><td>1.505,7%</td><td>Referencia</td></tr>
-          <tr><td>Costo IA/Cloud +50%</td><td>$4.850.000</td><td>1.380,0%</td><td>Bajo</td></tr>
-          <tr><td>Caída de adopción −50% MAU</td><td>$2.150.000</td><td>620,0%</td><td>Medio</td></tr>
-          <tr><td>Uplift de frecuencia −50%</td><td>$3.100.000</td><td>890,0%</td><td>Medio</td></tr>
-          <tr><td>Devaluación ARS +50%</td><td>$3.650.000</td><td>1.050,0%</td><td>Alto</td></tr>
-          <tr><td>Falla integración POS (retraso 3m)</td><td>$4.200.000</td><td>1.200,0%</td><td>Alto</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="card-risk-light" style="flex:1; min-width:240px;">
-      <div class="kicker" style="color:var(--color-red);">Riesgo principal</div>
-      <div style="font-size:30px; font-weight:var(--font-bold); color:var(--color-red); margin:.2em 0 .5em 0;">Adopción</div>
-      <p style="font-size:14px; line-height:1.5;">No es tecnológico ni de costo de IA — ambos pesan poco en la sensibilidad.<br><br>Depende del tamaño real del padrón de Comunidad COTO, hoy sin validar por la compañía.</p>
-    </div>
-  </div>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI</span><span>20 / 27</span></div>
-</section>
-
-<!-- 20. FASE 0 -->
-<section class="slide" id="s-roi-fase0" data-group="roi">
-  <div class="step-strip">
-    <a class="step-chip" data-target="s-roi-porque">1. Por qué / ahora</a>
-    <a class="step-chip" data-target="s-roi-rango">2. Rango</a>
-    <a class="step-chip" data-target="s-roi-economia">3. Economía</a>
-    <a class="step-chip" data-target="s-roi-cac-ltv">4. CAC / LTV</a>
-    <a class="step-chip" data-target="s-roi-sensibilidad">5. Sensibilidad</a>
-    <a class="step-chip active" data-target="s-roi-fase0">6. Fase 0</a>
-  </div>
-  <div class="kicker muted-kicker">Caso de ROI · 6 de 6</div>
-  <h1>No pedimos el CAPEX completo hoy. Pedimos autorizar una Fase 0.</h1>
-  <div class="exp-row" style="margin-top:.6em;">
-    <div class="exp-card">
-      <div class="exp-num">1</div>
-      <div class="exp-title">PoC de latencia POS-Cloud</div>
-      <div class="exp-desc">Mide si una API agéntica responde dentro de los &lt;800 ms que requiere la recomendación en caja, desde un terminal POS real.</div>
-    </div>
-    <div class="exp-card">
-      <div class="exp-num">2</div>
-      <div class="exp-title">Piloto de WhatsApp con 5.000 socios</div>
-      <div class="exp-desc">Mide tasa de conversión e incremento de ticket real, para reemplazar el proxy de uplift por evidencia propia de COTO.</div>
-    </div>
-    <div class="exp-card">
-      <div class="exp-num">3</div>
-      <div class="exp-title">Benchmarking de caché de prompts</div>
-      <div class="exp-desc">Mide el % real de reutilización de contexto en RAG sobre el maestro de SKUs, para validar la estructura de costo de IA.</div>
-    </div>
-  </div>
-  <p style="font-style:italic; margin-top:1.1em;">Bajo costo, alta información — diseñados para reemplazar los supuestos más importantes de este caso por evidencia propia de COTO.</p>
-  <div class="footer"><span>COTO — Plataforma de fidelización · Caso de ROI — Fase 0</span><span>21 / 27</span></div>
-</section>
-
-<!-- 19. IMPLEMENTACION -->
+<!-- 22. IMPLEMENTACION -->
 <section class="slide" id="s-implementacion" data-group="implementacion">
   <div class="kicker">Plan de implementación</div>
   <h1>Tres fases con gates de decisión — no un lanzamiento único</h1>
