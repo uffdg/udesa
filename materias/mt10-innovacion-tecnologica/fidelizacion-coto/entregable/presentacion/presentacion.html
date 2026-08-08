@@ -236,6 +236,8 @@ ul.bullets.risk li::before { color: var(--color-red); }
 }
 .stat-big.accent { color: var(--color-awards); }
 .stat-caption { font-size: 16px; color: var(--muted); max-width: 32em; }
+[data-group="propuesta"] .stat-caption { font-size: 19px; max-width: 34em; }
+[data-group="propuesta"] ul.bullets li { font-size: 19px; line-height: 1.5; margin-bottom: .85em; }
 
 /* ---------- tabla ---------- */
 .table-wrap {
@@ -714,20 +716,20 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   <div style="display:flex; gap:1.2em; margin-top:1em; flex-wrap:wrap; align-items:stretch;">
     <div class="card" style="flex:1; min-width:200px; border-top:3px solid var(--color-awards);">
       <div class="kicker">1 — Fidelización</div>
-      <div style="font-size:22px; font-weight:var(--font-bold); margin:.3em 0 .5em 0;">Conocer al cliente</div>
-      <p style="font-size:14px; line-height:1.45; color:var(--muted);">Cada transacción —presencial o digital— agrega dato al perfil unificado. El cliente casual se vuelve visible. La base de fidelización crece con cada compra.</p>
+      <div style="font-size:25px; font-weight:var(--font-bold); margin:.3em 0 .5em 0;">Conocer al cliente</div>
+      <p style="font-size:16px; line-height:1.5; color:var(--muted);">Cada transacción —presencial o digital— agrega dato al perfil unificado. El cliente casual se vuelve visible. La base de fidelización crece con cada compra.</p>
     </div>
     <div style="align-self:center; color:var(--color-awards); font-size:24px; font-weight:var(--font-bold);">→</div>
     <div class="card" style="flex:1; min-width:200px; border-top:3px solid var(--color-awards);">
       <div class="kicker">2 — Beneficios personalizados</div>
-      <div style="font-size:22px; font-weight:var(--font-bold); margin:.3em 0 .5em 0;">Oferta que convierte</div>
-      <p style="font-size:14px; line-height:1.45; color:var(--muted);">Campañas, cupones y descuentos generados por IA para cada segmento — no para toda la base. Tasa de redención proyectada: del 3% actual al 12%.</p>
+      <div style="font-size:25px; font-weight:var(--font-bold); margin:.3em 0 .5em 0;">Oferta que convierte</div>
+      <p style="font-size:16px; line-height:1.5; color:var(--muted);">Campañas, cupones y descuentos generados por IA para cada segmento — no para toda la base. Tasa de redención proyectada: del 3% actual al 12%.</p>
     </div>
     <div style="align-self:center; color:var(--color-awards); font-size:24px; font-weight:var(--font-bold);">→</div>
     <div class="card" style="flex:1; min-width:200px; border-top:3px solid var(--color-awards);">
       <div class="kicker">3 — Medio de pago embebido</div>
-      <div style="font-size:22px; font-weight:var(--font-bold); margin:.3em 0 .5em 0;">CotoPay en caja</div>
-      <p style="font-size:14px; line-height:1.45; color:var(--muted);">Wallet propia integrada al POS — el pago cierra el ciclo de datos y retiene el margen que hoy va a Mercado Pago. El cliente ya conoce COTO; el paso al medio de pago es natural.</p>
+      <div style="font-size:25px; font-weight:var(--font-bold); margin:.3em 0 .5em 0;">CotoPay en caja</div>
+      <p style="font-size:16px; line-height:1.5; color:var(--muted);">Wallet propia integrada al POS — el pago cierra el ciclo de datos y retiene el margen que hoy va a Mercado Pago. El cliente ya conoce COTO; el paso al medio de pago es natural.</p>
     </div>
   </div>
   <div class="converge-box" style="margin-top:1.4em; max-width:100%;">
@@ -750,7 +752,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   <h1>En caja: la recomendación llega antes que la pregunta</h1>
   <div class="two-col" style="margin-top:.6em;">
     <div>
-      <div class="stat-big accent" style="font-size:52px;">&lt;800 ms</div>
+      <div class="stat-big accent" style="font-size:62px;">&lt;800 ms</div>
       <p class="stat-caption">de latencia — el sistema recomienda, el cliente decide.</p>
     </div>
     <ul class="bullets">
@@ -775,7 +777,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   <h1>Reclamo posventa: de 8-15 minutos a resolución inmediata</h1>
   <div class="two-col" style="margin-top:.6em;">
     <div>
-      <div class="stat-big accent" style="font-size:46px;">$3,50 → $0,40</div>
+      <div class="stat-big accent" style="font-size:56px;">$3,50 → $0,40</div>
       <p class="stat-caption">costo por ticket de soporte, USD</p>
     </div>
     <ul class="bullets">
@@ -800,7 +802,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   <h1>Campañas: de oferta genérica a oferta por cliente, con aprobación humana</h1>
   <div class="two-col" style="margin-top:.6em;">
     <div>
-      <div class="stat-big accent" style="font-size:52px;">3% → 12%</div>
+      <div class="stat-big accent" style="font-size:62px;">3% → 12%</div>
       <p class="stat-caption">tasa de redención de cupones proyectada</p>
     </div>
     <ul class="bullets">
@@ -825,7 +827,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   <h1>Coto Digital: canasta por presupuesto y sustitutos que el cliente acepta</h1>
   <div class="two-col" style="margin-top:.6em;">
     <div>
-      <div class="stat-big accent" style="font-size:52px;">&lt;500 ms</div>
+      <div class="stat-big accent" style="font-size:62px;">&lt;500 ms</div>
       <p class="stat-caption">para sugerir el sustituto con mayor probabilidad de aceptación</p>
     </div>
     <ul class="bullets">
