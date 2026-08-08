@@ -7,6 +7,18 @@ confirmado: 10 minutos, ante CFO/CEO/CMO (ver
 
 - `guion.md` — minutado por sección, reparto sugerido, y preguntas de riesgo
   de la defensa oral con respuesta corta preparada.
+- `guion.docx` — mismo contenido de `guion.md` exportado a Word, para
+  compartir con quien no trabaje en markdown. Generado con
+  `pandoc guion.md -o guion.docx --from=markdown+yaml_metadata_block --to=docx --standalone --table-of-contents --toc-depth=2 --reference-doc=../../../../../design-system/components/docx-reference.docx`
+  seguido de `python3 ../../../../../design-system/components/docx_kit.py guion.docx`
+  (pinta header oscuro + bandas de las tablas directo en cada celda, ver
+  por qué en `docx-guion.md`). Nunca se edita a mano en Word/Pages — si
+  cambia `guion.md`, se repite el pipeline completo. Aplica los mismos
+  tokens que el `.pptx`/`.html` vía
+  `design-system/components/docx-reference.docx`, documentado en
+  `design-system/components/docx-guion.md`. Fuente: Arial (no Inter —
+  decisión explícita distinta a la del `.pptx`, porque este archivo puede
+  abrirse en una máquina fuera de nuestro control).
 - `presentacion.html` — las 17 slides maquetadas como landing navegable
   (no solo scroll pasivo): nav superior fija por bloque temático, barra de
   progreso, step-strip para sub-secciones (recorrido de cliente, pasos del
@@ -24,8 +36,8 @@ confirmado: 10 minutos, ante CFO/CEO/CMO (ver
   nuevo de otra materia/entregable replica esta estructura, no la
   reinventa. No editar este archivo a mano — es la referencia.
 
-Ambos formatos (HTML y pptx) tienen el mismo contenido, sacado 1:1 del
-guion — ninguno de los dos agrega datos que no estén ya en
+Los tres formatos (docx, HTML y pptx) tienen el mismo contenido, sacado
+1:1 del guion — ninguno agrega datos que no estén ya en
 `entregable/plan-de-negocios.md`.
 
 **Fuente del `.pptx` — requiere `Inter` instalado localmente.**
