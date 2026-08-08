@@ -79,6 +79,7 @@ si no está claro).
 | `tp-plan-writer` | Redacta el documento final en `entregable/` del entregable activo | Investigar o diseñar por su cuenta |
 | `tp-presentation-designer` | Arma el guion/contenido hablado de la presentación, consultando `design-system/` si aplica | Redactar el plan de negocios en sí |
 | `tp-ux-ui-designer` | Diseña e implementa la navegación/interacción de artefactos visuales (landing pages, HTML de presentaciones), aplicando `design-system/` | Inventar contenido de negocio nuevo |
+| `tp-compliance-reviewer` | Corre el test de cumplimiento (Hard Rules + checklist de la consigna) sobre contenido antes de darlo por terminado o subirlo | Corregir contenido, diseñar, redactar o ejecutar `git push`/`git commit` |
 
 ## Skills
 
