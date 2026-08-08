@@ -189,7 +189,7 @@ button { font-family: var(--font-1); }
 #s-cierre > * { position: relative; z-index: 1; }
 
 /* ---------- flujo del prototipo: mockups recortados al borde real ---------- */
-.mockup-shot { width: min(225px, 19vw); flex-shrink: 0; text-align: center; }
+.mockup-shot { width: 100%; text-align: center; }
 .mockup-shot img { width: 100%; height: auto; display: block; border-radius: 22px; overflow: hidden; box-shadow: 0 14px 30px -14px rgba(0,0,0,.32); }
 .mockup-shot p { font-size: 14px; color: var(--muted); margin: .9em 0 0 0; }
 
@@ -414,6 +414,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   .stat-big { font-size: clamp(44px, 9vw, 64px); }
   .systems-row { justify-content: center; }
   .system-box { min-width: 100px; flex: 1 1 30%; }
+  #s-flujo-mockups > div[style*="grid-template-columns"] { grid-template-columns: repeat(3,1fr); row-gap: 2em; }
 }
 
 /* ---------- responsive: mobile (≤600px) ----------
@@ -717,7 +718,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
 <section class="slide" id="s-flujo-mockups" data-group="journey">
   <div class="kicker">Customer Journey · El prototipo</div>
   <h1>Así se ve en la app: las pantallas del flujo</h1>
-  <div style="display:flex; gap:2.2em; margin-top:1.6em; flex-wrap:wrap; justify-content:center;">
+  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:2vw; margin-top:1.6em; align-items:start;">
     <div class="mockup-shot">
       <img src="../../../../../prototipo-wallet-coto/public/01-wallet-home-crop.png" alt="Home">
       <p>Home</p>
