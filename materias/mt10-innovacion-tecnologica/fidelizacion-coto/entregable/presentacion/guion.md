@@ -109,6 +109,9 @@ etapas una por una: las presenta como un arco narrativo en dos actos.
 
 "Con CotoPay, el mismo recorrido se convierte en un ciclo que aprende."
 
+- **Paso 0, antes del trigger**: alta simple con un beneficio inmediato de
+  bienvenida — el primer incentivo que empuja la descarga y el registro,
+  antes de que exista cualquier historial de compra para personalizar nada.
 - El trigger es personalizado: de 3% a 12% de redención proyectada — solo
   COTO tiene dato de góndola para construir esa oferta.
 - La caja: un tap, 100% identificado, comisión propia.
