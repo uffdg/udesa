@@ -22,8 +22,8 @@ igual:
   "debilita el caso, no lo fortalece". Se resuelve dándole el bloque de ROI
   **temprano** (minuto 4:45, no al cierre) pero **en el mismo orden interno
   que ya usa la sección 8**: costo de no hacerlo → por qué ahora → rango de
-  escenarios → riesgo principal → plan de des-arriesgamiento. Nunca se abre
-  con "$5,24M / 1.505,7%".
+  escenarios → economía del proyecto → CAC/LTV → riesgo principal → plan de
+  des-arriesgamiento. Nunca se abre con el VAN como primera diapositiva.
 - **CMO**: quiere ver la experiencia de cliente concreta, no una lista de
   seis casos de uso con nombres técnicos (CU-01 a CU-06). Se resuelve
   narrando la propuesta como un recorrido de cliente real (caja → reclamo →
@@ -228,7 +228,7 @@ Guion hablado:
   15.000 usuarios y escala en dos pasos más — lo retomamos en el plan de
   implementación.
 
-### Bloque 5 — Caso de ROI (4:45–7:45) · **Voz 4** (dividir en 2 voces si el equipo es de 6: Voz 4 para 5a-5b, Voz 5 para 5c-5e)
+### Bloque 5 — Caso de ROI (4:45–7:45) · **Voz 4** (dividir en 2 voces si el equipo es de 6: Voz 4 para 5a-5b, Voz 5 para 5c-5g)
 
 **Regla dura de este bloque**: seguir el orden de la sección 8.1 del
 documento. La primera cifra grande en pantalla **no** es el VAN ni el ROI.
@@ -251,7 +251,7 @@ documento. La primera cifra grande en pantalla **no** es el VAN ni el ROI.
 esta última si hay que elegir solo una, porque es "el argumento central,
 no el VAN base" según el propio documento.
 
-**5c — El rango, no el número optimista (6:00–6:45, 0:45)**
+**5c — El rango, no el número optimista (6:00–6:25, 0:25)**
 - No trabajamos con un solo número. Trabajamos con un rango: en el
   escenario base, VAN **a definir con modelo actualizado** y ROI a **24
   meses**. Pero el argumento que importa acá no es esa cifra — es que
@@ -262,13 +262,26 @@ no el VAN base" según el propio documento.
   los pisos de cada escenario quedan a definir con ese modelo; la
   estructura del argumento no cambia, sección 8.9 del documento.)
 
-**5d — El riesgo principal, sin rodeos (6:45–7:15, 0:30)**
+**5d — Economía del proyecto (6:25–6:50, 0:25)**
+- En 24 meses, el modelo queda así: CAPEX inicial de USD 500K, OPEX de USD
+  300K/mes post-lanzamiento, payback en Mes 13 y VAN de USD 7,14M al 12%.
+  Los drivers que mueven el caso son ventas incrementales acumulativas,
+  margen incremental de 20%, conversión de Comunidad COTO y ahorro de
+  adquirencia.
+
+**5e — CAC / LTV (6:50–7:10, 0:20)**
+- El CAC estimado es USD 6,67 y el LTV a 24 meses es USD 132,41: una
+  relación de 19,9x. Es una estimación derivada de los supuestos del modelo,
+  no un dato observado en COTO; por eso sirve para ordenar la discusión, no
+  para reemplazar el piloto.
+
+**5f — El riesgo principal, sin rodeos (7:10–7:25, 0:15)**
 - El riesgo principal no es tecnológico ni de costo de infraestructura de
   IA — la sensibilidad muestra que ambos pesan poco. El riesgo es
   **adopción**, y depende de una cifra que todavía no está validada por la
   compañía: el tamaño real del padrón de Comunidad COTO.
 
-**5e — Plan de des-arriesgamiento (7:15–7:45, 0:30)**
+**5g — Plan de des-arriesgamiento (7:25–7:45, 0:20)**
 - Por eso no pedimos autorizar el CAPEX completo hoy. El CAPEX total del
   proyecto es **USD 500.000** — pedimos autorizar una fase 0: tres
   experimentos de bajo costo — una prueba de latencia en el punto de
