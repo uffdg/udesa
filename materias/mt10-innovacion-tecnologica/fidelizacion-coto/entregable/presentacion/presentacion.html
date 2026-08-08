@@ -179,7 +179,11 @@ button { font-family: var(--font-1); }
   gap: 3.5em;
   flex-wrap: wrap-reverse;
 }
-.title-copy { flex: 1.3; min-width: 360px; }
+.title-copy {
+  flex: 1.3;
+  min-width: 360px;
+  padding-top: 120px;
+}
 .title-rule {
   width: 52px;
   height: 5px;
@@ -217,24 +221,24 @@ button { font-family: var(--font-1); }
 .title-qr {
   position: absolute;
   left: 4vw;
-  top: calc(56px + 2.6vh);
+  top: calc(56px + 3.2vh);
   text-align: center;
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.14);
-  border-radius: 18px;
-  padding: 1.3em 1.3em 1.05em;
+  border-radius: 14px;
+  padding: .62em .68em .58em;
 }
 .title-qr img {
-  width: 150px;
-  height: 150px;
-  border-radius: 10px;
+  width: 82px;
+  height: 82px;
+  border-radius: 7px;
   display: block;
 }
 .title-qr p {
-  font-size: 13px;
+  font-size: 10px;
   color: rgba(255,255,255,0.65);
-  margin: 10px 0 0;
-  line-height: 1.5;
+  margin: 5px 0 0;
+  line-height: 1.25;
 }
 
 /* ---------- cierre: mismo tratamiento, en espejo, como bookend ---------- */
@@ -595,6 +599,7 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   .title-copy {
     min-width: 0;
     width: 100%;
+    padding-top: 96px;
   }
   .title-rule {
     width: 42px;
@@ -620,21 +625,23 @@ tbody tr:nth-child(even) { background: var(--bg-primary); }
   }
   .title-shot { display: none; }
   .title-qr {
-    position: static;
-    align-self: center;
-    padding: .7em .7em .6em;
-    border-radius: 16px;
-    margin-top: .4em;
+    position: absolute;
+    left: 5vw;
+    top: calc(50px + 2vh);
+    align-self: auto;
+    padding: .52em .56em .48em;
+    border-radius: 12px;
+    margin-top: 0;
   }
   .title-qr img {
-    width: min(128px, 34vw);
-    height: min(128px, 34vw);
-    border-radius: 8px;
+    width: 68px;
+    height: 68px;
+    border-radius: 6px;
   }
   .title-qr p {
-    font-size: 12px;
-    margin-top: 7px;
-    line-height: 1.35;
+    font-size: 9px;
+    margin-top: 4px;
+    line-height: 1.2;
   }
   #s-titulo > p {
     margin: .2em 0 0;
